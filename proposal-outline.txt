@@ -35,7 +35,7 @@
   - Success is demonstrating a robust reduction of the PDF uncertainty component for that target, not solving Higgs systematics in general.
 
 - Contingency and stress tests
-  - Only two visible follow-ons should remain in scope: a high-mass or boosted `ttbar` stress test of the constrained-gluon result in the larger-`x` region, and, only if needed, one surgical quark-sensitive control input based on high-mass or forward Drell-Yan. Both are subordinate to the anchor analysis and exist only to test robustness or resolve interpretation bottlenecks.
+  - Keep only two visible follow-ons: a high-mass or boosted `ttbar` stress test of the constrained-gluon result in the larger-`x` region, and, only if needed, one surgical quark-sensitive control input based on high-mass or forward Drell-Yan. Both are subordinate to the anchor analysis and exist only to test robustness or resolve interpretation bottlenecks.
 
 - Controlled treatment of non-gluon dependence
   - The proposal must state explicitly that the measurement constrains the gluon component in a restricted model space while treating the best-constrained quark sector as fixed to standard external inputs in the baseline fit. This is more accurate than speaking as if CMS were performing a full proton-structure extraction from `ttbar` alone.
@@ -64,7 +64,7 @@
 - Feasibility and fallback logic
   - A full nuisance-aware unbinned CMS analysis is a major effort even without extra channels, so the proposal must treat the `ttbar(2l)` measurement as the only guaranteed major physics result. Manpower, milestones, and language should reflect that reality.
   - If the nuisance-factorization ansatz, surrogate precision, or theory-model dependence limits the full intended result, the credible fallback is still strong: a detector-level unbinned `ttbar` result with a reduced but publication-grade nuisance model and an internally usable constrained-gluon likelihood product. The Higgs propagation only proceeds once that basis is secure.
-  - Publication logic should be stated explicitly: publication 1 is the real-data CMS `ttbar(2l)` constrained-gluon result; publication 2 is the `H -> gamma gamma` differential `ggH` validation if and only if publication 1 is secure. This makes the execution path concrete and protects the proposal against scope drift.
+  - Publication logic should remain explicit: publication 1 is the real-data CMS `ttbar(2l)` constrained-gluon result; publication 2 is the `H -> gamma gamma` differential `ggH` validation only if publication 1 is secure. This makes the execution path concrete and protects the proposal against scope drift.
   - Claims about rivaling global fits must be carefully qualified. The right statement is that the measurement aims to be competitive with global constraints in the `x` range directly probed by CMS `ttbar` data, not that it replaces global PDF fitting.
 
 - Resources and manpower
@@ -75,4 +75,3 @@
 - Expected impact
   - Primary impact: the first real-data CMS measurement extracting gluon-sensitive proton-structure information from a detector-level unbinned top sample. That would be a distinctive experimental result even before any broader methodological uptake.
   - Secondary impact: a concrete demonstration that an internally constrained-gluon likelihood from CMS top data improves one flagship gluon-fusion prediction. This is the cleanest proof that the proton-structure information is physically useful.
-  - Long-term vision: selected unbinned experimental likelihood products may eventually complement traditional binned inputs in future hybrid PDF fits. This is a downstream vision, not the central promise or guaranteed deliverable of the proposal period.
