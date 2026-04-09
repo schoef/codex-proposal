@@ -12,10 +12,10 @@
 
 - New-physics spark: top-Higgs SMEFT after gluon calibration
   - The ambitious new physics project is a CMS top-Higgs interpretation in which SBI-PDF is extended from a constrained-gluon fit to a joint gluon-plus-SMEFT analysis in the top sector. This is well motivated because both the linear gluon model and SMEFT cross sections admit polynomial dependence, and recent literature shows that EFT effects can be partly reabsorbed by PDF freedom if the two are not treated together.
-  - The natural target is differential `ttH` and, where useful, `tH` in CMS Run II data, because these processes are simultaneously sensitive to top-Higgs dynamics, gluon-initiated production, and interference patterns that are attractive for BSM interpretation. The program’s claim is not that PDFs and SMEFT are two separate topics, but that the former must be controlled to make the latter credible in high-information top-Higgs data.
+  - The default stretch target is differential `ttH` in CMS Run II data, with `tH` retained only as a secondary lever where its interference structure adds specific coupling discrimination. The program’s claim is not that PDFs and SMEFT are two separate topics, but that the former must be controlled to make the latter credible in high-information top-Higgs data.
 
 - Why the add-ons belong together
-  - `ttbar(2l)` determines the gluon where CMS has high-statistics top data; `ggH` tests whether that gluon information is physically useful in another gluon-dominated channel; `ttH/tH` then exploits the calibrated proton input in a measurement where PDF-SMEFT confusion is a real interpretational risk. This is one physics story, not a list.
+  - `ttbar(2l)` determines the gluon where CMS has high-statistics top data; `ggH` tests whether that gluon information is physically useful in another gluon-dominated channel; `ttH` then exploits the calibrated proton input in a measurement where PDF-SMEFT confusion is a real interpretational risk. This is one physics story, not a list.
   - The same logic gives the proposal its ambition: the program moves from proton structure, to Higgs precision, to BSM-sensitive top-Higgs dynamics without changing experimental ecosystem or inference philosophy. The synergy is that each stage reduces an ambiguity that would otherwise limit the next one.
 
 - Supporting physics handle: single-top as a gluon-to-bottom cross-check
@@ -34,11 +34,11 @@
 - Staged physics program
   - Stage 1: publication-grade real-data unbinned constrained-gluon result in CMS `ttbar(2l)`, benchmarked against a strong binned baseline on the same dataset. This is the non-negotiable success condition.
   - Stage 2: real-data `ggH, H -> gamma gamma` validation showing whether the constrained-gluon result reduces the PDF component in `pT(H)` and `|y_H|`. This is the first cross-channel physics payoff.
-  - Stage 3: joint gluon-plus-SMEFT interpretation in differential `ttH` and, where useful, `tH`, using the calibrated proton input to prevent BSM-sensitive effects from being misread as proton-structure freedom. This is the proposal’s distinctive “spark” and the place where the physics becomes genuinely more ambitious than a better PDF measurement.
+  - Stage 3: joint gluon-plus-SMEFT interpretation in differential `ttH`, with `tH` used only where it adds targeted interference leverage, using the calibrated proton input to prevent BSM-sensitive effects from being misread as proton-structure freedom. This is the proposal’s distinctive stretch objective and not a co-equal guaranteed deliverable with Stages 1 and 2.
   - Optional Stage 4: a high-mass `ttbar` or single-top stress test if needed to resolve residual large-`x` or flavor-scheme tensions. This remains contingency, not a co-equal pillar.
 
 - Risk mitigation and fallback logic
-  - If the full Higgs or SMEFT exploitation slips, the proposal still lands on a major result: the first real-data CMS detector-level unbinned constrained-gluon measurement from `ttbar(2l)`. That publication alone is grant-level success.
+  - If the full Higgs or SMEFT exploitation slips, the proposal still lands on a major result: the first real-data CMS detector-level unbinned constrained-gluon measurement from `ttbar(2l)`. Publication 1 alone is grant-level success.
   - If quark-sector assumptions or flavor-scheme dependence become limiting, the first contingency is a focused single-top or high-mass Drell-Yan cross-check, not a broad control-channel expansion. If the joint SMEFT extension proves too ambitious in the proposal period, the program still delivers a calibrated-gluon likelihood and a sharply defined path to top-Higgs new-physics measurements.
 
 - Expected impact
