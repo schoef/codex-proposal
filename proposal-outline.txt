@@ -29,7 +29,7 @@
 - Experimental strategy
   - Keep the anchor analysis recognizably CMS: standard dilepton triggers, calibrated leptons and jets, `b`-tag categories, explicit Drell-Yan and single-top backgrounds, and nuisance classes that mirror established top measurements. The novelty lives in the unbinned inference layer, not in inventing an unfamiliar event selection.
   - Use real CMS differential Higgs measurements as they exist today, centered on `H -> gamma gamma`, so the in-situ validation has a concrete experimental landing point. Use the top-Higgs extension only after the constrained-gluon result is established, taking advantage of existing CMS `ttH` and CP-structure measurements rather than inventing a speculative future channel.
-  - Keep theory-systematics ownership inside the physics program: generator accuracy, shower modeling, flavor-scheme dependence, and robustness of PDF-versus-SMEFT separation are scientific questions on the critical path. They are not service tasks and should be presented as measurement-defining issues.
+  - Keep theory-systematics ownership inside the physics program: generator accuracy, shower modeling, flavor-scheme dependence, Higgs differential statistics, `ttH/tH` systematics, and robustness of PDF-versus-SMEFT separation are scientific questions on the critical path. They are not service tasks and should be presented as measurement-defining issues.
 
 - Staged physics program
   - Stage 1: publication-grade real-data unbinned constrained-gluon result in CMS `ttbar(2l)`, benchmarked against a strong binned baseline on the same dataset. This is the non-negotiable success condition.
