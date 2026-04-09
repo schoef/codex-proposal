@@ -1,24 +1,18 @@
 #!/usr/bin/env python3
-"""Alternate two Codex agent processes using file-based handoff.
+"""Alternate two existing Codex sessions in strict turn-taking mode.
+
+This runner launches one Codex session with the exact calling convention that
+matches the user's working environment:
+
+    codex exec <MESSAGE> resume <SESSION>
+
+It waits until that run exits, then launches the other side, and repeats until
+interrupted.
 
 Usage:
-    python watchdog.py "<proposer command>" "<referee command>" \
-        [--workdir PATH] [--poll-interval 0.25] [--start proposer|referee]
-
-Behavior:
-- Starts either the proposer or referee command, selected with `--start`
-  (default: proposer).
-- When `proposer_done.txt` appears while proposer is running, waits 1 second,
-  stops proposer, deletes `proposer_done.txt`, and starts referee.
-- When `referee_done.txt` appears while referee is running, waits 1 second,
-  stops referee, deletes `referee_done.txt`, and starts proposer.
-- Runs until interrupted externally.
-
-Convenience:
-- If a command starts with `codex`, the script appends the default flags
-  `--ask-for-approval never --sandbox danger-full-access` unless they are
-  already present.
-- On startup, stale `proposer_done.txt` and `referee_done.txt` are removed.
+    python watchdog.py proposer_session referee_session \
+        [--workdir PATH] [--start proposer|referee] [--initial MESSAGE] \
+        [--to-proposer MESSAGE] [--to-referee MESSAGE]
 """
 
 from __future__ import annotations
@@ -28,136 +22,105 @@ import os
 import shlex
 import signal
 import subprocess
-import time
+import sys
 from pathlib import Path
 from typing import Optional
 
+DEFAULT_MESSAGES = {
+    "proposer": "The referee is done. Do as instructed. Update and commit.",
+    "referee": "The proposer is done. Do as instructed. Update and commit.",
+}
 
-class ProcessManager:
+
+class Runner:
     def __init__(self, workdir: Path):
         self.workdir = workdir
         self.proc: Optional[subprocess.Popen] = None
         self.role: Optional[str] = None
 
-    def start(self, command: str, role: str) -> None:
+    @staticmethod
+    def build_argv(session: str, message: str) -> list[str]:
+        return ["codex", "exec", message, "resume", session]
+
+    def start(self, session: str, role: str, message: str) -> None:
         if self.proc is not None and self.proc.poll() is None:
-            raise RuntimeError(f"Cannot start {role}: process for {self.role} is still running")
+            raise RuntimeError(f"Cannot start {role}: {self.role} is still running")
 
-        print(f"[watchdog] starting {role}: {command}", flush=True)
+        argv = self.build_argv(session, message)
+        print(f"[watchdog] starting {role}: {' '.join(shlex.quote(x) for x in argv)}", flush=True)
 
-        kwargs = {
-            "cwd": str(self.workdir),
-        }
-
+        kwargs = {"cwd": str(self.workdir)}
         if os.name == "nt":
             kwargs["creationflags"] = subprocess.CREATE_NEW_PROCESS_GROUP  # type: ignore[attr-defined]
         else:
             kwargs["start_new_session"] = True
 
-        try:
-            argv = shlex.split(command)
-            use_shell = False
-        except ValueError:
-            argv = command
-            use_shell = True
-
-        self.proc = subprocess.Popen(argv, shell=use_shell, **kwargs)
+        self.proc = subprocess.Popen(argv, **kwargs)
         self.role = role
 
-    def stop_current(self) -> None:
+    def wait(self) -> int:
+        if self.proc is None:
+            raise RuntimeError("No process is running")
+        return self.proc.wait()
+
+    def stop(self) -> None:
         if self.proc is None:
             return
-
         if self.proc.poll() is not None:
-            print(f"[watchdog] {self.role} already exited with code {self.proc.returncode}", flush=True)
             self.proc = None
             self.role = None
             return
 
-        print(f"[watchdog] stopping {self.role} (pid={self.proc.pid})", flush=True)
-
+        print(f"[watchdog] stopping {self.role}", flush=True)
         try:
             if os.name == "nt":
-                self.proc.send_signal(signal.CTRL_BREAK_EVENT)  # type: ignore[attr-defined]
-            else:
-                os.killpg(os.getpgid(self.proc.pid), signal.SIGTERM)
-        except Exception as exc:
-            print(f"[watchdog] warning: graceful stop failed: {exc}", flush=True)
-            self.proc.terminate()
-
-        try:
-            self.proc.wait(timeout=10)
-        except subprocess.TimeoutExpired:
-            print(f"[watchdog] escalating kill for {self.role}", flush=True)
-            try:
-                if os.name == "nt":
-                    self.proc.kill()
-                else:
-                    os.killpg(os.getpgid(self.proc.pid), signal.SIGKILL)
-            except Exception as exc:
-                print(f"[watchdog] warning: force kill failed: {exc}", flush=True)
                 self.proc.kill()
-            self.proc.wait(timeout=5)
-
-        print(f"[watchdog] {self.role} stopped with code {self.proc.returncode}", flush=True)
-        self.proc = None
-        self.role = None
-
-
-def remove_file_if_exists(path: Path) -> None:
-    try:
-        path.unlink()
-        print(f"[watchdog] removed trigger file: {path.name}", flush=True)
-    except FileNotFoundError:
-        pass
-
-
-def maybe_add_codex_defaults(command: str) -> str:
-    try:
-        parts = shlex.split(command)
-    except ValueError:
-        return command
-
-    if not parts:
-        return command
-
-    exe = os.path.basename(parts[0])
-    if exe != "codex":
-        return command
-
-    has_ask = "--ask-for-approval" in parts
-    has_sandbox = "--sandbox" in parts
-
-    if not has_ask:
-        parts.extend(["--ask-for-approval", "never"])
-    if not has_sandbox:
-        parts.extend(["--sandbox", "danger-full-access"])
-
-    return shlex.join(parts)
+            else:
+                os.killpg(os.getpgid(self.proc.pid), signal.SIGKILL)
+        except Exception:
+            self.proc.kill()
+        finally:
+            try:
+                self.proc.wait(timeout=5)
+            except Exception:
+                pass
+            self.proc = None
+            self.role = None
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Alternate two Codex agent commands based on sentinel files.")
-    parser.add_argument("proposer_cmd", help="Command line for the proposer session")
-    parser.add_argument("referee_cmd", help="Command line for the referee session")
-    parser.add_argument(
-        "--workdir",
-        default=".",
-        help="Directory where the agents run and where sentinel files are created (default: current directory)",
+    parser = argparse.ArgumentParser(
+        description="Alternate two Codex sessions by waiting for each run to finish."
     )
-    parser.add_argument(
-        "--poll-interval",
-        type=float,
-        default=0.25,
-        help="Polling interval in seconds for checking sentinel files (default: 0.25)",
-    )
+    parser.add_argument("proposer_session", help="Existing Codex proposer session name or id")
+    parser.add_argument("referee_session", help="Existing Codex referee session name or id")
+    parser.add_argument("--workdir", default=".", help="Working directory for both agents (default: current directory)")
     parser.add_argument(
         "--start",
         choices=("proposer", "referee"),
         default="proposer",
-        help="Which process to start first (default: proposer)",
+        help="Which side runs first (default: proposer)",
+    )
+    parser.add_argument(
+        "--initial",
+        default=None,
+        help="Optional message to use only for the first run; later turns use the configured handoff messages.",
+    )
+    parser.add_argument(
+        "--to-proposer",
+        default=DEFAULT_MESSAGES["proposer"],
+        help="Message used on later turns when launching the proposer.",
+    )
+    parser.add_argument(
+        "--to-referee",
+        default=DEFAULT_MESSAGES["referee"],
+        help="Message used on later turns when launching the referee.",
     )
     return parser.parse_args()
+
+
+def other_role(role: str) -> str:
+    return "referee" if role == "proposer" else "proposer"
 
 
 def main() -> int:
@@ -165,61 +128,46 @@ def main() -> int:
     workdir = Path(args.workdir).resolve()
     workdir.mkdir(parents=True, exist_ok=True)
 
-    proposer_done = workdir / "proposer_done.txt"
-    referee_done = workdir / "referee_done.txt"
+    sessions = {
+        "proposer": args.proposer_session,
+        "referee": args.referee_session,
+    }
+    handoff_messages = {
+        "proposer": args.to_proposer,
+        "referee": args.to_referee,
+    }
 
-    proposer_cmd = maybe_add_codex_defaults(args.proposer_cmd)
-    referee_cmd = maybe_add_codex_defaults(args.referee_cmd)
-
-    manager = ProcessManager(workdir)
+    runner = Runner(workdir)
 
     def shutdown(signum, _frame):
         print(f"\n[watchdog] received signal {signum}, shutting down", flush=True)
-        manager.stop_current()
+        runner.stop()
         raise SystemExit(128 + signum)
 
     signal.signal(signal.SIGINT, shutdown)
     signal.signal(signal.SIGTERM, shutdown)
 
-    remove_file_if_exists(proposer_done)
-    remove_file_if_exists(referee_done)
-
-    if args.start == "proposer":
-        manager.start(proposer_cmd, "proposer")
-    else:
-        manager.start(referee_cmd, "referee")
+    current_role = args.start
+    first_turn = True
 
     while True:
-        time.sleep(args.poll_interval)
+        message = args.initial if first_turn and args.initial is not None else handoff_messages[current_role]
 
-        if manager.role == "proposer" and proposer_done.exists():
-            print("[watchdog] detected proposer_done.txt", flush=True)
-            time.sleep(1.0)
-            manager.stop_current()
-            remove_file_if_exists(proposer_done)
-            manager.start(referee_cmd, "referee")
-            continue
+        runner.start(sessions[current_role], current_role, message)
+        code = runner.wait()
+        finished_role = current_role
+        runner.proc = None
+        runner.role = None
 
-        if manager.role == "referee" and referee_done.exists():
-            print("[watchdog] detected referee_done.txt", flush=True)
-            time.sleep(1.0)
-            manager.stop_current()
-            remove_file_if_exists(referee_done)
-            manager.start(proposer_cmd, "proposer")
-            continue
+        if code != 0:
+            print(f"[watchdog] {finished_role} exited with code {code}", flush=True)
+            return code
 
-        if manager.proc is not None and manager.proc.poll() is not None:
-            code = manager.proc.returncode
-            role = manager.role
-            print(f"[watchdog] {role} exited unexpectedly with code {code}", flush=True)
-            manager.proc = None
-            manager.role = None
-            return code if code is not None else 1
+        print(f"[watchdog] {finished_role} finished successfully", flush=True)
+        current_role = other_role(finished_role)
+        first_turn = False
 
 
 if __name__ == "__main__":
-    try:
-        raise SystemExit(main())
-    except KeyboardInterrupt:
-        raise SystemExit(130)
+    sys.exit(main())
 
