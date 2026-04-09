@@ -1,25 +1,33 @@
 #!/usr/bin/env python3
-"""Simple watchdog for alternating two pre-existing Codex sessions.
+"""Alternate two Codex agent processes using file-based handoff.
 
 Usage:
-    python watchdog.py "<proposer command>" "<referee command>" [--workdir PATH] [--poll-interval 0.25]
+    python watchdog.py "<proposer command>" "<referee command>" \
+        [--workdir PATH] [--poll-interval 0.25] [--start proposer|referee]
 
 Behavior:
-- Starts the proposer command first.
-- When `done.txt` appears, waits 1 second, stops proposer, removes `done.txt`, and starts referee.
-- When `referee_done.txt` appears, waits 1 second, stops referee, removes `referee_done.txt`, and starts proposer.
-- When `proposer_done.txt` appears, waits 1 second, stops proposer, and exits.
+- Starts either the proposer or referee command, selected with `--start`
+  (default: proposer).
+- When `proposer_done.txt` appears while proposer is running, waits 1 second,
+  stops proposer, deletes `proposer_done.txt`, and starts referee.
+- When `referee_done.txt` appears while referee is running, waits 1 second,
+  stops referee, deletes `referee_done.txt`, and starts proposer.
+- Runs until interrupted externally.
 
-This script assumes the agents create their sentinel files in `workdir`.
+Convenience:
+- If a command starts with `codex`, the script appends the default flags
+  `--ask-for-approval never --sandbox danger-full-access` unless they are
+  already present.
+- On startup, stale `proposer_done.txt` and `referee_done.txt` are removed.
 """
 
 from __future__ import annotations
 
 import argparse
 import os
+import shlex
 import signal
 import subprocess
-import sys
 import time
 from pathlib import Path
 from typing import Optional
@@ -39,8 +47,6 @@ class ProcessManager:
 
         kwargs = {
             "cwd": str(self.workdir),
-            "shell": True,
-            "stdin": subprocess.DEVNULL,
         }
 
         if os.name == "nt":
@@ -48,7 +54,14 @@ class ProcessManager:
         else:
             kwargs["start_new_session"] = True
 
-        self.proc = subprocess.Popen(command, **kwargs)
+        try:
+            argv = shlex.split(command)
+            use_shell = False
+        except ValueError:
+            argv = command
+            use_shell = True
+
+        self.proc = subprocess.Popen(argv, shell=use_shell, **kwargs)
         self.role = role
 
     def stop_current(self) -> None:
@@ -99,6 +112,30 @@ def remove_file_if_exists(path: Path) -> None:
         pass
 
 
+def maybe_add_codex_defaults(command: str) -> str:
+    try:
+        parts = shlex.split(command)
+    except ValueError:
+        return command
+
+    if not parts:
+        return command
+
+    exe = os.path.basename(parts[0])
+    if exe != "codex":
+        return command
+
+    has_ask = "--ask-for-approval" in parts
+    has_sandbox = "--sandbox" in parts
+
+    if not has_ask:
+        parts.extend(["--ask-for-approval", "never"])
+    if not has_sandbox:
+        parts.extend(["--sandbox", "danger-full-access"])
+
+    return shlex.join(parts)
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Alternate two Codex agent commands based on sentinel files.")
     parser.add_argument("proposer_cmd", help="Command line for the proposer session")
@@ -114,6 +151,12 @@ def parse_args() -> argparse.Namespace:
         default=0.25,
         help="Polling interval in seconds for checking sentinel files (default: 0.25)",
     )
+    parser.add_argument(
+        "--start",
+        choices=("proposer", "referee"),
+        default="proposer",
+        help="Which process to start first (default: proposer)",
+    )
     return parser.parse_args()
 
 
@@ -122,9 +165,11 @@ def main() -> int:
     workdir = Path(args.workdir).resolve()
     workdir.mkdir(parents=True, exist_ok=True)
 
-    done = workdir / "done.txt"
-    referee_done = workdir / "referee_done.txt"
     proposer_done = workdir / "proposer_done.txt"
+    referee_done = workdir / "referee_done.txt"
+
+    proposer_cmd = maybe_add_codex_defaults(args.proposer_cmd)
+    referee_cmd = maybe_add_codex_defaults(args.referee_cmd)
 
     manager = ProcessManager(workdir)
 
@@ -136,32 +181,23 @@ def main() -> int:
     signal.signal(signal.SIGINT, shutdown)
     signal.signal(signal.SIGTERM, shutdown)
 
-    # Clear stale handoff files that would otherwise immediately retrigger a switch.
-    remove_file_if_exists(done)
+    remove_file_if_exists(proposer_done)
     remove_file_if_exists(referee_done)
 
-    if proposer_done.exists():
-        print("[watchdog] proposer_done.txt already exists; nothing to do", flush=True)
-        return 0
-
-    manager.start(args.proposer_cmd, "proposer")
+    if args.start == "proposer":
+        manager.start(proposer_cmd, "proposer")
+    else:
+        manager.start(referee_cmd, "referee")
 
     while True:
         time.sleep(args.poll_interval)
 
-        if proposer_done.exists():
+        if manager.role == "proposer" and proposer_done.exists():
             print("[watchdog] detected proposer_done.txt", flush=True)
             time.sleep(1.0)
             manager.stop_current()
-            return 0
-
-        if manager.role == "proposer" and done.exists():
-            print("[watchdog] detected done.txt from proposer", flush=True)
-            time.sleep(1.0)
-            manager.stop_current()
-            remove_file_if_exists(done)
-            remove_file_if_exists(referee_done)
-            manager.start(args.referee_cmd, "referee")
+            remove_file_if_exists(proposer_done)
+            manager.start(referee_cmd, "referee")
             continue
 
         if manager.role == "referee" and referee_done.exists():
@@ -169,8 +205,7 @@ def main() -> int:
             time.sleep(1.0)
             manager.stop_current()
             remove_file_if_exists(referee_done)
-            remove_file_if_exists(done)
-            manager.start(args.proposer_cmd, "proposer")
+            manager.start(proposer_cmd, "proposer")
             continue
 
         if manager.proc is not None and manager.proc.poll() is not None:
