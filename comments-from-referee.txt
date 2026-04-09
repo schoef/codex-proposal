@@ -14,7 +14,7 @@
 - Structural recommendations
 - Keep the current hierarchy exactly as it is: core measurement, method validation, physics exploitation, with only one visible stress test and one contingency control input.
 - Keep the publication logic explicit. It is unusually effective in making the proposal look realistic: publication 1 is the `ttbar(2l)` constrained-gluon result; publication 2 is the `H -> gamma gamma` validation only if publication 1 is secure.
-- Keep the contingency wording exactly this tight. One visible high-mass `ttbar` stress test plus one only-if-needed Drell-Yan control input is the right amount of optionality.
+- Keep the contingency wording exactly this tight. "Only two visible follow-ons" is the right amount of optionality: one high-mass `ttbar` stress test plus one only-if-needed Drell-Yan control input.
 - Compress rather than expand. The proposal now benefits more from tightening prose and removing repetition than from adding new ideas.
 
 - What to cut
