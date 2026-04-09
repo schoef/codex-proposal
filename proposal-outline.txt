@@ -1,77 +1,46 @@
-- Central question
-  - Can CMS extract a useful constraint on the gluon PDF from real detector-level `ttbar(2l)` data with unbinned SBI-PDF, and can that constraint demonstrably improve one flagship gluon-initiated prediction? This is the single question that organizes the whole program.
-  - The proposal is therefore not a broad PDF platform project, but a realism-first CMS measurement program with one anchor result and one sharply defined physics validation.
-
 - Central vision
-  - Build the first CMS analysis that uses uncertainty-aware unbinned inference on real `ttbar` dilepton events to determine the gluon component of the proton in a restricted functional space. The claim is targeted on purpose: this is not a full stand-alone proton-structure determination, but a CMS measurement of the gluon sector where top data are most informative.
-  - The long-term significance is methodological and physical at once: rich detector-level events become usable for proton-structure inference, and the resulting constrained-gluon likelihood can be tested on a second gluon-dominated observable inside the same experiment.
+  - Build a CMS real-data program in which unbinned SBI-PDF turns top-quark events into an internal calibration of the gluon sector, and then uses that calibration to unlock sharper Higgs and top-Higgs measurements. The narrative is one chain: constrain the gluon with top data, validate it in gluon-fusion Higgs, then use the stabilized proton input to attack a genuinely new-physics-sensitive measurement.
+  - The proposal is physics-first: not a generic inference platform, but a sequence of concrete CMS measurements whose mutual consistency is itself part of the science. The central asset is that each add-on tests or exploits the same gluon-sensitive structure rather than opening a separate subfield.
 
-- Why this is new
-  - The novelty is not “ML for HEP” and not simply “top data for PDFs.” The real advance is the combination of a linear gluon-PDF parameterization, detector-level unbinned likelihood-ratio inference, and an explicit nuisance-aware statistical model in one CMS-grounded analysis chain.
-  - The proposal should be judged against the current standard of low-dimensional binned measurements with Gaussianized covariance models. In the unbinned setting, one can use correlated top-level and lepton-level information simultaneously, constrain nuisances more directly in situ, and retain event-level likelihood information that standard histogram releases cannot provide.
+- Core measurement 1: unbinned constrained-gluon extraction from CMS `ttbar(2l)`
+  - The anchor is a real-data detector-level unbinned SBI-PDF measurement in CMS Run II dileptonic `ttbar` at `13 TeV`, with later Run III extension only after the Run II result is secure. This remains the decisive deliverable because `ttbar` directly probes the medium- and large-`x` gluon and already exists as a mature CMS precision channel.
+  - The measurement uses correlated top-level, lepton-level, jet, and missing-momentum information in one likelihood rather than splitting the same events into loosely connected histograms. That is where unbinned inference matters qualitatively: it keeps the information flow from CMS detector objects to the gluon model intact.
 
-- Anchor deliverable: real-data CMS `ttbar(2l)` gluon measurement
-  - The non-negotiable deliverable is an unbinned SBI-PDF measurement using the CMS Run II `ttbar` dilepton dataset at `13 TeV`, with extension to Run III only after the core result is validated. The experiment is with real CMS data from the start; simulation serves calibration, training, closure, and systematic studies, not as the final scientific object.
-  - The channel is chosen because it is experimentally mature, relatively clean, and genuinely sensitive to the gluon PDF in the kinematic range directly probed by CMS top data. It is also the channel where the case for combining reconstructed top observables and lepton-level observables in one detector-level inference is strongest.
+- Core measurement 2: in-situ Higgs calibration with real CMS `ggH`
+  - The first physics payoff is a real-data validation in differential gluon-fusion Higgs production, using CMS `H -> gamma gamma` and the observables `pT(H)` and `|y_H|`. This channel is experimentally clean, already measured by CMS, and directly tests whether the `ttbar`-derived gluon constraint reduces the PDF component in the kinematic region shared with `ggH`.
+  - The point is stronger than a simple uncertainty propagation exercise: the proposal aims to show that one CMS dataset can calibrate the proton input needed by another CMS gluon-dominated measurement. If successful, this is an experimentally meaningful form of in-situ proton-structure control.
 
-- Concrete measurement definition
-  - Data basis: CMS Run II dileptonic `ttbar` sample with standard two-lepton object definitions, `b`-tagged jets, missing transverse momentum, and established event selections. The proposal should stay close to a recognizable CMS top analysis so that the path to review and publication is credible.
-  - Observable families: reconstructed `m(ttbar)`, `y(ttbar)`, `pT(ttbar)`, top and anti-top rapidities and transverse momenta, dilepton kinematics, and detector-level jet and missing-momentum information. The value of the unbinned approach is that these correlated features can enter one likelihood rather than being fragmented into several partially redundant histograms.
-  - Publication target: a constrained-gluon measurement from real detector-level CMS `ttbar(2l)` data in a restricted gluon model space, benchmarked against a strong binned baseline using the same data. This needs to be stated as the primary publication endpoint, not one item among many.
-  - CMS analysis path: implement the measurement as a recognizable CMS top analysis with standard dilepton triggers, nominal CMS lepton and jet calibrations, `b`-tag working points, explicit treatment of residual backgrounds such as Drell-Yan, single-top, and fake/nonprompt leptons, and nuisance parameters organized in the same classes that already govern precision top measurements. The novelty sits in the unbinned inference layer on top of this familiar analysis backbone, not in replacing the CMS analysis structure itself.
+- New-physics spark: top-Higgs SMEFT after gluon calibration
+  - The ambitious new physics project is a CMS top-Higgs interpretation in which SBI-PDF is extended from a constrained-gluon fit to a joint gluon-plus-SMEFT analysis in the top sector. This is well motivated because both the linear gluon model and SMEFT cross sections admit polynomial dependence, and recent literature shows that EFT effects can be partly reabsorbed by PDF freedom if the two are not treated together.
+  - The natural target is differential `ttH` and, where useful, `tH` in CMS Run II data, because these processes are simultaneously sensitive to top-Higgs dynamics, gluon-initiated production, and interference patterns that are attractive for BSM interpretation. The program’s claim is not that PDFs and SMEFT are two separate topics, but that the former must be controlled to make the latter credible in high-information top-Higgs data.
 
-- Method validation and realism frontier
-  - The existing local SBI-PDF work is the proof of concept: `POWHEG+PYTHIA+Delphes`, a linear gluon model, nuisance-aware surrogates, and Higgs uncertainty propagation. The proposal must say clearly that the frontier is now real-data integration and realism, not merely scaling up the proof of concept.
-  - The central scientific task is therefore to close the gap between CMS-grounded simulation studies and a real-data measurement: realistic backgrounds, detector calibrations, nuisance validation, theory-model dependence, and robustness of the PDF–nuisance factorization ansatz all become named tasks rather than hidden assumptions.
-  - Theory accuracy is not a downstream refinement. Generator choice, scale treatment, shower/hadronization dependence, and the path toward NNLO-matched descriptions are part of the credibility of the extracted gluon information and must be owned as a core milestone.
+- Why the add-ons belong together
+  - `ttbar(2l)` determines the gluon where CMS has high-statistics top data; `ggH` tests whether that gluon information is physically useful in another gluon-dominated channel; `ttH/tH` then exploits the calibrated proton input in a measurement where PDF-SMEFT confusion is a real interpretational risk. This is one physics story, not a list.
+  - The same logic gives the proposal its ambition: the program moves from proton structure, to Higgs precision, to BSM-sensitive top-Higgs dynamics without changing experimental ecosystem or inference philosophy. The synergy is that each stage reduces an ambiguity that would otherwise limit the next one.
 
-- Why unbinned inference is necessary here
-  - The proposal should not oversell the gain as necessarily revolutionary in every metric. The stronger claim is qualitative: only the unbinned approach naturally permits simultaneous use of correlated detector-level top and lepton features, stronger in situ nuisance constraint, and a compact event-level likelihood product that a standard binned release cannot match.
-  - Even if the total precision gain over an aggressive binned baseline were “only” at the `20–30%` level, the program would still be compelling because it would establish a new experimental route to proton-structure information from rich CMS event samples. The novelty lies in capability, not just in one headline number.
+- Supporting physics handle: single-top as a gluon-to-bottom cross-check
+  - A single-top measurement, preferably `t`-channel and only as a focused follow-on, provides a useful orthogonal test because the bottom quark entering the five-flavor description is generated perturbatively from the gluon. Literature on single-top in PDF fits indicates sensitivity not only to quarks but also, partially, to the gluon, and to flavor-scheme choices.
+  - In this proposal, single-top is not a second anchor program. It is a surgical cross-check on the perturbative `g -> b bbar` link that underlies the broader gluon story and a way to test whether the constrained-gluon picture remains consistent once bottom-initiated top production is brought into the same CMS framework.
 
-- Physics exploitation: one sharp Higgs validation target
-  - The Higgs component is a validation of usefulness, not a second anchor program. Its purpose is to test whether the `ttbar`-derived constrained-gluon likelihood reduces the PDF component of the uncertainty in one clean differential gluon-fusion observable measured by CMS.
-  - The proposal should therefore focus on one clearly defined `ggH` target in a single experimentally credible decay channel, rather than promising a broad Higgs precision program. The preferred target is differential `ggH` in `H -> gamma gamma` as a function of `pT(H)` and `|y_H|`, because the final state is clean, the kinematics are well reconstructed, and the PDF component can plausibly be isolated in data.
-  - Success is demonstrating a robust reduction of the PDF uncertainty component for that target, not solving Higgs systematics in general.
+- Methodological innovation in physics terms
+  - The novelty is the combination of a restricted linear gluon-PDF parameterization, detector-level unbinned likelihood-ratio inference, and nuisance-aware profiling on real CMS measurements. This is distinct from both standard PDF fitting and generic machine-learning classification.
+  - The same architecture is unusually well matched to a later SMEFT extension because the dependence on both gluon-basis coefficients and EFT coefficients is polynomial. That means the proposal can move from “measure the gluon better” to “separate proton-structure and new-physics effects better” without changing conceptual machinery.
 
-- Contingency and stress tests
-  - Keep only two visible follow-ons: a high-mass or boosted `ttbar` stress test of the constrained-gluon result in the larger-`x` region, and, only if needed, one surgical quark-sensitive control input based on high-mass or forward Drell-Yan. Both are subordinate to the anchor analysis and exist only to test robustness or resolve interpretation bottlenecks.
+- Experimental strategy
+  - Keep the anchor analysis recognizably CMS: standard dilepton triggers, calibrated leptons and jets, `b`-tag categories, explicit Drell-Yan and single-top backgrounds, and nuisance classes that mirror established top measurements. The novelty lives in the unbinned inference layer, not in inventing an unfamiliar event selection.
+  - Use real CMS differential Higgs measurements as they exist today, centered on `H -> gamma gamma`, so the in-situ validation has a concrete experimental landing point. Use the top-Higgs extension only after the constrained-gluon result is established, taking advantage of existing CMS `ttH` and CP-structure measurements rather than inventing a speculative future channel.
+  - Keep theory-systematics ownership inside the physics program: generator accuracy, shower modeling, flavor-scheme dependence, and robustness of PDF-versus-SMEFT separation are scientific questions on the critical path. They are not service tasks and should be presented as measurement-defining issues.
 
-- Controlled treatment of non-gluon dependence
-  - The proposal must state explicitly that the measurement constrains the gluon component in a restricted model space while treating the best-constrained quark sector as fixed to standard external inputs in the baseline fit. This is more accurate than speaking as if CMS were performing a full proton-structure extraction from `ttbar` alone.
-  - Baseline light-quark and antiquark inputs are taken from standard external PDF sets, experimental and theory nuisance parameters are profiled in the likelihood, and robustness is quantified by repeating the inference under alternative quark-sector assumptions. The auxiliary Drell-Yan control input is activated only if those variations induce a material shift in the constrained-gluon result or in the `H -> gamma gamma` validation observable.
+- Staged physics program
+  - Stage 1: publication-grade real-data unbinned constrained-gluon result in CMS `ttbar(2l)`, benchmarked against a strong binned baseline on the same dataset. This is the non-negotiable success condition.
+  - Stage 2: real-data `ggH, H -> gamma gamma` validation showing whether the constrained-gluon result reduces the PDF component in `pT(H)` and `|y_H|`. This is the first cross-channel physics payoff.
+  - Stage 3: joint gluon-plus-SMEFT interpretation in differential `ttH` and, where useful, `tH`, using the calibrated proton input to prevent BSM-sensitive effects from being misread as proton-structure freedom. This is the proposal’s distinctive “spark” and the place where the physics becomes genuinely more ambitious than a better PDF measurement.
+  - Optional Stage 4: a high-mass `ttbar` or single-top stress test if needed to resolve residual large-`x` or flavor-scheme tensions. This remains contingency, not a co-equal pillar.
 
-- Work-package hierarchy
-  - Core measurement:
-    deliver the real-data CMS Run II `ttbar(2l)` unbinned constrained-gluon result, with a publication-grade nuisance model and a strong binned comparison. This is the one deliverable the whole proposal must guarantee.
-  - Method validation:
-    establish closure on realistic pseudo-data, validate surrogate precision, test nuisance-constraining power, quantify sensitivity to theory choices, and demonstrate robustness under alternative gluon hypotheses. These studies are scientific outputs because they define when an unbinned proton-structure measurement is experimentally trustworthy.
-  - Physics exploitation:
-    propagate the constrained-gluon result to the selected `H -> gamma gamma` differential `ggH` target and, only if the core program is secure, optionally add one high-mass top extension or one surgical control input. This staging prevents the proposal from reading like several equal-weight analyses.
-
-- Success criteria by stage
-  - Stage 1:
-    realistic closure and surrogate-validation studies on pseudo-data with publication-grade baseline nuisance classes for CMS `ttbar(2l)`. This establishes that the inference architecture is trustworthy before touching the headline physics claim.
-  - Stage 2:
-    blinded or control-region validation on real CMS Run II data, including background treatment, nuisance behavior, and stress tests of theory-model dependence. This is the gate from concept to measurement.
-  - Stage 3:
-    first real-data constrained-gluon result from CMS `ttbar(2l)`, benchmarked against a strong binned baseline and phrased as competitive in the kinematic region directly probed by the data. This is the main success condition for the proposal.
-  - Stage 4:
-    demonstration that the constrained-gluon result reduces the PDF component of the uncertainty for real-data differential `ggH` in `H -> gamma gamma` as a function of `pT(H)` and `|y_H|`. This is the physics-utility validation that closes the loop.
-  - Optional Stage 5:
-    one late-stage degeneracy-breaker or stress test, such as a Drell-Yan control input or a high-mass `ttbar` extension, if and only if the anchor result is already secure. This protects feasibility while leaving room for one creative follow-on.
-
-- Feasibility and fallback logic
-  - A full nuisance-aware unbinned CMS analysis is a major effort even without extra channels, so the proposal must treat the `ttbar(2l)` measurement as the only guaranteed major physics result. Publication 1, the real-data CMS `ttbar(2l)` constrained-gluon result, is by itself a full success condition for the grant.
-  - If the nuisance-factorization ansatz, surrogate precision, or theory-model dependence limits the full intended result, the credible fallback is still strong: a detector-level unbinned `ttbar` result with a reduced but publication-grade nuisance model and an internally usable constrained-gluon likelihood product. The Higgs propagation only proceeds once that basis is secure.
-  - Publication logic should remain explicit: publication 1 is the real-data CMS `ttbar(2l)` constrained-gluon result; publication 2 is the `H -> gamma gamma` differential `ggH` validation only if publication 1 is secure. This makes the execution path concrete and protects the proposal against scope drift.
-  - Claims about rivaling global fits must be carefully qualified. The right statement is that the measurement aims to be competitive with global constraints in the `x` range directly probed by CMS `ttbar` data, not that it replaces global PDF fitting.
-
-- Resources and manpower
-  - PI role: own the physics strategy, CMS integration, theory-systematics choices, and final statistical architecture. This cannot be delegated away because the scientific risk is in the interface between experimental realism and inference design.
-  - Personnel: two postdocs and two PhD students are justified if the whole team is visibly concentrated on the anchor measurement, with Higgs exploitation and any auxiliary studies staged behind it. The budget should read as personnel-dominated support for one difficult CMS analysis plus its validation chain, not as funding for a broad software platform.
-  - Technical support: dedicated scientific software effort is valuable, but it should be framed as enabling the anchor result and its reviewability inside CMS. Portable release formats are a strategic objective only if a concrete internal-use case is already in hand.
+- Risk mitigation and fallback logic
+  - If the full Higgs or SMEFT exploitation slips, the proposal still lands on a major result: the first real-data CMS detector-level unbinned constrained-gluon measurement from `ttbar(2l)`. That publication alone is grant-level success.
+  - If quark-sector assumptions or flavor-scheme dependence become limiting, the first contingency is a focused single-top or high-mass Drell-Yan cross-check, not a broad control-channel expansion. If the joint SMEFT extension proves too ambitious in the proposal period, the program still delivers a calibrated-gluon likelihood and a sharply defined path to top-Higgs new-physics measurements.
 
 - Expected impact
-  - Primary impact: the first real-data CMS measurement extracting gluon-sensitive proton-structure information from a detector-level unbinned top sample. That would be a distinctive experimental result even before any broader methodological uptake.
-  - Secondary impact: a concrete demonstration that an internally constrained-gluon likelihood from CMS top data improves one flagship gluon-fusion prediction. This is the cleanest proof that the proton-structure information is physically useful.
+  - The near-term impact is a new route to extracting gluon information from rich CMS detector-level events and immediately testing its usefulness in Higgs production. That already changes the role of top data inside CMS precision physics.
+  - The broader impact is conceptual: a path to disentangle proton structure from genuine new-physics effects in the top-Higgs sector using one coherent unbinned inference framework. If it works, the proposal does not just improve one measurement; it changes how CMS can connect top, Higgs, and BSM interpretation in the HL-LHC era.
