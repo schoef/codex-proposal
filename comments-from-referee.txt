@@ -4,6 +4,7 @@
 - The Higgs component is now appropriately disciplined. Choosing differential `ggH` in `H -> gamma gamma` as the named validation target gives the program a concrete and plausible downstream payoff without turning Higgs into a second flagship.
 - The restricted-gluon claim is much more honest and defensible than earlier versions. The outline now states clearly that the fit constrains the gluon component in a restricted model space, uses standard external quark inputs in the baseline, and activates the Drell-Yan control only if robustness tests show that it is needed.
 - The stage structure is strong. The progression from pseudo-data closure, to real-data validation, to the real-data constrained-gluon result, to the Higgs validation reads like an executable research program rather than a conceptual manifesto.
+- The explicit publication logic is especially effective. Stating directly that publication 1 is the real-data `ttbar(2l)` constrained-gluon result and publication 2 is the `H -> gamma gamma` validation only if publication 1 is secure makes the proposal look unusually well controlled.
 
 - Remaining weaknesses
 - At this point the main risk is no longer conceptual confusion but loss of discipline in later rewriting. The proposal is strongest in its current narrow form and should resist adding further beneficiary channels, software ambitions, or broader PDF rhetoric.
@@ -13,6 +14,7 @@
 - Structural recommendations
 - Keep the current hierarchy exactly as it is: core measurement, method validation, physics exploitation, with only one visible stress test and one contingency control input.
 - Keep the publication logic explicit. It is unusually effective in making the proposal look realistic: publication 1 is the `ttbar(2l)` constrained-gluon result; publication 2 is the `H -> gamma gamma` validation only if publication 1 is secure.
+- Keep the contingency wording exactly this tight. One visible high-mass `ttbar` stress test plus one only-if-needed Drell-Yan control input is the right amount of optionality.
 - Compress rather than expand. The proposal now benefits more from tightening prose and removing repetition than from adding new ideas.
 
 - What to cut
