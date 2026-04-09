@@ -1,37 +1,29 @@
 - Strongest aspects
-- The proposal now has a clear and credible core: one real-data CMS `ttbar(2l)` detector-level unbinned constrained-gluon measurement, one sharply defined Higgs validation target, and a realism-first execution path. That is a coherent funded program, not a topic collection.
-- The biggest earlier weaknesses have been addressed well. The outline now explicitly says the experiment is about real CMS data, makes the anchor analysis look like a recognizable CMS top measurement with a standard analysis backbone, and narrows the Higgs use case to differential `ggH` in `H -> gamma gamma`.
-- The scientific differentiation is now crisp. The novelty is correctly presented as the combination of a restricted linear gluon-PDF model, detector-level unbinned likelihood inference, and nuisance-aware statistical treatment in a CMS-grounded measurement. That is much stronger than generic ML or generic PDF language.
-- The hierarchy is also much improved. The guaranteed outcome is the `ttbar(2l)` constrained-gluon result; Higgs validation is the downstream physics payoff; the Drell-Yan control input and high-mass top extension are contingency tools rather than co-equal work packages.
+- This is now a strong and coherent referee-facing outline. The proposal has one clearly defined core measurement, one sharply bounded physics-use validation, and one disciplined contingency structure. That gives it both scientific identity and execution credibility.
+- The real-data CMS framing is now right. The anchor measurement is presented as a recognizable CMS `ttbar(2l)` analysis with standard objects, backgrounds, calibrations, and nuisance classes, with the novelty sitting in the unbinned inference layer. That is exactly the right way to make an ambitious method look experimentally fundable.
+- The Higgs component is now appropriately disciplined. Choosing differential `ggH` in `H -> gamma gamma` as the named validation target gives the program a concrete and plausible downstream payoff without turning Higgs into a second flagship.
+- The restricted-gluon claim is much more honest and defensible than earlier versions. The outline now states clearly that the fit constrains the gluon component in a restricted model space, uses standard external quark inputs in the baseline, and activates the Drell-Yan control only if robustness tests show that it is needed.
+- The stage structure is strong. The progression from pseudo-data closure, to real-data validation, to the real-data constrained-gluon result, to the Higgs validation reads like an executable research program rather than a conceptual manifesto.
 
-- Remaining critical weaknesses
-- The proposal is now close to the right level of sharpness, so the main remaining danger is drift back toward over-description. There is still enough optional language that a reviewer could feel the program trying to keep several attractive side doors open at once. This matters because, at this point, the proposal is strongest when it looks disciplined rather than expansive. Keep the visible optional material to one stress test and one contingency input at most.
-- The quark-sector treatment is substantially clearer, but it still deserves one sentence that is mathematically or operationally sharper. A reviewer may still ask exactly which quark-sector inputs are fixed in the baseline fit, how robustness to alternative assumptions is quantified, and what threshold triggers activation of the Drell-Yan control. That matters because the proposal’s honesty about being a restricted gluon determination is one of its strengths and should be made maximally defensible.
-- The Higgs target is now concrete enough, but the proposal should resist broadening its interpretation later in the text. Once `H -> gamma gamma` differential `ggH` in `pT(H)` and `|y_H|` has been named as the validation target, keep that fixed. Otherwise the proposal risks looking as if it still wants a general Higgs precision platform after all.
-
-- Feasibility concerns
-- The program is now substantially more credible, but the anchor measurement remains a very large experimental task. A real-data CMS unbinned inference measurement with publication-grade nuisances, realistic background treatment, theory-systematics ownership, and strong binned benchmarking is already enough for a major grant. This matters because reviewers should come away convinced that the core result stands on its own even if the follow-on Higgs validation slips.
-- The fallback logic is good and should remain explicit. The most persuasive form is publication-based: publication 1 is the real-data CMS `ttbar(2l)` constrained-gluon result; publication 2 is the selected `ggH` validation only if publication 1 is secure. That sequence makes the proposal look executable rather than aspirational.
-- Theory accuracy and modeling dependence remain central scientific risks. The outline now treats them more seriously, which is correct. Keep them embedded inside the core work package rather than allowing them to sound like service tasks for the methodology.
-
-- Novelty concerns
-- The remaining novelty risk is mostly rhetorical rather than conceptual. The proposal should consistently avoid sounding as if it competes with or replaces global PDF fitting in general. The right claim is narrower and stronger: competitive gluon information in the `x` region directly probed by CMS `ttbar` data, extracted with a qualitatively new detector-level unbinned route.
-- The unbinned case should continue to be defended in qualitative capability terms, not only in percentage-gain language. The proposal is strongest when it argues that the method enables simultaneous use of correlated detector-level information and better in situ nuisance handling that standard binned releases cannot reproduce.
+- Remaining weaknesses
+- At this point the main risk is no longer conceptual confusion but loss of discipline in later rewriting. The proposal is strongest in its current narrow form and should resist adding further beneficiary channels, software ambitions, or broader PDF rhetoric.
+- The anchor measurement remains a very large task. That is acceptable, but only if the text keeps making clear that publication 1, the real-data CMS `ttbar(2l)` constrained-gluon result, is by itself a full success condition for the grant.
+- Theory accuracy and modeling dependence still sit on the critical path. The outline now treats them properly, but they remain one of the few places where the scientific case could weaken if phrased too lightly in the full proposal.
 
 - Structural recommendations
-- Keep the current three-level structure: core measurement, method validation, physics exploitation. It is now doing real work and should not be blurred again.
-- Preserve the stage-based milestones. They are among the most convincing elements in the current outline because they show how the project moves from proof of principle to real-data measurement to physics-use validation.
-- Consider tightening the prose slightly by converting some of the longer extension paragraphs into one compact contingency paragraph. At this stage, compression would strengthen rather than weaken the proposal.
+- Keep the current hierarchy exactly as it is: core measurement, method validation, physics exploitation, with only one visible stress test and one contingency control input.
+- Keep the publication logic explicit. It is unusually effective in making the proposal look realistic: publication 1 is the `ttbar(2l)` constrained-gluon result; publication 2 is the `H -> gamma gamma` validation only if publication 1 is secure.
+- Compress rather than expand. The proposal now benefits more from tightening prose and removing repetition than from adding new ideas.
 
 - What to cut
-- Cut any remaining extension language that is not needed to establish either robustness of the anchor result or the single selected Higgs use case.
-- Cut any phrasing that could be read as promising public likelihood release as a central guaranteed outcome of the proposal period. It is a valuable strategic direction, but no longer needs to carry rhetorical weight in the main pitch.
+- Cut any residual language that could reopen the appearance of a broad multi-channel platform project.
+- Cut any phrasing that suggests public likelihood release is a central guaranteed output of the proposal period rather than a strategic downstream possibility.
 
 - What to emphasize
-- Emphasize that the proposal has already done the hard conceptual narrowing: one real-data CMS measurement, one defined Higgs payoff, one disciplined contingency path.
-- Emphasize that the project’s ambition lies in making rich CMS detector-level events scientifically usable for proton-structure inference, not in building a general-purpose AI framework.
-- Emphasize that the strongest selling point is now credibility under constraint: the proposal is ambitious, but the ambition is concentrated.
+- Emphasize that the strongest feature is concentrated ambition: one hard real-data CMS measurement with a clearly defined physics payoff.
+- Emphasize that the proposal is no longer selling "ML for HEP" in the abstract, but a specific new route to extracting proton-structure information from rich CMS detector-level events.
+- Emphasize that the proposal wins by focus: realistic experiment, calibrated claims, and a memorable top-to-gluon-to-Higgs logic.
 
 - Bottom-line judgment
-- This is now a strong referee-facing outline. It is scientifically differentiated, much more realistic experimentally, and far better scoped than the earlier versions.
-- At this point, the main advice is not to add more. Hold the line on the current narrow architecture, keep the claims calibrated, and let the proposal win by focus.
+- This is now in good shape. The outline is scientifically differentiated, experimentally more credible, and much better scoped than the early versions.
+- The correct final move is restraint. Do not broaden it again; let the proposal succeed on clarity, discipline, and the strength of the anchor measurement.
