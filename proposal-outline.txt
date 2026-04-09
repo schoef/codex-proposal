@@ -34,13 +34,12 @@
   - The proposal should therefore focus on one clearly defined `ggH` target in a single experimentally credible decay channel, rather than promising a broad Higgs precision program. The preferred target is differential `ggH` in `H -> gamma gamma` as a function of `pT(H)` and `|y_H|`, because the final state is clean, the kinematics are well reconstructed, and the PDF component can plausibly be isolated in data.
   - Success is demonstrating a robust reduction of the PDF uncertainty component for that target, not solving Higgs systematics in general.
 
-- Creative but coherent real-data extensions
-  - High-mass or boosted `ttbar` differential real-data measurements can be used as the preferred internal stress test of the constrained-gluon result in the larger-`x` region where the PDF leverage is strongest. This stays tightly coupled to the anchor analysis and tests whether the gluon information also stabilizes the tails most relevant for precision top physics.
-  - A single surgical quark-sensitive control input, most naturally high-mass or forward Drell-Yan, remains available if the Higgs-facing interpretation shows visible residual quark-PDF degeneracies. It should appear only as contingency language and not as a co-equal visible work package.
+- Contingency and stress tests
+  - Only two visible follow-ons should remain in scope: a high-mass or boosted `ttbar` stress test of the constrained-gluon result in the larger-`x` region, and, only if needed, one surgical quark-sensitive control input based on high-mass or forward Drell-Yan. Both are subordinate to the anchor analysis and exist only to test robustness or resolve interpretation bottlenecks.
 
 - Controlled treatment of non-gluon dependence
   - The proposal must state explicitly that the measurement constrains the gluon component in a restricted model space while treating the best-constrained quark sector as fixed to standard external inputs in the baseline fit. This is more accurate than speaking as if CMS were performing a full proton-structure extraction from `ttbar` alone.
-  - Experimental and theory nuisance parameters are profiled in the likelihood, while residual quark-PDF sensitivity is monitored through dedicated robustness tests against alternative quark-sector assumptions. The auxiliary Drell-Yan control input is activated only if those tests show that quark-PDF degeneracies materially limit the stability or Higgs-facing usefulness of the constrained-gluon result.
+  - Baseline light-quark and antiquark inputs are taken from standard external PDF sets, experimental and theory nuisance parameters are profiled in the likelihood, and robustness is quantified by repeating the inference under alternative quark-sector assumptions. The auxiliary Drell-Yan control input is activated only if those variations induce a material shift in the constrained-gluon result or in the `H -> gamma gamma` validation observable.
 
 - Work-package hierarchy
   - Core measurement:
@@ -65,6 +64,7 @@
 - Feasibility and fallback logic
   - A full nuisance-aware unbinned CMS analysis is a major effort even without extra channels, so the proposal must treat the `ttbar(2l)` measurement as the only guaranteed major physics result. Manpower, milestones, and language should reflect that reality.
   - If the nuisance-factorization ansatz, surrogate precision, or theory-model dependence limits the full intended result, the credible fallback is still strong: a detector-level unbinned `ttbar` result with a reduced but publication-grade nuisance model and an internally usable constrained-gluon likelihood product. The Higgs propagation only proceeds once that basis is secure.
+  - Publication logic should be stated explicitly: publication 1 is the real-data CMS `ttbar(2l)` constrained-gluon result; publication 2 is the `H -> gamma gamma` differential `ggH` validation if and only if publication 1 is secure. This makes the execution path concrete and protects the proposal against scope drift.
   - Claims about rivaling global fits must be carefully qualified. The right statement is that the measurement aims to be competitive with global constraints in the `x` range directly probed by CMS `ttbar` data, not that it replaces global PDF fitting.
 
 - Resources and manpower
