@@ -20,7 +20,7 @@
 
 - Supporting physics handle: single-top as a gluon-to-bottom cross-check
   - A single-top measurement, preferably `t`-channel and only as a focused follow-on, provides a useful orthogonal test because the bottom quark entering the five-flavor description is generated perturbatively from the gluon. Literature on single-top in PDF fits indicates sensitivity not only to quarks but also, partially, to the gluon, and to flavor-scheme choices.
-  - In this proposal, single-top is not a second anchor program. It is a surgical cross-check on the perturbative `g -> b bbar` link that underlies the broader gluon story and a way to test whether the constrained-gluon picture remains consistent once bottom-initiated top production is brought into the same CMS framework.
+  - In this proposal, single-top is not a second anchor program and not a second direct gluon-extraction pillar. It is a surgical cross-check on the perturbative `g -> b bbar` link that underlies the broader gluon story and a way to test whether the constrained-gluon picture remains consistent once bottom-initiated top production is brought into the same CMS framework.
 
 - Methodological innovation in physics terms
   - The novelty is the combination of a restricted linear gluon-PDF parameterization, detector-level unbinned likelihood-ratio inference, and nuisance-aware profiling on real CMS measurements. This is distinct from both standard PDF fitting and generic machine-learning classification.
@@ -39,7 +39,7 @@
 
 - Risk mitigation and fallback logic
   - If the full Higgs or SMEFT exploitation slips, the proposal still lands on a major result: the first real-data CMS detector-level unbinned constrained-gluon measurement from `ttbar(2l)`. Publication 1 alone is grant-level success.
-  - If quark-sector assumptions or flavor-scheme dependence become limiting, the first contingency is a focused single-top or high-mass Drell-Yan cross-check, not a broad control-channel expansion. If the joint SMEFT extension proves too ambitious in the proposal period, the program still delivers a calibrated-gluon likelihood and a sharply defined path to top-Higgs new-physics measurements.
+  - If quark-sector assumptions or flavor-scheme dependence become limiting, the first contingency is a focused single-top or high-mass Drell-Yan cross-check, not a broad control-channel expansion. If the joint `ttH`-centered SMEFT extension proves too ambitious in the proposal period, the program still delivers a calibrated-gluon likelihood and a sharply defined path to top-Higgs new-physics measurements.
 
 - Expected impact
   - The near-term impact is a new route to extracting gluon information from rich CMS detector-level events and immediately testing its usefulness in Higgs production. That already changes the role of top data inside CMS precision physics.
