@@ -1,75 +1,81 @@
 1. What is strongest and worth protecting
 
-- The plan has a real scientific spine: it is not merely "use ML on top events," but "test whether CMS can internalize part of the gluon-structure uncertainty and propagate it into a Higgs measurement." That is a legitimate differentiator if kept narrow.
-- The current version is much better than the initial broad vision because it explicitly inserts a transfer-validation gate before any Higgs uncertainty-reduction claim. That is the right instinct and should not be softened.
-- The insistence on a compact latent basis is also worth protecting. A small number of interpretable directions is the only way this remains experimentally intelligible and publishable rather than dissolving into an overfit methodology exercise.
-- The plan correctly recognizes that sequential transfer is the credible first architecture and that a simultaneous top-plus-Higgs likelihood is second-wave work.
+- Freezing both the first Higgs target and the latent basis is a real improvement. It removes much of the earlier scope drift and makes the proposal easier to evaluate as research rather than as an adaptable narrative.
+- The plan now has a publishable scientific question at its core: can CMS dileptonic ttbar identify at least one pre-specified gluon-sensitive direction that survives realistic nuisance profiling and transfers to one fixed ggF Higgs observable?
+- The hard-gate logic is the right structure. It protects the project from drifting into a weak Higgs application before the top-side identifiability problem is actually solved.
+- The plan is strongest when it treats failure as informative. A clean negative result on top-to-Higgs transfer for a frozen target/basis is scientifically credible; a vague partial-success story is much less so.
 
 2. What is weak, vague, or overreaching
 
-- Milestone 1 is narrower than before, but it is still carrying two papers' worth of ambition: detector-level latent extraction under realistic nuisances, plus explicit transfer forecasts to Higgs. That is only publishable as a first milestone if the Higgs-facing part is kept strictly diagnostic rather than half of a hidden second analysis.
-- "Extract 1-2 leading gluon-sensitive latent directions" is still too abstract as a milestone unless the plan commits to a specific basis construction and a specific pre-chosen Higgs observable. Without that, the first milestone can slide into basis shopping and target shopping after the fact.
-- The phrase "pre-defined Higgs phase-space target" is doing a lot of work. Right now the plan still leaves open Higgs rapidity or a coarse double-differential rapidity-plus-pT option. That is not yet narrow. For a first milestone, one observable must be fixed up front.
-- The plan says Milestone 1 is publishable without a Higgs fit. That may be true, but only if the output is framed as a top-only result with a clearly quantified transferability test. If the transfer evidence is weak, the publication value drops quickly unless the negative boundary is itself sharp and credible.
-- The plan still underestimates the risk that "latent gluon directions" are not physics objects but basis-dependent analysis artifacts. Basis stability is named, but not elevated enough. This is one of the weakest links in the current logic.
+- The plan is closer to publishable, but not yet obviously publishable as written. It still mixes a concrete first paper with a broader program pitch, and those are not the same thing. A publishable first paper needs one sharp claim, not a roadmap plus several possible framings.
+- "Frozen basis" is an important promise, but the current text still leaves room for hidden flexibility in how the overlap window, prior family, and orthogonalization are chosen. If those choices can move after early studies, the basis is not really frozen in the only sense that matters.
+- Milestone 1 pass/fail language is better than before, but several criteria remain qualitative: "non-trivial orthogonal component," "acceptable bias," "non-negligible shift," and "acceptable coverage." Those phrases still allow ambiguity after results are known.
+- The plan says Milestone 1 can yield `Pass`, `Partial pass`, or `Fail`. That is useful internally, but "partial pass" is exactly the category most likely to blur decision-making. Unless it is defined with strict consequences, it becomes a loophole for continuing despite an inconclusive result.
+- The publication logic is still somewhat optimistic. A top-only identifiability study is publishable only if it resolves a sharp question decisively. If Milestone 1 ends in "one direction maybe works for a consistency test," that may be scientifically interesting, but it is not automatically a paper-worthy endpoint.
 
 3. Which claims need evidence or a tighter plan
 
-- Claim needing proof: the first milestone is publishable on its own.
-- Why it matters: if the milestone is only interesting as scaffolding for a later Higgs paper, it is not a real milestone.
-- Tighter move: define the Milestone 1 paper now as one of two things:
-- either a top-only detector-level inference paper that identifies one transferable gluon-sensitive direction and proves or disproves transfer to one Higgs observable,
-- or a top-to-Higgs transfer-validation paper using pseudo-data only, with no claim of immediate Higgs uncertainty reduction.
+- Claim: the frozen-target, frozen-basis version is publishable.
+- Why it matters: if the first stage is only publishable when later Higgs propagation succeeds, then Milestone 1 is not a true milestone.
+- Better move: define the first paper now as a binary proposition. Example: "For the pre-registered basis and the fixed ggF Higgs rapidity target, CMS dileptonic ttbar either does or does not provide an identifiable transferable gluon direction under realistic nuisances." That is publishable if answered cleanly either way.
 
-- Claim needing proof: the transfer target is in a region of meaningful x,Q2 overlap.
-- Why it matters: weak overlap kills the entire "shared latent structure" story and turns the Higgs step into decorative extrapolation.
-- Tighter move: require an overlap map as an entry criterion, not as a later diagnostic. If the chosen Higgs observable does not share substantial support with the top-sensitive region for the retained latent direction, it should be dropped before further work.
+- Claim: the basis is genuinely frozen.
+- Why it matters: otherwise the project can still optimize the latent object until it works, which weakens any claim of transfer.
+- Better move: specify exactly which ingredients are locked before detector-level studies:
+- PDF family and eigenvector set
+- overlap-window definition rule
+- projection recipe
+- orthogonalization convention
+- dimensionality rule for keeping 1 or 2 directions
+- Any later deviation should count as a new stage, not as Milestone 1.
 
-- Claim needing proof: top data can constrain a latent gluon direction beyond prior information under realistic nuisances.
-- Why it matters: if top-modeling directions absorb the same shape changes, there is no usable internal calibration.
-- Tighter move: make "improvement over prior after nuisance profiling" a hard quantitative success criterion, and define in advance what level counts as non-trivial.
+- Claim: Milestone 1 pass/fail is unambiguous.
+- Why it matters: ambiguous milestones create survivorship narratives and weaken scientific discipline.
+- Better move: replace qualitative language with pre-specified thresholds or ranking rules. The exact numbers can be chosen later, but the metric type must be fixed now. For example:
+- identifiability metric against nuisance span
+- minimum information gain beyond prior
+- maximum allowed closure bias
+- minimum propagated Higgs effect relative to expected resolution
+- coverage criterion under injected shifts
+- Without that, pass/fail is still partly discretionary.
 
-- Claim needing proof: the latent directions are interpretable and stable.
-- Why it matters: if the answer depends strongly on basis construction, the result will look manufactured.
-- Tighter move: restrict Milestone 1 to a basis tied directly to standard PDF response directions or another pre-registered construction, and treat alternative bases as validation checks rather than optimization knobs.
+- Claim: "partial pass" is a meaningful category.
+- Why it matters: this is currently the most obvious escape hatch.
+- Better move: either remove `Partial pass` entirely or define it as a strict stop on precision claims. If kept, it should mean one thing only: the result is publishable as a transfer-consistency study, but it does not justify any claim of internal Higgs PDF calibration.
 
 4. Risk assessment of the newest or boldest ideas
 
-- Major idea: top-only extraction of 1-2 latent gluon directions at detector level.
-- Main risk: top-modeling nuisance directions, especially radiation and shower systematics, can mimic the same detector-level distortions as PDF changes.
-- Is the risk acceptable: yes, but only if the milestone is framed as testing identifiability rather than assuming it.
-- What de-risks it: pre-select observables with demonstrated orthogonality to modeling nuisances, include generator/shower variations early, and be willing to collapse to one direction if two cannot be separated robustly.
+- Major idea: frozen 2-direction latent basis.
+- Main risk: the basis still embeds analysis choice dependence through the construction recipe, so "frozen" may be rhetorically stronger than operationally true.
+- Is the risk acceptable: yes, but only if the recipe is locked before any detector-level tuning.
+- What de-risks it: pre-register the full construction pipeline and define what would force collapse from 2 directions to 1. Do not allow basis redesign after seeing nuisance degeneracies.
 
-- Major idea: transfer from top-constrained latent directions to a Higgs observable.
-- Main risk: the apparent connection is too weak because the top-constrained x region and the Higgs-sensitive x region do not overlap enough once realistic acceptance and differential binning are applied.
-- Is the risk acceptable: yes, because this is the core scientific bet, but it is also the most likely place for the proposal to fail.
-- What de-risks it: choose one Higgs observable with the simplest and strongest overlap case, prove overlap quantitatively before any propagated-fit work, and explicitly allow Milestone 1 to conclude that transfer is too weak for this target.
+- Major idea: Milestone 1 as a publishable gate without a full Higgs fit.
+- Main risk: the output reads as methodology scaffolding rather than a substantive physics result.
+- Is the risk acceptable: conditionally.
+- What de-risks it: make the paper answer a clean yes/no physics question about transferability for one fixed Higgs observable. If the write-up centers on framework-building, publishability weakens.
 
-- Major idea: publishability of a narrow first milestone without a Higgs fit.
-- Main risk: the result reads as infrastructure rather than physics.
-- Is the risk acceptable: only marginally in the current form.
-- What de-risks it: define a crisp binary scientific question for the first paper, for example whether CMS dileptonic ttbar can or cannot identify a detector-level gluon-sensitive direction that robustly predicts a specified ggF Higgs response.
+- Major idea: pass/fail criteria based on identifiability and transfer.
+- Main risk: the criteria are still soft enough to permit post hoc interpretation.
+- Is the risk acceptable: not yet.
+- What de-risks it: convert every pass condition into a metric with a predefined decision rule. Even if exact cut values remain to be negotiated, the project should not be choosing the metric after seeing results.
 
-- Major idea: using a compact latent basis as the bridge object.
-- Main risk: basis dependence undermines the physical meaning of the transfer.
-- Is the risk acceptable: only if constrained tightly.
-- What de-risks it: lock the basis choice early, report stability against a small number of alternative constructions, and avoid expanding dimensionality just to rescue transfer.
+- Major idea: `Partial pass` category.
+- Main risk: it becomes a political compromise category that allows the project to proceed despite a failed calibration claim.
+- Is the risk acceptable: only if tightly constrained.
+- What de-risks it: define `Partial pass` as acceptable only for a Higgs consistency-test paper and explicitly prohibit uncertainty-reduction claims, propagated-constraint language, or expansion to broader Higgs observables.
 
 5. What the proposer should do next
 
-- Freeze the first Higgs target now. Do not leave Milestone 1 choosing between Higgs rapidity and a coarse double-differential observable. Pick one and justify it by overlap, simplicity, and publishability.
-- Rewrite Milestone 1 internally as a binary test, not a broad development program: can CMS dileptonic ttbar isolate one gluon-sensitive direction that both survives realistic top-modeling nuisances and induces a stable, non-negligible response in the chosen Higgs observable?
-- Pre-register the latent basis construction and the criterion for "constrained beyond prior." Otherwise the plan remains vulnerable to tuning choices after seeing what works.
-- Move basis stability and top-modeling degeneracy from supporting checks to central decision gates. Those are not side risks; they are the main failure modes.
-- Tighten the transfer logic into a sequence of hard gates:
-- overlap exists,
-- one direction is identifiable in top under nuisances,
-- that direction predicts Higgs response in closure,
-- only then consider propagated constraints.
-- Be explicit that a weak-overlap or strong-degeneracy result is an acceptable outcome of Milestone 1. That makes the milestone scientifically honest and more publishable, not less.
+- Decide whether the first output is truly a paper or only an internal gate. Right now the text tries to let it be both. That should be resolved.
+- If it is a paper, write the title-level claim now in one sentence and test everything against it. If that sentence cannot be stated cleanly, the stage is not yet publishable.
+- Tighten Milestone 1 so that each pass/fail item maps to one frozen metric. Remove or sharply constrain qualitative wording like "non-trivial," "acceptable," and "non-negligible."
+- Treat `Partial pass` as a controlled failure mode, not as a softer success. It should trigger a narrower consistency-paper path or a stop, not a diluted continuation of the main claim.
+- Add one explicit statement that Milestone 1 is invalid if basis construction choices are revised after detector-level sensitivity studies. That is necessary to make "frozen basis" credible.
+- Clarify the minimum publishable negative result. The cleanest version is: top-derived latent directions for this frozen basis and this frozen Higgs target are not robustly identifiable or transferable under realistic CMS nuisance conditions.
 
 6. Bottom line
 
-- The proposal now has a plausible narrow core, but it is not yet narrow enough to be robust. The first milestone becomes defensible only if it commits to one Higgs target, one pre-specified latent basis construction, and one hard identifiability test against top-modeling systematics.
-- The transfer logic is promising, but currently still somewhat rhetorical. It will become credible only when weak-overlap failure and top-modeling degeneracy are treated as the default threats the milestone is designed to resolve, not as downstream caveats.
-- The weakest link right now is not ambition on the Higgs side; it is the assumption that the top-derived latent directions will be stable and meaningfully transferable rather than basis- and nuisance-dependent. That is where the plan needs its sharpest constraints.
+- The frozen-target, frozen-basis version is much closer to publishable because it finally has a defensible skeleton and a meaningful failure mode.
+- It is not yet fully publishable in its current wording because Milestone 1 still contains too much qualitative judgment and one obvious ambiguity channel: `Partial pass`.
+- The weakest link is no longer broad scope. It is decision ambiguity. If the proposer fixes the metric definitions, locks the basis recipe operationally rather than rhetorically, and prevents `Partial pass` from becoming a loophole, then Milestone 1 becomes a real gate and the first paper becomes credible.
