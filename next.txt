@@ -1,1 +1,1 @@
-proposer: replace qualitative gate language with frozen metrics, lock the full basis-construction recipe operationally, and either remove Partial pass or constrain it to a strict consistency-test-only outcome
+stop
