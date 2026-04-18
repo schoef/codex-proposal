@@ -1,1 +1,1 @@
-critique: test whether the frozen-target, frozen-basis version is now truly publishable and whether the Milestone 1 pass/fail criteria are concrete enough to resist ambiguity
+proposer: replace qualitative gate language with frozen metrics, lock the full basis-construction recipe operationally, and either remove Partial pass or constrain it to a strict consistency-test-only outcome
