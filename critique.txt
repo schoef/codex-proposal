@@ -1,0 +1,75 @@
+1. What is strongest and worth protecting
+
+- The plan has a real scientific spine: it is not merely "use ML on top events," but "test whether CMS can internalize part of the gluon-structure uncertainty and propagate it into a Higgs measurement." That is a legitimate differentiator if kept narrow.
+- The current version is much better than the initial broad vision because it explicitly inserts a transfer-validation gate before any Higgs uncertainty-reduction claim. That is the right instinct and should not be softened.
+- The insistence on a compact latent basis is also worth protecting. A small number of interpretable directions is the only way this remains experimentally intelligible and publishable rather than dissolving into an overfit methodology exercise.
+- The plan correctly recognizes that sequential transfer is the credible first architecture and that a simultaneous top-plus-Higgs likelihood is second-wave work.
+
+2. What is weak, vague, or overreaching
+
+- Milestone 1 is narrower than before, but it is still carrying two papers' worth of ambition: detector-level latent extraction under realistic nuisances, plus explicit transfer forecasts to Higgs. That is only publishable as a first milestone if the Higgs-facing part is kept strictly diagnostic rather than half of a hidden second analysis.
+- "Extract 1-2 leading gluon-sensitive latent directions" is still too abstract as a milestone unless the plan commits to a specific basis construction and a specific pre-chosen Higgs observable. Without that, the first milestone can slide into basis shopping and target shopping after the fact.
+- The phrase "pre-defined Higgs phase-space target" is doing a lot of work. Right now the plan still leaves open Higgs rapidity or a coarse double-differential rapidity-plus-pT option. That is not yet narrow. For a first milestone, one observable must be fixed up front.
+- The plan says Milestone 1 is publishable without a Higgs fit. That may be true, but only if the output is framed as a top-only result with a clearly quantified transferability test. If the transfer evidence is weak, the publication value drops quickly unless the negative boundary is itself sharp and credible.
+- The plan still underestimates the risk that "latent gluon directions" are not physics objects but basis-dependent analysis artifacts. Basis stability is named, but not elevated enough. This is one of the weakest links in the current logic.
+
+3. Which claims need evidence or a tighter plan
+
+- Claim needing proof: the first milestone is publishable on its own.
+- Why it matters: if the milestone is only interesting as scaffolding for a later Higgs paper, it is not a real milestone.
+- Tighter move: define the Milestone 1 paper now as one of two things:
+- either a top-only detector-level inference paper that identifies one transferable gluon-sensitive direction and proves or disproves transfer to one Higgs observable,
+- or a top-to-Higgs transfer-validation paper using pseudo-data only, with no claim of immediate Higgs uncertainty reduction.
+
+- Claim needing proof: the transfer target is in a region of meaningful x,Q2 overlap.
+- Why it matters: weak overlap kills the entire "shared latent structure" story and turns the Higgs step into decorative extrapolation.
+- Tighter move: require an overlap map as an entry criterion, not as a later diagnostic. If the chosen Higgs observable does not share substantial support with the top-sensitive region for the retained latent direction, it should be dropped before further work.
+
+- Claim needing proof: top data can constrain a latent gluon direction beyond prior information under realistic nuisances.
+- Why it matters: if top-modeling directions absorb the same shape changes, there is no usable internal calibration.
+- Tighter move: make "improvement over prior after nuisance profiling" a hard quantitative success criterion, and define in advance what level counts as non-trivial.
+
+- Claim needing proof: the latent directions are interpretable and stable.
+- Why it matters: if the answer depends strongly on basis construction, the result will look manufactured.
+- Tighter move: restrict Milestone 1 to a basis tied directly to standard PDF response directions or another pre-registered construction, and treat alternative bases as validation checks rather than optimization knobs.
+
+4. Risk assessment of the newest or boldest ideas
+
+- Major idea: top-only extraction of 1-2 latent gluon directions at detector level.
+- Main risk: top-modeling nuisance directions, especially radiation and shower systematics, can mimic the same detector-level distortions as PDF changes.
+- Is the risk acceptable: yes, but only if the milestone is framed as testing identifiability rather than assuming it.
+- What de-risks it: pre-select observables with demonstrated orthogonality to modeling nuisances, include generator/shower variations early, and be willing to collapse to one direction if two cannot be separated robustly.
+
+- Major idea: transfer from top-constrained latent directions to a Higgs observable.
+- Main risk: the apparent connection is too weak because the top-constrained x region and the Higgs-sensitive x region do not overlap enough once realistic acceptance and differential binning are applied.
+- Is the risk acceptable: yes, because this is the core scientific bet, but it is also the most likely place for the proposal to fail.
+- What de-risks it: choose one Higgs observable with the simplest and strongest overlap case, prove overlap quantitatively before any propagated-fit work, and explicitly allow Milestone 1 to conclude that transfer is too weak for this target.
+
+- Major idea: publishability of a narrow first milestone without a Higgs fit.
+- Main risk: the result reads as infrastructure rather than physics.
+- Is the risk acceptable: only marginally in the current form.
+- What de-risks it: define a crisp binary scientific question for the first paper, for example whether CMS dileptonic ttbar can or cannot identify a detector-level gluon-sensitive direction that robustly predicts a specified ggF Higgs response.
+
+- Major idea: using a compact latent basis as the bridge object.
+- Main risk: basis dependence undermines the physical meaning of the transfer.
+- Is the risk acceptable: only if constrained tightly.
+- What de-risks it: lock the basis choice early, report stability against a small number of alternative constructions, and avoid expanding dimensionality just to rescue transfer.
+
+5. What the proposer should do next
+
+- Freeze the first Higgs target now. Do not leave Milestone 1 choosing between Higgs rapidity and a coarse double-differential observable. Pick one and justify it by overlap, simplicity, and publishability.
+- Rewrite Milestone 1 internally as a binary test, not a broad development program: can CMS dileptonic ttbar isolate one gluon-sensitive direction that both survives realistic top-modeling nuisances and induces a stable, non-negligible response in the chosen Higgs observable?
+- Pre-register the latent basis construction and the criterion for "constrained beyond prior." Otherwise the plan remains vulnerable to tuning choices after seeing what works.
+- Move basis stability and top-modeling degeneracy from supporting checks to central decision gates. Those are not side risks; they are the main failure modes.
+- Tighten the transfer logic into a sequence of hard gates:
+- overlap exists,
+- one direction is identifiable in top under nuisances,
+- that direction predicts Higgs response in closure,
+- only then consider propagated constraints.
+- Be explicit that a weak-overlap or strong-degeneracy result is an acceptable outcome of Milestone 1. That makes the milestone scientifically honest and more publishable, not less.
+
+6. Bottom line
+
+- The proposal now has a plausible narrow core, but it is not yet narrow enough to be robust. The first milestone becomes defensible only if it commits to one Higgs target, one pre-specified latent basis construction, and one hard identifiability test against top-modeling systematics.
+- The transfer logic is promising, but currently still somewhat rhetorical. It will become credible only when weak-overlap failure and top-modeling degeneracy are treated as the default threats the milestone is designed to resolve, not as downstream caveats.
+- The weakest link right now is not ambition on the Higgs side; it is the assumption that the top-derived latent directions will be stable and meaningfully transferable rather than basis- and nuisance-dependent. That is where the plan needs its sharpest constraints.
