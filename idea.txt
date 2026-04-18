@@ -1,0 +1,127 @@
+There is already a recent paper in this area. Its essential message is that detector-level, unbinned simulation-based inference in dileptonic top-pair production can directly constrain the gluon PDF with realistic systematic uncertainties included, and that this can outperform a conventional binned strategy. The same work also makes the important conceptual point that a gluon PDF constrained internally from top data can already propagate useful information to gluon-fusion Higgs observables, suggesting that part of the PDF uncertainty in Higgs measurements need not always be treated as a purely external input.
+
+The vague idea to roll out is the following:
+
+Build a CMS research programme in which top-quark data are used as the in-situ control system for the gluon PDF, and this information is then propagated directly into a differential Higgs measurement. The core ambition is not just to make a better top measurement and not just to make a better Higgs measurement, but to connect the two through a common latent description of proton structure.
+
+Core scientific picture
+
+* Use dileptonic top-pair events at CMS as the primary high-statistics handle on the gluon PDF in the kinematic region relevant for LHC precision measurements.
+* Treat the gluon PDF not as a fixed external theory nuisance, but as a latent object to be inferred from CMS data.
+* Use that inferred gluon information inside a differential gluon-fusion Higgs measurement, so that the Higgs analysis benefits from an in-situ gluon calibration.
+* The conceptual claim is that top production teaches us the proton structure, and Higgs production then uses that information rather than importing it blindly.
+
+Main idea
+
+Construct a shared statistical framework with three layers:
+
+1. a top layer that learns the gluon-sensitive latent parameters from unbinned detector-level top observables,
+2. a Higgs layer that measures differential gluon-fusion production while depending on the same latent gluon parameters,
+3. a combined likelihood or staged profile that lets top constrain the proton structure and Higgs inherit that constraint.
+
+This should lead to a research plan whose endpoint is a differential Higgs measurement with a qualitatively different uncertainty model: part of the PDF uncertainty is no longer merely taken from outside, but constrained internally by CMS top data.
+
+Possible concrete implementation path
+
+Stage 1: top-only gluon programme
+
+* Build an unbinned detector-level inference strategy in dileptonic top-pair production.
+* Focus on observables that are simultaneously realistic for CMS and strongly informative for gluon kinematics.
+* Learn a compact set of latent gluon degrees of freedom rather than an unconstrained functional object.
+* Establish closure, robustness against nuisance deformations, and interpretability of the inferred gluon directions.
+
+Stage 2: Higgs measurement with latent PDF propagation
+
+* Choose a differential gluon-fusion Higgs measurement where the overlap with the top-constrained gluon kinematics is maximal.
+* The obvious candidates are double-differential measurements in Higgs rapidity and transverse momentum, because they can move across different x and Q^2 regions in a controlled way.
+* Instead of assigning a fixed PDF prior, let the Higgs likelihood depend on the same latent gluon parameters extracted from top.
+* Quantify how much of the Higgs PDF uncertainty can be absorbed into this in-situ calibration.
+
+Stage 3: full top–Higgs coupling through proton structure
+
+* Move from a sequential calibration strategy to a simultaneous fit strategy in which top and Higgs enter the same global experimental likelihood.
+* In this picture, the proton PDF becomes the mediator between the top and Higgs sectors.
+* This turns the programme from a technical calibration exercise into a structurally new measurement concept.
+
+Sub-ideas that may be worth exploring
+
+A. Kinematic matching strategy
+
+* Do not aim for the most inclusive Higgs measurement first.
+* Instead, target Higgs phase-space regions where the inferred gluon information from top should transfer most cleanly.
+* This may produce a sharper and more defensible first result than a broad but weakly connected Higgs analysis.
+
+B. Sequential versus simultaneous inference
+
+* A safer first implementation is sequential: infer latent gluon parameters from top, then pass them to Higgs as constrained nuisance parameters.
+* A more ambitious second implementation is simultaneous: fit top and Higgs together from the beginning.
+* The sequential version is probably the low-risk entry point, while the simultaneous version is the high-payoff long-term objective.
+
+C. Differential Higgs as a stress test of proton-structure transfer
+
+* The proposal should not only claim uncertainty reduction but also test consistency.
+* Ask whether one latent gluon description can describe both top-pair production and gluon-fusion Higgs production across scales and kinematic regions.
+* If that works, the result is scientifically stronger than a simple reduction of error bars.
+
+D. Extensions beyond the first top–Higgs axis
+
+* There are follow-up ideas in the air: b-initiated single-top production, high-mass Drell–Yan, or even joint fits involving SMEFT directions that can align with PDF deformations.
+* These should not be in the first milestone unless they clearly sharpen the central logic.
+* But they are valuable as second-wave expansions once the top–Higgs bridge is established.
+
+What would make this programme genuinely interesting
+
+* It is not just another application of machine learning to collider data.
+* It changes the role of PDFs inside an experimental measurement: from external input to partially internalized latent structure.
+* It uses top quarks for something broader than top physics alone: as a control system for the proton structure relevant to Higgs.
+* It creates a direct bridge between two flagship CMS sectors that are usually analyzed separately.
+
+What must be made concrete in the plan
+
+* Which top observables actually carry the most useful gluon information at detector level.
+* Which Higgs channel and differential binning are realistic and best matched to the top-constrained region.
+* Whether the first milestone should be a staged profile or a genuine joint likelihood.
+* Which nuisance parameters are common or correlated across the top and Higgs analyses.
+* How to phrase the risk controls so that the programme remains experimentally credible.
+
+Risk assessment
+
+1. Transfer risk
+
+* The gluon information learned in top production may not transfer as cleanly to gluon-fusion Higgs as hoped once realistic modeling systematics are included.
+* Mitigation: design the first Higgs measurement around the kinematic overlap region and start with a sequential constrained-fit architecture.
+
+2. Complexity risk
+
+* A fully joint unbinned top-plus-Higgs likelihood may become technically too ambitious too early.
+* Mitigation: define a staged plan in which the first deliverable is top-only, the second is Higgs with propagated latent constraints, and the third is a simultaneous fit.
+
+3. Statistics-versus-method risk
+
+* Higgs data are much sparser than top data, so an overly flexible unbinned Higgs strategy may not be optimal in the first iteration.
+* Mitigation: allow a mixed strategy in which the top side is maximally unbinned while the Higgs side is initially semi-differential or partially compressed.
+
+4. Scope-growth risk
+
+* Once the top–Higgs bridge exists, it will be tempting to add single-top, Drell–Yan, SMEFT, and alpha_s all at once.
+* Mitigation: keep the first programme centered on one sharp claim: top data can calibrate the latent gluon structure used in a differential Higgs measurement.
+
+5. Interpretation risk
+
+* The work could be perceived as a method paper unless the physics output is formulated sharply.
+* Mitigation: define a concrete endpoint measurement and a concrete uncertainty decomposition that panelists can immediately understand.
+
+Desired final shape of the research plan
+
+A good rolled-out plan would end up with:
+
+* one central vision,
+* two or three tightly connected measurement pillars,
+* a staged execution path from low-risk to high-payoff,
+* explicit risk controls at each stage,
+* and a clear statement that the long-term prize is a CMS-internal top-to-Higgs propagation of proton-structure information.
+
+One-sentence summary
+
+Use unbinned top-quark data at CMS to infer the gluon PDF as a latent object, and then embed that latent proton-structure information directly into a differential Higgs measurement so that part of the Higgs PDF uncertainty is calibrated in situ rather than imported from outside.
+
