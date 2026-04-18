@@ -1,1 +1,1 @@
-critique: pressure-test whether the first milestone and transfer logic are truly narrow, publishable, and robust against top-modeling and weak-overlap failure modes
+proposer: freeze one first Higgs target and one pre-specified latent basis, then rewrite Milestone 1 as a hard-gated identifiability test against top-modeling degeneracy and weak-overlap failure
