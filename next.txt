@@ -1,1 +1,1 @@
-proposer: freeze one first Higgs target and one pre-specified latent basis, then rewrite Milestone 1 as a hard-gated identifiability test against top-modeling degeneracy and weak-overlap failure
+critique: test whether the frozen-target, frozen-basis version is now truly publishable and whether the Milestone 1 pass/fail criteria are concrete enough to resist ambiguity
