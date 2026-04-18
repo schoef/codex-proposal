@@ -1,162 +1,176 @@
 1. Core thesis
 
-Use CMS dileptonic ttbar data as an in-situ constraint on a small set of gluon-sensitive latent directions, then propagate those same directions into a differential gluon-fusion Higgs measurement. The scientific claim is not merely that top improves Higgs indirectly, but that CMS can test whether one common proton-structure description consistently explains both processes in the overlapping x and Q2 region.
+Use CMS dileptonic ttbar data to constrain a fixed, low-dimensional latent description of the gluon PDF, then propagate that same latent description into one frozen first Higgs observable: the ggF Higgs rapidity spectrum in a clean fiducial measurement. The proposal is only credible if the latent directions are identifiable in top data under realistic top-modeling systematics and if those same directions have demonstrable overlap with the chosen Higgs target.
 
-The plan should be staged so that the first result is narrow, publishable, and technically credible on its own: a top-only CMS analysis that identifies and validates detector-level gluon-sensitive latent directions and quantifies how much information they carry for a pre-defined Higgs phase-space target. The Higgs-facing part enters immediately through transfer tests, but the first milestone does not require a full joint top-plus-Higgs likelihood.
+This plan therefore makes Milestone 1 a hard gate, not a soft exploratory phase. Before any Higgs-fit claim, the program must show that a pre-specified latent basis is distinguishable from top-modeling nuisance directions and that the fitted directions materially affect the chosen Higgs observable in an overlapping x,Q2 region.
 
-2. Main work packages
+2. Frozen first target and frozen latent basis
 
-WP1. Define a compact proton-structure parameterization for CMS use
-- Replace a full PDF functional fit with 2-5 latent gluon directions chosen to span the x,Q2 region relevant to dileptonic ttbar and differential ggF Higgs production.
-- Build these directions from PDF eigenvector response, score compression, or another locally linear basis that is interpretable and easy to propagate through CMS templates or simulation-based inference.
-- Require from the start that each latent direction has a clear kinematic meaning: which x range it probes, which observables constrain it, and which Higgs bins it affects.
-- Output: a CMS-usable latent gluon basis with a transfer map from top-sensitive observables to Higgs-sensitive observables.
-- Main risk: the basis may be too crude to capture relevant deformations.
-- Why acceptable: even failure is informative because it identifies which regions require higher-dimensional or process-specific treatment.
-- Fallback: expand the basis modestly or restrict the scope to one dominant direction tied to the Higgs observable chosen for milestone 2.
+First Higgs target
+- Freeze the first Higgs application to the single-differential ggF Higgs rapidity distribution, `d sigma / d |y_H|`, in a clean fiducial CMS measurement.
+- Reason for this choice: Higgs rapidity is directly tied to the incoming parton x values, has a comparatively transparent PDF dependence, avoids making the first milestone hinge on Higgs recoil modeling, and is realistic for CMS differential measurements.
+- Scope discipline: do not begin with inclusive Higgs combinations, double-differential `(y_H, pT_H)` targets, or broad “all differential Higgs” claims. Those are later extensions only if the first target passes the gate.
 
-WP2. Top-only detector-level inference in dileptonic ttbar
-- Build an unbinned or weakly compressed inference strategy for CMS dileptonic ttbar events using observables that are realistic at detector level and sensitive to gluon kinematics.
-- Candidate observables: lepton eta, dilepton rapidity, dilepton pT, mll, jet multiplicity, b-jet eta, HT, and event-level recoil observables that correlate with partonic x and radiation pattern.
-- Include realistic nuisance handling from the beginning: detector response, background normalization, top modeling, ISR/FSR, shower/hadronization, scale variations, and MC statistical limitations.
-- Validate by closure tests, nuisance-stress tests, and ranking of which observables constrain which latent gluon directions.
-- Output: posterior or profile constraints on the latent gluon parameters from top data alone, plus an uncertainty decomposition that isolates modeling limits versus statistical power.
-- Main risk: top-modeling systematics may dominate and wash out the PDF information.
-- Why acceptable: that still establishes the practical boundary between conceptual possibility and CMS-realistic sensitivity.
-- Fallback: restrict to a smaller observable set with better modeling control, use stronger summary-statistic compression, or target a reduced fiducial region with cleaner transfer properties.
+Pre-specified latent basis
+- Freeze one latent gluon basis before fitting data. Use a 2-parameter basis built from standard PDF-eigenvector response projected onto the gluon-gluon parton luminosity in the overlap window relevant to dileptonic ttbar and ggF Higgs rapidity.
+- Basis direction `g1`: leading normalization/tilt mode across the overlap region, roughly controlling the overall gluon luminosity around the x window most relevant for central Higgs rapidity and moderate-rapidity ttbar.
+- Basis direction `g2`: leading shape/curvature mode, orthogonal to `g1`, capturing forward-versus-central migration in the same x window.
+- Freeze the basis construction recipe up front:
+- choose a fixed PDF prior family and eigenvector set
+- define the overlap x-window once from truth-level support studies
+- compute the response matrix of ttbar and Higgs observables to the PDF eigenvector variations
+- orthogonalize to obtain the two latent directions
+- lock the basis before any detector-level inference study
+- Reason for freezing the basis: it prevents the proposal from “discovering” a basis that is accidentally aligned with top observables but irrelevant or unstable for Higgs transfer.
 
-WP3. Explicit top-to-Higgs transfer tests
-- Before claiming any Higgs uncertainty reduction, perform dedicated transfer tests that ask whether the latent gluon directions constrained in top predict Higgs response stably and non-trivially.
-- Test A: sensitivity-overlap test. For each latent direction, compare the top Fisher information and the Higgs response in candidate Higgs bins; retain only bins with genuine shared sensitivity.
-- Test B: closure-under-shift test. Inject known latent gluon deformations in simulation, fit them using top observables only, then propagate to Higgs and check whether the Higgs prediction is recovered within uncertainties.
-- Test C: nuisance-robustness test. Repeat transfer under top-modeling and Higgs-modeling deformations to identify whether apparent transfer is actually absorbed by unrelated nuisances.
-- Test D: basis-stability test. Verify that transfer conclusions are stable under reasonable changes of latent basis construction and event compression.
-- Output: a quantitative decision table stating which Higgs observables are defensible transfer targets, which latent directions transfer reliably, and where the program should not over-claim.
-- Main risk: the overlap may be weak once realistic nuisances are included.
-- Why acceptable: this is exactly the critical scientific question, and a negative answer still sharpens future CMS strategy by identifying non-transferable regions.
-- Fallback: narrow the Higgs target further, keep the result as a top-constrained prior study, or reformulate the first Higgs application as a consistency test rather than an uncertainty-reduction claim.
+3. Main work packages
 
-WP4. Narrow first Higgs milestone: one differential ggF measurement with propagated top constraint
-- Choose one CMS-realistic Higgs observable with clear gluon sensitivity and manageable analysis complexity. Preferred target: a low-dimensional differential ggF measurement such as Higgs rapidity, or a coarse double-differential measurement in Higgs rapidity and low-to-moderate Higgs pT if the transfer tests justify it.
-- Start from a sequential architecture: infer latent gluon constraints from top, pass them into the Higgs likelihood as constrained nuisance parameters, and compare against the conventional external-PDF treatment.
-- Keep the first milestone narrow by limiting both the number of Higgs bins and the dimensionality of the latent basis. The milestone should answer one clean question: does CMS top data measurably constrain the PDF component of this Higgs measurement in the matched phase-space region?
-- Deliver side-by-side results:
-- baseline Higgs uncertainty with standard PDF treatment
-- Higgs uncertainty after top-informed latent propagation
-- consistency metric showing whether the top-informed posterior remains compatible with the Higgs data
-- Output: a concrete CMS-style differential Higgs result with internalized proton-structure information, even if the effect is modest.
-- Main risk: Higgs statistics and systematics may make the gain too small for a compelling standalone claim.
-- Why acceptable: the transfer-consistency result is still scientifically meaningful even with little uncertainty reduction.
-- Fallback: frame the first Higgs result explicitly as a validation of internal proton-structure propagation and move the uncertainty-reduction claim to a later luminosity or combination stage.
+WP1. Overlap map and frozen basis construction
+- Quantify the truth-level x,Q2 support of CMS dileptonic ttbar observables and the chosen ggF Higgs rapidity bins.
+- Define one overlap window that is large enough to matter for both processes but narrow enough to avoid pretending that unrelated x regions are shared.
+- Build the frozen 2-direction latent basis inside that window and publish the mapping from each basis direction to both top and Higgs observable shifts.
+- Deliverable: a locked basis specification and a transfer map that is not allowed to change during Milestone 1.
+- Main risk: the overlap window may already look weak or fragmented.
+- Why acceptable: this is precisely the point where the proposal should fail early if the top-to-Higgs bridge is not physically well supported.
+- Fallback: narrow the Higgs target further in rapidity or collapse to a 1-direction basis if only one stable overlap mode exists.
 
-WP5. Later-stage simultaneous top-plus-Higgs fit
-- If the sequential program succeeds, promote the analysis to a simultaneous likelihood with shared latent gluon parameters and correlated nuisance treatment where justified.
-- Use the simultaneous stage to test whether top and Higgs jointly prefer a common proton-structure description and whether any tension appears once both sectors are fitted together.
-- Treat this as a second-wave objective, not a prerequisite for the first paper.
-- Output: a combined CMS measurement concept in which proton structure is a shared latent component across flagship analyses.
-- Main risk: technical complexity may outrun the physics gain.
-- Why acceptable: by this stage the sequential path has already produced publishable physics and diagnostic evidence.
-- Fallback: keep the program sequential and reserve simultaneity for a methodological extension or HL-LHC roadmap.
+WP2. Detector-level ttbar inference with realistic nuisance structure
+- Build the top-only inference in dileptonic ttbar using detector-level observables that are both experimentally credible and plausibly sensitive to the frozen latent basis.
+- Candidate observables: lepton eta, dilepton rapidity, dilepton pT, mll, b-jet eta, jet multiplicity, HT, and event recoil variables.
+- Include realistic nuisance directions from the start: detector response, backgrounds, scale variations, ISR/FSR, shower and hadronization model, color-reconnection-sensitive modeling, top pT modeling, and MC statistical uncertainty.
+- The output is not just a posterior on `g1,g2`; it is a decomposition of whether information on `g1,g2` survives once the top-modeling nuisance space is turned on.
+- Deliverable: profile/posterior constraints on the frozen basis and a nuisance-alignment diagnostic.
+- Main risk: top-modeling variations span nearly the same space as the latent gluon directions.
+- Why acceptable: exposing that degeneracy is central to the scientific honesty of the program.
+- Fallback: restrict the observable set, add nuisance-orthogonal control summaries, or reduce the ambition to the single best-identified basis direction.
 
-3. Narrow first milestone
+WP3. Hard-gated identifiability test
+- Rewrite Milestone 1 as an identifiability test with two explicit failure modes:
+- Failure mode A: top-modeling degeneracy. The frozen gluon basis cannot be separated from top-modeling nuisance directions in detector-level ttbar.
+- Failure mode B: weak overlap. The basis directions constrained by ttbar have too little effect on `d sigma / d |y_H|` to justify transfer.
+- The gate is passed only if both failure modes are defeated quantitatively.
 
-Milestone 1 should be intentionally small and decisive:
-- Process: CMS dileptonic ttbar only
-- Goal: extract 1-2 leading gluon-sensitive latent directions at detector level
-- Scope: realistic nuisance model, closure tests, and explicit transfer forecasts to one pre-selected Higgs observable
-- Required deliverable: a validated statement of whether CMS top data provide a stable and useful constraint on the proton-structure directions relevant to that Higgs observable
+Identifiability criteria against top-modeling degeneracy
+- For each basis direction, measure its alignment with the span of top-modeling nuisance responses in the chosen observable space.
+- Require a non-trivial orthogonal component of each retained basis direction outside the nuisance span.
+- Require injected latent shifts to be recovered in closure tests without being absorbed predominantly by nuisance profiling.
+- Require that the expected/posterior uncertainty reduction on at least one retained direction is driven by data information, not by prior choice.
 
-Why this is the right first milestone:
-- It is publishable even without a Higgs fit.
-- It forces the proposal to identify the actual transferable information rather than assume it.
-- It creates a hard gate before the more expensive Higgs integration work.
+Overlap criteria against weak transfer
+- For each retained basis direction, compute the induced shift on the frozen Higgs rapidity spectrum and compare it to the expected Higgs statistical and systematic resolution.
+- Require at least one retained direction to generate a stable, non-negligible effect on one or more Higgs rapidity bins after nuisance propagation.
+- Run top-only fit plus Higgs prediction closure: inject a known latent shift, fit with top observables only, propagate to Higgs, and require coverage on the Higgs target.
+- If the recovered Higgs effect is smaller than the Higgs measurement resolution or unstable under nuisance variations, the transfer claim fails.
 
-Concrete success criteria for Milestone 1:
-- at least one latent direction is constrained by top data beyond prior information under realistic nuisances
-- that direction has a demonstrable, non-negligible effect on the chosen Higgs observable
-- transfer closure succeeds under injected shifts in simulation
-- modeling systematics do not fully destroy the transfer claim in the retained phase-space region
+Deliverable
+- A decision table with only three allowed outcomes:
+- Pass: at least one frozen basis direction is identifiable in ttbar and has robust overlap with Higgs rapidity.
+- Partial pass: one direction is identifiable but the transfer effect is only large enough for a Higgs consistency test, not an uncertainty-reduction claim.
+- Fail: identifiability is lost to nuisance degeneracy or overlap is too weak; the program stops or retargets before any Higgs propagation paper.
 
-4. Explicit top-to-Higgs transfer strategy
+WP4. Sequential Higgs propagation, only after the gate
+- Only if WP3 passes, propagate the top-constrained frozen basis into the ggF Higgs rapidity measurement as constrained nuisance parameters.
+- Compare directly to the standard CMS treatment where PDF uncertainty is external.
+- Produce three outputs:
+- baseline Higgs uncertainty decomposition
+- Higgs result with top-informed latent propagation
+- consistency metric testing whether top-informed proton structure remains compatible with Higgs data
+- Main risk: the gain in Higgs precision is modest.
+- Why acceptable: after a successful gate, even a modest gain is scientifically meaningful because the transfer mechanism has been validated rather than assumed.
+- Fallback: if only the partial-pass condition is met, frame this stage as a proton-structure consistency test instead of a precision-improvement result.
 
-The proposal should state clearly that transfer is not assumed; it is tested.
+WP5. Later extensions, only if the first target works
+- Extend from Higgs rapidity to a coarse `(y_H, pT_H)` measurement only if the first target passes cleanly.
+- Consider a simultaneous top-plus-Higgs likelihood only after the sequential path has already produced a stable result.
+- Consider additional channels only after the first target and first basis are demonstrably useful.
+- Main risk: scope creep weakens the central claim.
+- Why acceptable: the plan is explicitly staged to block premature expansion.
+- Fallback: enforce a rule that no new channel or basis is added before the first target is complete.
 
-Transfer target selection:
-- Prefer Higgs bins whose partonic x support overlaps materially with the top-constrained region.
-- Start with observables where the mapping from PDF deformation to rate or shape is simple enough to interpret.
-- Avoid broad inclusive Higgs claims in the first phase.
+4. Milestone 1 as the decisive gate
 
-Transfer metrics:
-- overlap in x,Q2 support between top-sensitive events and target Higgs bins
-- correlation or information transfer coefficient between latent directions inferred in top and Higgs prediction shifts
-- posterior predictive coverage when top-constrained latent parameters are propagated to Higgs pseudo-data
-- stability of the transfer result under nuisance variations and basis changes
+Milestone 1
+- Process side: CMS dileptonic ttbar only
+- Frozen Higgs-facing target: ggF Higgs rapidity spectrum
+- Frozen latent object: 2-direction gluon basis `g1,g2`
+- Objective: test identifiability of `g1,g2` in top data under realistic nuisance structure and test whether at least one retained direction has robust overlap with the Higgs target
 
-Decision logic:
-- If overlap and closure are strong, proceed to sequential Higgs propagation.
-- If overlap is moderate but robust, proceed with a Higgs consistency test rather than a precision-gain claim.
-- If overlap is weak or unstable, keep the result top-only and retarget the Higgs observable or latent basis.
+Milestone 1 pass conditions
+- The basis is frozen before detector-level fitting and not redesigned after seeing which directions are easiest to measure.
+- At least one basis direction is constrained by top data beyond prior information under realistic nuisance profiling.
+- That retained direction is not nearly collinear with the dominant top-modeling nuisance span in the detector-level response space.
+- Injected shifts in the retained direction are recovered in top closure tests with acceptable bias.
+- The retained direction produces a stable and non-negligible shift in the frozen Higgs rapidity observable after full nuisance propagation.
+- Top-only fit to injected shifts yields propagated Higgs predictions with acceptable coverage.
 
-5. Staged execution plan
+Milestone 1 failure conditions
+- The apparent top sensitivity to `g1,g2` disappears once realistic ISR/FSR, shower, scale, or other top-modeling nuisances are profiled.
+- The recovered latent shifts depend strongly on basis redefinition, prior choice, or analysis compression.
+- The retained directions have too little effect on Higgs rapidity to matter for the intended transfer.
+- Closure succeeds in top but fails after propagation to Higgs.
 
-Near-term: 0-12 months
-- Define the latent gluon basis and the x,Q2 overlap map between dileptonic ttbar and candidate ggF Higgs observables.
-- Build the top-only detector-level inference setup with a limited but realistic nuisance model.
-- Run closure and ranking studies to identify the dominant top observables and the leading transferable latent directions.
-- Complete the explicit top-to-Higgs transfer tests for one Higgs target observable.
+Interpretation of failure
+- Failure is scientifically useful because it establishes that the naive top-to-Higgs PDF bridge does not survive realistic CMS conditions for this target and basis.
+- A fail outcome still yields a publishable statement about where internal proton-structure calibration breaks down: nuisance degeneracy, weak overlap, or both.
 
-Mid-term: 12-24 months
-- Freeze the first Higgs target and implement the sequential propagated-constraint analysis.
-- Compare top-informed Higgs results against the conventional external-PDF treatment.
-- Expand nuisance realism and validate robustness with alternative generators, shower models, and analysis compressions.
-- Decide, based on measured transfer strength, whether to broaden the Higgs binning or keep the scope narrow.
+5. Staged plan
 
-Later-stage: 24+ months
-- Build the simultaneous top-plus-Higgs likelihood if the sequential program showed real transfer.
-- Explore whether additional channels or observables strengthen the common proton-structure picture.
-- Possible extensions, only after the core program works: more differential Higgs measurements, additional top channels, limited SMEFT-PDF interplay studies.
+Near-term: 0-9 months
+- Freeze the first Higgs target and frozen basis definition.
+- Build truth-level x,Q2 overlap diagnostics and basis response maps.
+- Implement detector-level ttbar inference with the full nuisance menu needed for the identifiability gate.
+- Run injected-signal closure and nuisance-alignment studies.
+
+Mid-term: 9-18 months
+- Complete the hard-gated Milestone 1 decision.
+- If passed, implement sequential propagation into the Higgs rapidity measurement.
+- If only partially passed, implement a Higgs consistency test without claiming strong uncertainty reduction.
+- If failed, stop expansion and document the failure mode sharply.
+
+Later-stage: 18+ months
+- If the first target works, broaden to coarse `(y_H, pT_H)` or a simultaneous fit.
+- Reuse the validated basis and gate logic before adding any new observable or channel.
 
 6. Risk assessment and fallback logic
 
-Risk 1. Transfer does not survive realistic systematics
-- Problem: the latent directions learned in top may not predict Higgs observables robustly once modeling uncertainties are included.
-- Why acceptable: disproving naive transfer is a real scientific result and defines the boundary of CMS-internal proton calibration.
-- Fallback: recast the output as a transfer-consistency study, reduce the Higgs phase space, or stop after Milestone 1 with a strong top-only conclusion.
+Risk 1. Top-modeling degeneracy dominates the latent basis
+- Problem: ISR/FSR, shower, scale, or hadronization responses mimic `g1,g2` so well that identifiability is illusory.
+- Why acceptable: this is the central adversarial test the proposal should force itself to face.
+- Fallback: keep only the single best-separated direction or end the program at a top-only negative result.
 
-Risk 2. Top-modeling nuisance directions align with PDF directions
-- Problem: ISR/FSR, scales, and shower effects may mimic the same shape changes as gluon deformations.
-- Why acceptable: disentangling this is central to the proposal’s credibility.
-- Fallback: redesign the observable set for orthogonality, add control observables, or restrict to the best-separated latent direction rather than overfitting several.
+Risk 2. Weak x-overlap makes Higgs transfer too small to matter
+- Problem: the frozen basis is measurable in ttbar but has too small or too unstable an effect on Higgs rapidity.
+- Why acceptable: this tells us the top information is not useful for this Higgs target, which is a real physics conclusion.
+- Fallback: report a no-transfer result or retarget to a narrower Higgs rapidity region only if done as a new stage after failure is documented.
 
-Risk 3. Higgs side is too statistically sparse for unbinned or flexible inference
-- Problem: the Higgs measurement may not support the same inference machinery as top.
-- Why acceptable: the scientific innovation is the shared latent description, not identical statistical treatment on both sides.
-- Fallback: keep the top side unbinned and use a binned or compressed Higgs likelihood.
+Risk 3. Basis instability across theory setups
+- Problem: the chosen latent basis is not stable under reasonable PDF prior or generator choices.
+- Why acceptable: a basis that is not stable should not be used for transfer claims.
+- Fallback: collapse to a more conservative 1-direction basis tied directly to standard PDF response.
 
-Risk 4. The latent basis is not stable across generators or theory setups
-- Problem: an apparently informative basis may depend too strongly on how it was constructed.
-- Why acceptable: basis dependence is measurable and can be included in the method validation.
-- Fallback: use a more conservative basis tied to standard PDF eigenvector responses and limit claims to basis-stable directions.
+Risk 4. Higgs-side gain is real but small
+- Problem: even after a passed gate, the practical Higgs uncertainty reduction may be modest.
+- Why acceptable: a validated shared latent proton-structure inference is already scientifically differentiated from standard external-PDF treatment.
+- Fallback: emphasize the consistency-test result and defer precision-gain claims to larger datasets or combinations.
 
-Risk 5. Scope creep dilutes the proposal
-- Problem: adding more channels too early will weaken the central argument.
-- Why acceptable: the staged structure prevents this if enforced.
-- Fallback: formal rule that no extra channel is added before Milestone 1 succeeds and the first Higgs target is demonstrated.
+Risk 5. Scope drift weakens the proposal
+- Problem: adding more targets before the first one is validated will blur the scientific claim.
+- Why acceptable: the plan already contains a hard stop after Milestone 1.
+- Fallback: enforce that all expansion proposals must reuse the same gate logic and cannot begin until the first target is resolved.
 
 7. What would count as success
 
 Minimum success
-- CMS top data constrain at least one interpretable gluon-sensitive latent direction at detector level.
-- That direction passes explicit transfer tests to one chosen ggF Higgs observable.
-- The propagated constraint yields either a measurable Higgs PDF uncertainty reduction or a non-trivial top-to-Higgs consistency validation.
+- One frozen latent gluon direction is identifiable in realistic dileptonic ttbar data.
+- That same direction has robust overlap with ggF Higgs rapidity and survives propagation closure.
+- CMS can therefore make a defensible statement that part of the Higgs PDF uncertainty is internally testable with top data for this specific target.
 
 Strong success
-- A sequential CMS Higgs measurement with top-informed latent proton constraints is shown to be both robust and meaningfully different from the standard external-PDF treatment.
-- The resulting uncertainty model is clearer and more physically grounded than a purely imported PDF nuisance prescription.
+- Sequential propagation into the Higgs rapidity measurement yields either a measurable uncertainty reduction or a sharp top-to-Higgs proton-structure consistency validation that is clearly distinct from the standard external-PDF treatment.
 
 High-payoff success
-- A simultaneous top-plus-Higgs fit demonstrates that a shared latent proton-structure description can be sustained across both sectors, turning PDFs from an external ingredient into a partially internal CMS inference target.
+- The hard-gated logic scales to a broader Higgs target or a simultaneous fit without losing identifiability, turning proton structure into a shared latent CMS inference object rather than a purely external nuisance input.
 
-8. Why this plan is scientifically differentiated
+8. Why this version is sharper
 
-The distinguishing feature is not just better use of machine learning or more differential data. It is the introduction of a testable shared latent proton-structure layer connecting top and Higgs measurements inside one CMS program. The narrow first milestone makes the proposal credible, while the explicit transfer tests prevent over-claiming. If the program works, it changes how PDF uncertainty enters Higgs precision measurements; if it fails, it still produces a sharp statement about where internal proton calibration does and does not work at CMS.
+The proposal is now narrower and harder to fool. It fixes one first Higgs target, one latent basis, and one adversarial gate before the expensive Higgs integration work begins. That improves coherence, makes failure informative, and turns Milestone 1 into a scientifically meaningful test rather than a vague “learn some latent directions” phase.
