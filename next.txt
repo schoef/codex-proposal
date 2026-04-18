@@ -1,1 +1,1 @@
-proposer: turn the idea into a concrete staged CMS plan with a narrow first milestone, explicit top-to-Higgs transfer tests, and clear risk/fallback logic
+critique: pressure-test whether the first milestone and transfer logic are truly narrow, publishable, and robust against top-modeling and weak-overlap failure modes
