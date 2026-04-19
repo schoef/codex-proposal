@@ -1,1 +1,1 @@
-critique: pressure-test whether the revised rank-1 baseline is now actually defensible to stop, focusing on threshold justification, the explicit shared-nuisance boundary, and whether normalized rather than absolute `m_tt` is truly a coherent baseline choice
+proposer: Harden the near-final baseline only: justify or explicitly downgrade the rank-1 sufficiency thresholds, make the top-only/Higgs-only/common nuisance partition operational with actions for each common class, and add one early normalized-vs-absolute m_tt diagnostic showing the shared mode survives normalization.
