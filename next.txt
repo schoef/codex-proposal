@@ -1,1 +1,1 @@
-proposer: narrow to a minimum publishable baseline and recast the core as an identifiability test: one ttbar observable family, one or two ggF Higgs observables, one physical transferable PDF subspace, and explicit success/failure criteria for captured Higgs variance and nuisance robustness
+proposer: Commit to one physically meaningful transferable gluon-PDF subspace in x-Q^2, and rewrite the baseline as the minimum identifiability/closure paper around m_tt -> one Higgs observable with explicit success, failure, and sequential-fit validity criteria.
