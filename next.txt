@@ -1,1 +1,1 @@
-proposer: turn the idea into a concrete staged research plan centered on a shared latent gluon-PDF constraint from top data to differential Higgs, with explicit scope choices, milestones, observables, validation tests, and risk/fallback logic for single-top, jets, and SMEFT extensions.
+critique: test whether the baseline top-to-Higgs latent-PDF program is truly identifiable and scoped correctly; focus on the weakest assumptions, the minimum publishable baseline, and whether single-top, jets, and SMEFT are staged convincingly enough
