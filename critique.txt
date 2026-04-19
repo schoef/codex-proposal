@@ -1,60 +1,58 @@
 1. What is strongest and worth protecting
 
-- The plan is much stronger now that it has a single baseline chain: `m_tt` as the top input, normalized `|y_H|` as the Higgs target, and one rank-1 gluon-PDF mode as the transferable object. That is finally a real research skeleton rather than a platform pitch.
-- The decision to treat this as an identifiability and closure paper, not a guaranteed precision-gain paper, is the right move. It makes negative outcomes scientifically usable.
-- Choosing `|y_H|` rather than `pT(H)` is a defensible first target. It isolates the proton-structure transfer question from recoil and radiation-model complications.
-- The explicit validity criteria are a major improvement, especially the statement that sequential transfer fails if hidden extra tuning is needed on the Higgs side.
+- The revised plan is much closer to a defensible stopping point. It now has a real minimal chain: normalized `m_tt` as the control input, normalized `|y_H|` as the target, and one explicitly defined shared gluon-PDF mode as the transported object.
+- The best improvement is that the paper is no longer framed as "top helps Higgs" in the abstract. It is framed as a falsifiable identifiability-and-closure test of a very specific sequential claim.
+- The explicit statement that common nuisances must either be propagated or excluded is important. That is the right instinct and should be kept.
+- Treating negative outcomes as publishable boundary results remains a strength. That protects the project from scope creep if rank-1 transfer fails.
 
-2. What is weak, vague, or overreaching - and cannot yet be claimed
+2. What is weak, vague, or overreaching and cannot yet be claimed
 
-- The central unresolved issue is not originality anymore; it is sufficiency. The plan still assumes that one rank-1 physical mode is enough until proven otherwise. That is a useful hypothesis, but it is not yet a justified baseline fact.
-- The current thresholds look convenient rather than principled. `>= 30%` Higgs-variance capture, `>= 20%` posterior-width contraction, and `10-20%` reduction of the aligned Higgs component may be reasonable working numbers, but the plan does not explain why crossing them would constitute success and missing them would constitute failure. Right now they read like tuning knobs.
-- The sequential story is improved, but there is still a hidden joint-fit assumption in the validity audit. The line "sequential and joint closure results agree within uncertainty" is correct as a test, but it implicitly acknowledges that the sequential parameterization may not be sufficient unless the omitted shared nuisance structure is already benign. That means the paper is not yet fully protected against the criticism that the sequential result is only a projection of a problem that is really joint.
-- "Physical interpretation" of the rank-1 mode is still underspecified. A mode being stable under SVD-like compression and concentrated in overlapping `x-Q^2` support does not yet prove it is a uniquely meaningful gluon-shape direction rather than the leading artifact of the chosen binning and prior.
+- The revised rank-1 baseline is close to defensible, but not yet fully defensible to stop. The remaining weakness is not general sprawl anymore; it is that the stopping rules still look partly chosen for convenience.
+- The sufficiency tolerances (`0.25 sigma` mean agreement, `10%` variance agreement, `10%` predictive-score degradation) are better than the earlier ad hoc impact numbers, but they still need a sharper rationale. Right now they read as reasonable engineering thresholds, not as clearly motivated scientific decision rules.
+- The shared-nuisance boundary is improved in language, but still not operational enough. "Explicitly modeled common nuisances if any are kept" is too soft. A critic can still ask whether the sequential closure only works because the really dangerous common structure was left outside the game.
+- The normalized-versus-absolute `m_tt` choice is cleaner than before, but it is not yet fully intellectually settled. The plan says the paper is about a shared gluon-luminosity shape direction while also saying normalization is used to suppress overall-rate contamination. That is plausible, but it needs to be shown rather than asserted, because normalization can also erase part of the physically useful PDF lever arm.
 
 3. Which claims need evidence or a tighter plan
 
-- Claim needing evidence: one rank-1 mode is enough for the baseline.
-Why it matters: if the leading Higgs-relevant uncertainty is split across two comparably important directions, the whole minimal paper changes character. A rank-1-only baseline would then risk reporting an artifact of over-compression rather than a true boundary.
-Better move: add a pre-declared rank-1 sufficiency test. For example, require a noticeable eigengap or require that rank-2 adds only a small incremental captured Higgs variance and does not qualitatively change the sequential posterior. Without that, rank-1 is a choice, not a result.
+- Claim needing tighter support: the declared sufficiency thresholds are enough to justify stopping at rank-1.
+Why it matters: if those tolerances are too loose, rank-1 can "pass" even when higher-rank structure is still scientifically relevant; if too tight, rank-1 is rejected for cosmetic reasons.
+Better move: tie each threshold to the actual scientific claim. For example, explain that `0.25` of the reference posterior sigma is the largest bin-level bias that still leaves the sequential posterior practically interchangeable with the reference for the purpose of the baseline conclusion. If that argument cannot be made, label the thresholds as provisional screening tolerances rather than baseline-validation criteria.
 
-- Claim needing evidence: the sequential `ttbar -> |y_H|` baseline is self-contained.
-Why it matters: the plan is trying to avoid a hidden dependence on a broader simultaneous treatment. If there remain shared nuisances or theory choices that only become visible in a joint setup, then the sequential paper is not yet methodologically closed.
-Better move: define explicitly what is allowed to be shared between top and Higgs in the audit. If common PDF freedom is the only transported degree of freedom, then all other shared ingredients must either be fixed, marginalized independently, or shown to be numerically negligible. Otherwise the sequential validity test is too soft.
+- Claim needing tighter support: the shared-nuisance boundary is explicit enough for a sequential claim.
+Why it matters: this is the main route by which a skeptic will say the sequential result is a dressed-up projection of a joint problem. If luminosity, acceptance, unfolding, theory calibration, or perturbative choices induce residual cross-channel correlation, then `y_H ⟂ y_t | z` is not actually the operative baseline.
+Better move: add a short explicit table with three columns: top-only, Higgs-only, common. For each common nuisance class, state one of two actions: propagated in the latent state, or excluded from the baseline claim and demonstrated negligible for the chosen normalized observables.
 
-- Claim needing evidence: the chosen thresholds represent meaningful scientific decisions.
-Why it matters: arbitrary thresholds weaken the whole paper because a skeptic can say the verdict was chosen after seeing the geometry.
-Better move: justify the thresholds from one of three sources: expected effect sizes from prior studies, numerical distinguishability from zero given realistic pseudo-data, or a simple decision-theoretic rule such as "large enough to matter relative to total Higgs uncertainty." If that cannot be done, present them explicitly as provisional screening thresholds, not success criteria.
-
-- Claim needing evidence: normalized `m_tt` and normalized `|y_H|` preserve enough sensitivity to the same physical direction.
-Why it matters: normalization may remove exactly the luminosity-like information that makes the transfer look clean in theory space.
-Better move: state whether the baseline claim is really about shape-only transport, or whether absolute information is needed on the top side. The plan currently mixes absolute and normalized `m_tt` in Stage 0 without resolving this.
+- Claim needing tighter support: normalized `m_tt` is the coherent baseline, not merely the cleanest-looking one.
+Why it matters: the whole baseline now rests on the idea that shape-only `m_tt` still constrains the same shared gluon direction that matters for normalized `|y_H|`. If the most informative part of the transfer sits in the absolute rate component, then the normalization choice has made the baseline artificially elegant but physically incomplete.
+Better move: require one early diagnostic that compares absolute and normalized `m_tt` in the response geometry. The paper does not need absolute `m_tt` as a co-baseline, but it does need to show that the chosen rank-1 mode remains materially visible after normalization and is not mostly a removed normalization direction.
 
 4. Risk assessment of the newest or boldest ideas
 
-- Major idea: one rank-1 physical PDF mode
-Main risk: the leading common direction is not dominant enough to justify rank-1 closure, and rank-2 effects are not negligible.
-Is the risk acceptable: yes, but only if the paper treats rank-1 as a falsifiable minimal ansatz rather than the presumed truth.
-What would de-risk it: a rank-1 versus rank-2 comparison stated up front, with a hard rule for when rank-1 is deemed insufficient.
+- Major idea: stopping at a rank-1 baseline with the current tolerances
+Main risk: the thresholds certify convenience rather than sufficiency.
+Is the risk acceptable: conditionally yes.
+What would de-risk it: justify the tolerances from interchangeability with the reference posterior, or present a sensitivity study showing the qualitative verdict is stable when the thresholds are tightened and loosened within a reasonable range.
 
-- Major idea: sequential `ttbar -> |y_H|` baseline
-Main risk: hidden shared nuisances or theory correlations make the apparent transfer depend on assumptions that only a joint construction exposes.
-Is the risk acceptable: yes, because this is exactly the methodological point worth testing.
-What would de-risk it: a very explicit statement of the factorization assumption and a matched pseudo-data audit showing whether omitted shared structure changes the Higgs posterior materially.
+- Major idea: an explicit shared-nuisance boundary for sequential transfer
+Main risk: the boundary is nominal rather than real, and omitted common effects are what would actually spoil the factorization.
+Is the risk acceptable: yes, because the plan now at least acknowledges the issue directly.
+What would de-risk it: freeze a baseline nuisance partition before closure studies and add one matched joint-versus-sequential stress test whose only purpose is to detect missing common structure.
 
-- Major idea: `|y_H|` as the first Higgs target
-Main risk: it is so clean that it becomes too weak, yielding an elegant but practically negligible result.
-Is the risk acceptable: yes. For a first paper, "clean but weak" is better than "stronger but confounded."
-What would de-risk it: declare in advance that modest gain is acceptable if the closure logic is sharp, and do not oversell eventual impact on full Higgs systematics.
+- Major idea: normalized rather than absolute `m_tt` as the defining baseline observable
+Main risk: the baseline becomes coherent statistically but too sanitized physically, because the most transferable PDF information may partly live in the overall normalization component.
+Is the risk acceptable: yes, but only if the paper is explicit that it is testing shape-transfer sufficiency, not total top-derived PDF information.
+What would de-risk it: show that normalized `m_tt` still captures a material fraction of the Higgs-relevant shared mode and that switching to absolute `m_tt` does not qualitatively change which gluon direction is being learned.
 
 5. What the proposer should do next
 
-- Add one essential fix before declaring the plan finished: a rank-1 sufficiency criterion. The plan currently says how to build the rank-1 mode, but not how to decide whether rank-1 is actually enough. That is the main missing piece.
-- Make the hidden joint-fit issue fully explicit. State in one place what non-PDF correlations are assumed absent, frozen, or negligible in the sequential baseline, and what discrepancy with a matched joint closure would count as failure.
-- Recast the numerical thresholds as either justified criteria or provisional screening numbers. In the current form they are too arbitrary to carry the paper.
-- Resolve the absolute-versus-normalized top input ambiguity. If absolute `m_tt` is needed to learn the mode, say so. If normalized `m_tt` is the true baseline, then defend why it still probes the intended gluon-luminosity direction.
+- Keep the revised rank-1 baseline. It is now coherent enough that the proposer should resist adding channels or observables.
+- Add one paragraph that justifies the sufficiency tolerances as decision rules rather than convenient numbers. If a principled justification is not available, downgrade them explicitly to working tolerances and commit to a threshold-sensitivity appendix.
+- Make the shared-nuisance boundary fully explicit. A compact nuisance partition table is enough. The goal is to leave no ambiguity about what is common, what is propagated, and what is being declared outside the baseline claim.
+- Add one early comparison demonstrating that normalized `m_tt` is not throwing away the very mode the paper wants to study. This can be a response-geometry comparison to absolute `m_tt`; it does not require expanding the baseline.
+- State the baseline claim in the narrowest defensible form: the paper tests whether shape-level top information, compressed into one shared gluon mode, is an approximately sufficient sequential summary for normalized `|y_H|` once the declared nuisance boundary is enforced.
 
 Bottom line
 
-- The plan is not bloated anymore and is close to being strong enough to stop. But it is still missing one essential fix: an explicit test for whether rank-1 is sufficient rather than merely convenient.
-- If that fix is added, the baseline becomes a coherent, defensible minimum paper. Without it, the proposal still leaves too much room for the criticism that the result was created by compression choices and protected by an implicit joint-fit backstop.
+- The revised baseline is almost defensible to stop. The scope is now disciplined, and the rank-1 story is no longer obviously decorative.
+- It still needs three final hardenings before it is truly safe to freeze: justify the sufficiency thresholds, make the shared-nuisance boundary operational, and prove that normalized rather than absolute `m_tt` is a coherent baseline choice rather than just the tidiest one.
+- If those three points are tightened, the proposer should stop expanding and execute the program.
