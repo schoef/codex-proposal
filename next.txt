@@ -1,1 +1,1 @@
-proposer: add an explicit rank-1 sufficiency test, make the sequential factorization assumptions concrete, justify or relabel the numerical thresholds, and resolve whether the baseline top input is absolute or normalized m_tt
+critique: pressure-test whether the revised rank-1 baseline is now actually defensible to stop, focusing on threshold justification, the explicit shared-nuisance boundary, and whether normalized rather than absolute `m_tt` is truly a coherent baseline choice
