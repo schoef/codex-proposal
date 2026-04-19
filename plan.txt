@@ -1,220 +1,282 @@
 1. Core thesis
 
-- Baseline paper: a minimum viable identifiability and closure study for sequential PDF transfer from `ttbar` to Higgs.
-- Central question: can one physically meaningful, one-dimensional gluon-PDF subspace, identified from differential `ttbar` data, be transferred to one Higgs observable with predictive power that survives realistic nuisance treatment?
-- Strict baseline mapping: `m_tt` (optionally split by `|y_tt|` only if needed for x-localization) -> `|y_H|` in `ggF`.
+- Baseline paper: a minimum viable identifiability and closure study for sequential PDF transfer from top-pair production to Higgs production.
+- Central question: can one physically meaningful, one-dimensional gluon-PDF latent variable, learned from differential `ttbar` data, be propagated to one Higgs observable with predictive power that survives realistic nuisance treatment?
+- Strict baseline mapping:
+- top control input: normalized `m_tt` spectrum, with an optional minimal `|y_tt|` split only if the overlap study shows that inclusive `m_tt` is too delocalized in `x`;
+- Higgs target output: normalized `|y_H|` in `ggF`.
+- Resolution of the baseline-input ambiguity:
+- baseline means normalized `m_tt`, not absolute `m_tt`;
+- reason: the first paper should test transfer of shape information in a shared gluon-luminosity direction while minimizing contamination from luminosity, acceptance, and overall normalization nuisances;
+- absolute `m_tt` is retained only as a robustness cross-check, not as the defining baseline observable.
 - Why `|y_H|` and not `pT(H)` in the baseline:
-- `|y_H|` is the cleaner first Higgs target for a minimum closure paper because it is directly luminosity-driven and less entangled with radiation-model dependence.
-- This makes the baseline test about transferability of proton-structure information, not about whether one can out-model Higgs recoil systematics.
-- `pT(H)` remains the first follow-up only after the sequential-fit logic is validated on `|y_H|`.
+- `|y_H|` is the cleanest first Higgs target because it is driven mainly by parton luminosities and is less entangled with recoil and radiation-model systematics than `pT(H)`;
+- this keeps the baseline paper focused on proton-structure transfer rather than on recoil modeling.
 
 2. One explicit transferable gluon-PDF subspace
 
-- Commit to one physically meaningful subspace: a single rank-1 gluon-shape mode localized in the overlapping `x-Q^2` region probed by `m_tt` and `ggF` Higgs rapidity.
+- Commit to one physically meaningful subspace: a single rank-1 gluon-shape mode localized in the overlapping `x-Q^2` region probed by normalized `m_tt` and normalized `|y_H|`.
 - Operational definition:
-- represent PDF uncertainty with replicas or Hessian responses;
-- compute the induced response of the chosen observables;
-- extract the leading common mode between `m_tt` and `|y_H|`;
-- keep only the mode if it is stable and admits a clear interpretation as a gluon-luminosity deformation, not as a basis artifact.
+- represent PDF uncertainty by replicas or Hessian eigenvector responses in the underlying PDF parameter space;
+- propagate those variations to the top and Higgs observables to obtain response matrices `R_t` and `R_H`;
+- whiten each observable space by its non-PDF covariance so that the extracted mode reflects inferentially useful variation rather than raw bin scales;
+- extract the leading shared direction through an SVD / generalized eigenproblem of the whitened cross-response, then map it back to a deformation of the gluon PDF.
+- Rank-1 sufficiency test:
+- define `z` as the scalar coefficient of the candidate shared mode;
+- compare two Higgs posterior constructions in pseudo-data generated from held-out PDF variations:
+- sequential rank-1 posterior `p(y_H | p(z | y_t), model)` obtained by fitting `z` only in top data and propagating it forward;
+- reference posterior `p(y_H | y_t, model_full)` from the same generative setup but allowing the full retained PDF response space;
+- declare rank-1 sufficiency only if the rank-1 construction reproduces the reference Higgs posterior within pre-declared tolerances:
+- posterior mean shift in each Higgs bin within `0.25` of the reference posterior standard deviation;
+- posterior variance of each Higgs bin within `10%` relative difference from the reference posterior;
+- held-out log predictive density or equivalent scoring metric degraded by no more than `10%` relative to the reference posterior.
+- These are not fundamental constants. They are proposal-level decision thresholds chosen to mean "close enough that the omitted higher-rank PDF structure is subleading compared with the uncertainty scale of the baseline study." The paper should label them as working tolerances and vary them in a sensitivity appendix.
 - Physical interpretation target:
-- dominant support in the moderate-`x` gluon region relevant to LHC `gg -> ttbar` and `gg -> H`;
-- effective hard scales spanning `Q^2 ~ m_tt^2` on the top side and `Q^2 ~ m_H^2` on the Higgs side;
-- transfer means evolution and luminosity projection of the same underlying gluon-shape direction across these scales, not re-fitting unrelated nuisance freedom.
-- The paper should show one explicit map or table:
-- chosen `m_tt` bins and their dominant `x` support;
-- chosen `|y_H|` bins and their dominant `x` support;
-- the overlapping `x-Q^2` window that defines the transferable subspace.
+- dominant support in the moderate-`x` gluon region relevant to `gg -> ttbar` and `gg -> H`;
+- transfer means evolution and luminosity projection of the same underlying gluon-shape direction across `Q^2 ~ m_tt^2` and `Q^2 ~ m_H^2`, not a refit of unrelated nuisance freedom.
+- Required visualization:
+- one explicit table or map of `m_tt` bins, their dominant `x` support, `|y_H|` bins, their dominant `x` support, and the overlap window used to define the candidate rank-1 mode.
 
-3. Minimal scientific claim
+3. Concrete sequential factorization assumptions
 
-- Positive claim: there exists one identifiable gluon-PDF direction that `m_tt` can constrain and that explains a nontrivial fraction of the prior PDF variance of `|y_H|`.
-- Negative claim: if this does not hold after nuisance profiling, then low-rank top-to-Higgs transfer is not sequentially valid at baseline and stronger channels or cleaner observables are required.
-- Either outcome is publishable because the paper is framed as an identifiability boundary, not a broad analysis platform.
+- The sequential strategy must assume a specific factorization, not just "fit top first, then propagate."
+- Working statistical factorization:
+- let `z` be the scalar shared gluon-PDF mode coefficient;
+- let `u_t` be top-specific nuisances and `u_H` Higgs-specific nuisances;
+- assume `p(y_t, y_H | z, u_t, u_H) = p(y_t | z, u_t) p(y_H | z, u_H)`;
+- assume the prior factorizes as `p(z, u_t, u_H) = p(z) p(u_t) p(u_H)` at baseline, except for explicitly modeled common nuisances if any are kept;
+- assume that all information from top data relevant to Higgs PDF transfer flows through `z`, meaning `y_H ⟂ y_t | z` once the modeled nuisances are conditioned on.
+- What must be made concrete in the paper:
+- list exactly which nuisance classes are treated as top-only, Higgs-only, or common;
+- if a nuisance is common across channels, either include it in the latent state propagated sequentially or exclude it from the baseline claim;
+- state explicitly that the baseline claim is about transfer through the shared PDF mode, not through luminosity or common experimental calibrations.
+- Sequential validity therefore means two things at once:
+- modeling validity: the factorization above is a good approximation for the chosen baseline observables;
+- inferential sufficiency: the scalar `z` retains essentially all top-derived information that matters for the Higgs posterior.
 
-4. Subtasks of the core thesis
+4. Minimal scientific claim
+
+- Positive claim: there exists one identifiable gluon-PDF direction that normalized `m_tt` can constrain and that explains a material fraction of the prior PDF variance of normalized `|y_H|`.
+- Stronger positive claim, only if supported by the sufficiency test: the posterior over that single direction is approximately sufficient for the Higgs posterior change induced by top data.
+- Negative claim: if this does not hold after nuisance profiling or if the reference full-space posterior contains important additional structure, then low-rank sequential transfer is not valid at baseline.
+- Either outcome is publishable because the paper is framed as an identifiability boundary, not as a guaranteed Higgs-uncertainty reduction story.
+
+5. Subtasks of the core thesis
 
 - Subtask A: define the overlapping physics support
-- Build a compact `x-Q^2` overlap study for the baseline bins.
-- Decide whether inclusive `m_tt` is enough or whether one minimal `|y_tt|` split is required to sharpen the overlap.
-- Deliverable: a frozen observable definition for the rest of the paper.
+- build a compact `x-Q^2` overlap study for normalized `m_tt` and normalized `|y_H|`;
+- decide whether inclusive `m_tt` is enough or whether one minimal `|y_tt|` split is needed to sharpen the overlap;
+- deliverable: a frozen observable definition for the rest of the paper.
 
-- Subtask B: construct the rank-1 transferable mode
-- Use theory response matrices for `m_tt` and `|y_H|` under PDF variations.
-- Extract one common direction by SVD / generalized eigenmode / canonical-correlation-style compression.
-- Reject the mode if it is unstable under mild basis or binning changes.
-- Deliverable: one explicit mode with physical interpretation and variance-capture numbers.
+- Subtask B: construct the candidate rank-1 mode
+- compute theory response matrices for the chosen observables under PDF variations;
+- whiten by non-PDF covariance and extract the leading shared mode;
+- test basis stability under Hessian vs replica representations and under mild rebinning;
+- deliverable: one explicit mode with physical interpretation and variance-capture numbers.
 
-- Subtask C: `ttbar` identifiability fit
-- Build a `ttbar` likelihood with the rank-1 mode plus a controlled nuisance model.
-- Fit pseudo-data and quantify whether the mode is actually learnable from `m_tt`.
-- Deliverable: prior-to-posterior contraction for the mode and closure on held-out pseudo-data.
+- Subtask C: run the rank-1 sufficiency audit
+- define the reference retained PDF space, for example the top few singular directions needed to saturate nearly all shared Higgs-relevant variance;
+- compare rank-1 sequential propagation against that reference in held-out pseudo-data;
+- deliverable: a binary verdict on whether rank-1 is scientifically adequate for the baseline claim.
 
-- Subtask D: sequential propagation to Higgs
-- Propagate only the posterior of the rank-1 mode into `|y_H|`.
-- Quantify how much Higgs PDF variance lies in that direction and how much is reduced after the `ttbar` fit.
-- Deliverable: the main sequential-transfer result.
+- Subtask D: `ttbar` identifiability fit
+- build a top likelihood with `z` plus a controlled nuisance model;
+- fit pseudo-data and quantify whether `z` is learnable from normalized `m_tt`;
+- deliverable: prior-to-posterior contraction, bias tests, and calibration for `z`.
 
-- Subtask E: validity audit
-- Stress-test whether the transfer result survives nuisance freedom, alternate theory settings, and null checks.
-- Deliverable: an explicit success / failure verdict on sequential-fit validity.
+- Subtask E: sequential propagation to Higgs
+- propagate only the posterior of `z` into normalized `|y_H|`;
+- quantify how much Higgs PDF variance lies in that direction and how much is reduced after the top fit;
+- deliverable: the main top-to-Higgs transfer result.
 
-5. Concrete staged execution plan
+- Subtask F: validity audit under realism
+- stress-test whether the transfer result survives nuisance freedom, alternate theory settings, and null checks;
+- deliverable: an explicit success or failure verdict on sequential-fit validity.
+
+6. Concrete staged execution plan
 
 - Stage 0: freeze the baseline
-- Primary top input: absolute and normalized `m_tt`.
-- Primary Higgs output: normalized `|y_H|` in `ggF`.
-- Optional top refinement only if justified by overlap study: central / forward `|y_tt|` split.
-- Not in baseline: `pT(H)`, single-top, inclusive jets, SMEFT.
+- primary top input: normalized `m_tt`;
+- primary Higgs output: normalized `|y_H|` in `ggF`;
+- optional top refinement only if justified by overlap study: central / forward `|y_tt|` split;
+- robustness cross-check, not baseline: absolute `m_tt`;
+- not in baseline: `pT(H)`, single-top, inclusive jets, SMEFT.
 - Success criterion:
-- a single frozen observable chain can be defended from kinematics alone.
+- a single observable chain can be defended from kinematics and nuisance structure.
 - Main risk:
-- the overlap in `x` is too broad or too weak for inclusive `m_tt`.
+- normalized `m_tt` may discard too much useful information.
+- Why acceptable:
+- the first paper is about clean transfer logic, not maximum sensitivity.
 - Fallback:
-- add the minimal `|y_tt|` split, but do not introduce a second top process.
+- include absolute `m_tt` only as a comparison study, while keeping normalized `m_tt` as the baseline definition.
 
-- Stage 1: derive the transferable subspace
-- Compute observable responses to PDF variations.
-- Extract the leading common mode and quantify:
-- fraction of `|y_H|` prior PDF variance captured by the mode;
-- fraction of `m_tt` prior PDF variance aligned with the same mode.
-- Success criterion:
-- one stable mode captures a clearly non-negligible fraction of `|y_H|` PDF variance, with a working threshold of `>= 30%` in the chosen fiducial binning.
-- Failure criterion:
-- no stable rank-1 mode reaches even `~20%` captured Higgs variance across reasonable setup choices.
+- Stage 1: derive the candidate shared mode
+- compute observable responses to PDF variations and non-PDF covariance;
+- extract the leading shared mode and quantify:
+- fraction of prior Higgs PDF variance captured by rank-1;
+- fraction of prior top PDF variance aligned with the same mode;
+- stability under PDF basis choice and mild rebinning.
+- Reporting rule for numerical thresholds:
+- do not present `30%` as a hard physical threshold;
+- relabel it as a working materiality benchmark: rank-1 is "material" if it captures roughly one-third or more of the prior Higgs PDF variance in the chosen baseline observable, because below that level the ceiling on practical Higgs impact is likely too small for a standalone baseline paper;
+- also report the continuous number, not just pass/fail.
+- Failure rule:
+- if the captured Higgs variance is consistently small, for example well below the materiality benchmark across reasonable choices, the baseline rank-1 program is too weak.
 - Main risk:
 - the common structure is diffuse and not compressible.
-- Why acceptable:
-- this cleanly falsifies the low-rank premise.
 - Fallback:
-- report a quantitative upper bound on rank-1 transferability; do not silently expand to many modes in the baseline paper.
+- publish a quantitative upper bound on rank-1 transferability rather than expanding the scope opportunistically.
 
-- Stage 2: closure in `ttbar`
-- Generate pseudo-data from held-out PDF members / replicas.
-- Fit the rank-1 mode from `m_tt` with nuisance profiling.
-- Check estimator bias, posterior calibration, and contraction.
+- Stage 2: rank-1 sufficiency test
+- define a richer reference PDF-response space that is still low-dimensional and numerically stable;
+- generate held-out pseudo-data from that reference space;
+- compare sequential rank-1 Higgs posteriors to reference Higgs posteriors using the pre-declared sufficiency tolerances.
 - Success criterion:
-- the mode posterior is unbiased in closure and contracts relative to the prior by a practically meaningful amount, e.g. `>= 20%` width reduction for the mode coefficient.
+- rank-1 reproduces the reference Higgs posterior to within the declared working tolerances across the pseudo-data ensemble.
 - Failure criterion:
-- the mode is too degenerate with scale, shower, detector, or normalization nuisances to be learned.
+- higher-rank PDF structure changes Higgs means, variances, or predictive scores beyond tolerance.
 - Main risk:
-- identifiability exists in theory-response space but not in the likelihood.
+- the leading mode is real but not sufficient.
 - Why acceptable:
-- this is exactly the distinction the paper should settle.
+- this is exactly the boundary between "nice correlation picture" and "valid sequential latent variable."
 - Fallback:
-- narrow the claim to geometric overlap without inferential identifiability.
+- relabel the program from "rank-1 sufficient transfer" to "leading-mode diagnostic transfer," or broaden to rank-2 only in a clearly separate follow-up paper.
 
-- Stage 3: sequential Higgs closure
-- Use only the `ttbar` posterior on the rank-1 mode to predict the corresponding posterior for `|y_H|`.
-- Compare the predicted Higgs shift / uncertainty reduction to held-out truth in pseudo-data.
+- Stage 3: closure in `ttbar`
+- generate pseudo-data from held-out PDF members or replicas;
+- fit `z` from normalized `m_tt` with nuisance profiling;
+- check estimator bias, posterior calibration, and contraction.
+- Reporting rule for contraction:
+- do not present `20%` prior-width reduction as a theorem;
+- relabel it as a practical learnability benchmark, meaning the posterior tightening is large enough to matter downstream;
+- always quote the actual contraction factor with uncertainty.
+- Failure criterion:
+- `z` is too degenerate with scale, shower, detector, or normalization nuisances to be learned with useful precision.
+- Main risk:
+- identifiability exists in response geometry but not in the likelihood.
+- Fallback:
+- narrow the claim to overlap geometry plus a no-go inference result.
+
+- Stage 4: sequential Higgs closure
+- use only the top posterior on `z` to predict the corresponding posterior for normalized `|y_H|`;
+- compare the predicted Higgs shift and uncertainty reduction to held-out truth in pseudo-data.
+- Reporting rule for impact thresholds:
+- the earlier `10-20%` Higgs-variance reduction should be relabeled as an aspirational impact range, not a requirement for scientific validity;
+- the real requirement is calibrated posterior prediction plus non-negligible transferred information;
+- if the gain is only a few percent but robust and well understood, that can still support a boundary paper, though not a strong phenomenology claim.
 - Success criterion:
 - posterior predictive intervals for `|y_H|` are calibrated in closure;
-- at least `10-20%` reduction of the aligned Higgs PDF variance component is achieved;
-- the sign and bin pattern of induced Higgs shifts are correctly predicted for held-out pseudo-data.
-- Failure criterion:
-- transfer from `ttbar` posterior to Higgs is biased, uncalibrated, or negligible.
+- the sign and bin pattern of induced Higgs shifts are correctly predicted;
+- the transferred information is clearly above numerical noise and consistent with the Stage 1 variance-capture ceiling.
 - Main risk:
-- the mode is learnable in `ttbar` but not relevant enough for Higgs to matter.
-- Why acceptable:
-- that still sets a direct upper limit on practical transfer.
+- the mode is learnable in top data but too weakly relevant for Higgs to matter.
 - Fallback:
-- publish the variance-capture ceiling and explain why `|y_H|` is not sufficiently shared with `m_tt`.
+- publish the practical ceiling on top-to-Higgs transfer for `|y_H|`.
 
-- Stage 4: sequential-fit validity audit
-- Repeat Stage 3 under expanded nuisance models and modest theory variations.
-- Test whether the sequential approach agrees with a joint-truth construction in pseudo-data, within predefined tolerance.
+- Stage 5: sequential-fit validity audit
+- repeat Stage 4 under expanded nuisance models and modest theory variations;
+- compare sequential closure with a matched joint construction in pseudo-data.
 - Success criterion:
-- at least half of the nominal Higgs gain from the PDF-only closure survives after nuisance profiling;
-- sequential and joint closure results agree within uncertainty for the rank-1 mode coefficient and Higgs posterior in the tested pseudo-data ensemble.
+- the qualitative conclusion about transfer survives nuisance enrichment and modest theory changes;
+- sequential and joint constructions agree for the Higgs posterior within the same working tolerance scale used in the sufficiency test.
 - Failure criterion:
-- sequential transfer works only in an idealized PDF-only setting and breaks under realistic nuisance freedom.
+- apparent transfer is an artifact of omitted correlations or over-aggressive factorization.
 - Main risk:
-- apparent transfer is an artifact of omitted correlations.
-- Why acceptable:
-- then the correct scientific conclusion is that a sequential top-control picture is not yet valid at baseline.
+- sequential transfer works only in an idealized PDF-only limit.
 - Fallback:
-- frame the result as a no-go boundary and specify which missing ingredients would be needed to rescue the idea.
+- frame the result as a no-go boundary and specify which missing ingredients would have to be promoted into the propagated latent state.
 
-6. Explicit sequential-fit validity criteria
+7. Explicit sequential-fit validity criteria
 
-- Validity criterion V1: pre-definition
-- the transferable mode is defined before fitting pseudo-data and is not re-optimized on the Higgs target after seeing `ttbar` outcomes.
+- V1: pre-definition
+- the shared mode and all sufficiency tolerances are fixed before fitting pseudo-data and are not tuned on Higgs outcomes.
 
-- Validity criterion V2: sufficiency
-- the `ttbar` posterior on the rank-1 mode is sufficient to reproduce the Higgs posterior change seen in a matched closure setup; no hidden extra nuisance tuning is required.
+- V2: factorization validity
+- the chosen nuisance partition and likelihood factorization are documented and survive direct stress tests; any common nuisance not propagated must be shown to be negligible for the baseline claim.
 
-- Validity criterion V3: calibration
-- nominal Bayesian / frequentist coverage for the Higgs posterior prediction remains acceptable in pseudo-data closure.
+- V3: rank-1 sufficiency
+- the scalar latent variable `z` reproduces the reference Higgs posterior to within the declared working tolerances in held-out pseudo-data.
 
-- Validity criterion V4: stability
-- the transfer conclusion does not flip under modest perturbative-scale choices, alternate PDF representations, or mild rebinning.
+- V4: calibration
+- the sequential Higgs posterior has acceptable coverage or posterior calibration in closure.
 
-- If any of V1-V4 fails, the paper should explicitly state that the sequential-fit picture is not validated, even if raw correlations look encouraging.
+- V5: stability
+- the transfer conclusion does not flip under mild rebinning, alternate PDF parameterizations, or modest perturbative variations.
 
-7. Concrete success, failure, and interpretation rules
+- If any of V1-V5 fails, the paper should state clearly that the baseline sequential rank-1 picture is not validated.
 
-- Success of the baseline paper means all of the following:
+8. Concrete success, failure, and interpretation rules
+
+- Full success means all of the following:
 - one stable rank-1 gluon mode is isolated in the overlapping `x-Q^2` region;
-- that mode captures a material fraction of prior `|y_H|` PDF variance;
-- `m_tt` can constrain that mode in nuisance-aware closure;
+- the mode captures a material fraction of prior Higgs PDF variance;
+- rank-1 passes the explicit sufficiency test against the richer reference space;
+- normalized `m_tt` can constrain that mode in nuisance-aware closure;
 - sequential propagation yields calibrated Higgs posterior improvement.
 
 - Partial success means:
-- the mode is physically meaningful and relevant for Higgs, but `ttbar` cannot constrain it enough once nuisances are restored.
+- a physically meaningful shared mode exists, but either rank-1 sufficiency fails or top data cannot constrain the mode enough once nuisances are restored.
 - Publication angle:
-- "common gluon-PDF direction exists, but in-situ transfer is not yet identifiable with baseline top information."
+- "shared gluon structure exists, but a one-parameter sequential transfer is not yet validated."
 
 - Informative failure means:
-- no stable common mode exists, or sequential closure is invalid even though naive correlations appear strong.
+- no stable common mode exists, or the factorization / sufficiency assumptions fail even though naive correlations look strong.
 - Publication angle:
 - "limits of low-rank top-to-Higgs PDF transfer."
 
-8. Concrete synergy items
+9. Concrete synergy items
 
 - Synergy item 1: theory geometry plus inference
-- The work is not just a correlation plot; it connects observable-space geometry to a real likelihood-level identifiability test.
+- the program connects observable-space response geometry to a likelihood-level sufficiency test rather than stopping at correlation plots.
 
 - Synergy item 2: top as control, Higgs as target
-- The top channel supplies in-situ information at higher scales; the Higgs channel tests whether that information is truly portable under DGLAP evolution and observable projection.
+- top data probe the shared gluon direction at higher scales; Higgs data test whether that same direction remains predictive after evolution and nuisance-aware projection.
 
-- Synergy item 3: negative outcomes remain sharp
-- The program is scientifically robust because failure yields a real upper bound on what sequential PDF control can achieve in CMS-like analyses.
+- Synergy item 3: a sharp negative result is still valuable
+- failure of rank-1 sufficiency or failure of sequential factorization is scientifically informative because it sets a concrete limit on what "top controls Higgs PDF uncertainty" can mean in practice.
 
-9. Boundaries and non-goals
+10. Boundaries and non-goals
 
 - No broad multi-channel platform in the baseline paper.
 - No single-top, inclusive jets, or SMEFT in the baseline.
-- No automatic escalation to rank-2 unless the professor explicitly asks for a broader second paper.
-- No attempt to claim a full Higgs uncertainty reduction program from one study.
-- The baseline contribution is narrower and stronger: identify, test, and validate or falsify one transferable gluon-PDF direction.
+- No automatic escalation to rank-2 if rank-1 fails; that becomes a separate, explicitly broadened follow-up.
+- No claim that one study solves Higgs PDF uncertainties in general.
+- The baseline contribution is narrower and stronger: identify, test, and validate or falsify one sequentially propagated gluon-PDF latent variable.
 
-10. Risk assessment and fallback
+11. Risk assessment and fallback
 
-- Risk: the chosen `x-Q^2` overlap is physically weak.
+- Risk: normalized `m_tt` is too shape-insensitive or too delocalized in `x`.
 - Why acceptable:
-- this can be diagnosed early and cheaply.
+- this can be diagnosed early in the overlap and response study.
 - Fallback:
-- retain `m_tt` but add only the minimal `|y_tt|` split.
+- add the minimal `|y_tt|` split, while keeping the top observable family fixed.
 
-- Risk: the extracted mode is numerically unstable.
+- Risk: the extracted shared mode is numerically unstable.
 - Why acceptable:
-- then the latent-subspace concept is not mature enough for a baseline paper.
+- instability itself argues against a robust latent-variable claim.
 - Fallback:
-- publish the instability as evidence against low-rank transfer claims.
+- publish the instability as evidence that low-rank transfer is not yet well defined.
 
-- Risk: closure works in PDF-only studies but dies once nuisances are profiled.
+- Risk: rank-1 is real but not sufficient.
 - Why acceptable:
-- this is the central realism test.
+- that still distinguishes "leading direction" from "adequate sequential summary," which is a scientifically useful result.
 - Fallback:
-- make the paper a boundary result on identifiability rather than a positive transfer claim.
+- relabel the outcome as a diagnostic shared mode and reserve multi-mode transfer for follow-up work.
 
-- Risk: `|y_H|` is too weakly sensitive for visible practical gain.
+- Risk: closure works in PDF-only studies but fails once nuisances are profiled.
 - Why acceptable:
-- a weak but clean target is still the correct first target for a minimum-validity paper.
+- this is the key realism test the proposal should confront directly.
 - Fallback:
-- keep the paper focused on identifiability and reserve `pT(H)` as the next branch if the sequential logic is validated.
+- convert the paper into a boundary result on identifiability under realistic nuisance structure.
 
-11. Follow-up only if the baseline succeeds
+- Risk: `|y_H|` is too weakly sensitive for visible phenomenological gain.
+- Why acceptable:
+- a weak but clean target is still the right first target for validating the sequential logic.
+- Fallback:
+- keep the paper focused on validity and practical ceilings, then move to `pT(H)` only after the logic is validated.
 
-- First follow-up: extend the exact same rank-1 mode to `pT(H)` and test whether transfer persists once recoil/radiation sensitivity enters.
-- Second follow-up: test whether a second top observable family adds orthogonal information beyond the validated rank-1 mode.
-- Third follow-up: only after Standard Model transfer is validated, consider single-top, jets, or SMEFT as structured extensions rather than baseline ingredients.
+12. Follow-up only if the baseline succeeds
+
+- First follow-up: extend the same validated latent mode to `pT(H)` and test whether transfer survives once recoil and radiation sensitivity enter.
+- Second follow-up: test whether adding a second top observable family provides genuinely orthogonal information beyond the validated rank-1 mode.
+- Third follow-up: only after Standard Model transfer is validated, consider single-top, inclusive jets, or SMEFT as structured extensions rather than baseline ingredients.
