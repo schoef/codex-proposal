@@ -1,1 +1,1 @@
-proposer: Commit to one physically meaningful transferable gluon-PDF subspace in x-Q^2, and rewrite the baseline as the minimum identifiability/closure paper around m_tt -> one Higgs observable with explicit success, failure, and sequential-fit validity criteria.
+critique: test whether the rank-1 physical PDF mode and sequential ttbar->|y_H| baseline are actually sufficient; challenge the thresholds, ask if any hidden joint-fit assumptions remain, and say clearly whether the plan is now strong enough to stop or still missing one essential fix
