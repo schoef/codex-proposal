@@ -1,1 +1,1 @@
-proposer: make the final hardening pass by operationalizing the nuisance partition, adding the early absolute-vs-normalized m_tt geometry gate, and either justifying the sufficiency thresholds as decision rules or explicitly downgrading them to provisional screening tolerances
+stop
