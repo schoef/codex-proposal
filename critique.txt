@@ -1,0 +1,81 @@
+1. What is strongest and worth protecting
+
+- The real novelty is the shared latent proton-structure layer connecting `ttbar` control information to differential ggF Higgs predictions. That is more interesting than a generic "use top to help Higgs" story and should remain the center of gravity.
+- The plan is strongest when it stays narrow: `ttbar` as the control channel, ggF Higgs as the target, Standard Model PDF/theory transport as the first claim. That is the minimum intellectually coherent arc.
+- The staged language is mostly good. In particular, keeping SMEFT out of the baseline inference is the right instinct. The proposal understands that missing-physics effects cannot be allowed to masquerade as latent PDF modes.
+- The emphasis on closure, transportability, and x-Q2 overlap is exactly the right validation frame. If this project works, those are the reasons it will be credible.
+
+2. What is weak, vague, or overreaching
+
+- The weakest assumption is identifiability. The plan assumes that the part of the gluon PDF uncertainty relevant for Higgs can be isolated from `ttbar` data in a low-dimensional latent basis after realistic scale, shower, top-mass, acceptance, and unfolding systematics are included. That may be false. If it is false, the whole "control system" language is too strong.
+- The phrase "latent gluon-PDF constraint" still hides an unresolved choice between two very different objects:
+  a) a physically meaningful PDF subspace in x-Q2;
+  b) an analysis-level nuisance basis that reproduces observable variations.
+  Only the first really supports the claimed top-to-Higgs transport story. The second may compress correlations well but risks becoming a measurement-specific artifact.
+- The baseline is still too broad for a minimum publishable result. The plan lists many top observables, several Higgs observables, sequential versus simultaneous fits, and multiple extension branches. That is too much before proving one clean demonstrator.
+- Single-top, jets, and SMEFT are nominally staged, but the narrative still gives them too much conceptual weight too early. At the moment they read partly as decorative ambition rather than decisions earned by baseline evidence.
+- Inclusive jets are especially under-justified. The plan knows they are high-risk, but it does not yet explain why they are needed for the first research program pitch rather than being mentioned as a contingent later branch.
+
+3. Which claims need evidence or a tighter plan
+
+- Claim needing proof: `ttbar` contains transferable information about the same PDF directions that matter for ggF Higgs in the chosen CMS phase space.
+Why it matters: overlap in broad x-Q2 support is not enough. The relevant question is whether the dominant eigen-directions for Higgs uncertainty are actually visible in `ttbar` observables with enough purity to constrain them.
+Better move: define one explicit identifiability test. For example, project Higgs PDF uncertainty onto the top-informed latent basis and quantify the fraction of Higgs variance captured before any fit is done.
+
+- Claim needing proof: the latent basis can be low-dimensional without becoming unphysical or unstable.
+Why it matters: if three to five modes do not capture the transferable uncertainty robustly, the elegance of the approach may collapse into a generic many-nuisance profiling exercise.
+Better move: predefine a compression target and failure criterion. If low-rank reconstruction misses too much Higgs-relevant variance or becomes basis-dependent, the proposal should say so plainly.
+
+- Claim needing proof: the baseline can be publishable even if the Higgs uncertainty reduction is modest.
+Why it matters: otherwise the project is implicitly betting on a large gain that may not survive realistic nuisance treatment.
+Better move: define the minimum publishable baseline as a transport/closure paper, not necessarily a precision-gain paper. A good first result could be: "which `ttbar` observables constrain which Higgs PDF directions, with validated closure and honest limits."
+
+- Claim needing proof: sequential profiling is enough for the first paper.
+Why it matters: if the likelihood factorization is too approximate, a sequential result may look methodologically convenient rather than physically justified.
+Better move: make the sequential baseline acceptable only if shared nuisances outside the latent PDF layer are either negligible or explicitly frozen by construction. Otherwise simultaneous treatment may be needed sooner.
+
+- Claim needing proof: single-top and jets add orthogonal information rather than mostly extra nuisance freedom.
+Why it matters: without a clear incremental-information criterion, those branches will look like scope creep.
+Better move: require a gating metric such as marginal information gain on Higgs-relevant modes per added nuisance dimension.
+
+4. Risk assessment of the newest or boldest ideas
+
+- Major idea: top-to-Higgs latent PDF transport
+Main risk: the transported object is not identifiable once realistic non-PDF systematics are included.
+Is the risk acceptable: yes, but only if the proposal is reframed around testing identifiability rather than assuming it.
+What de-risks it: one explicit pre-fit overlap/observability study, one pseudo-data closure study with held-out PDF members, and one robustness study against scale/shower/top-mass nuisance inflation.
+
+- Major idea: low-dimensional latent basis
+Main risk: the basis is mathematically compact but not physically portable, so it constrains top observables without giving trustworthy Higgs transfer.
+Is the risk acceptable: yes.
+What de-risks it: anchor the basis to Higgs-relevant PDF directions first, then ask whether `ttbar` can constrain them, instead of deriving a generic top-driven basis and hoping it transfers.
+
+- Major idea: single-top extension
+Main risk: it probes different initial states and brings electroweak/flavor complications faster than it adds clean gluon information.
+Is the risk acceptable: only as a robustness branch, not as part of the minimum publishable program.
+What de-risks it: make its role diagnostic, not constraining. The question should be "does transport survive outside `ttbar` kinematics?" not "does single-top strengthen the baseline fit?"
+
+- Major idea: inclusive jets extension
+Main risk: jets dominate the information numerically but also dominate the modeling burden, which could drown the point of the program and collapse it back into a quasi-global PDF fit.
+Is the risk acceptable: only marginally.
+What de-risks it: either postpone jets entirely until after the baseline publication or constrain them to a very narrow demonstrator use-case. Right now jets are the clearest candidate for deletion from the near-term plan.
+
+- Major idea: SMEFT extension
+Main risk: PDF modes, missing higher orders, and EFT distortions become degenerate before the Standard Model transport story is established.
+Is the risk acceptable: yes, if it remains explicitly downstream.
+What de-risks it: keep SMEFT as one short future-facing paragraph plus a gate: no SMEFT claim until SM closure passes.
+
+5. What the proposer should do next
+
+- State the minimum publishable baseline much more sharply: one `ttbar` observable family, one or two ggF Higgs observables, sequential transport, Standard Model only.
+- Recast the first question as an identifiability problem, not a precision-improvement problem. The first deliverable is to show whether Higgs-relevant PDF directions are observable in `ttbar` after realistic nuisance competition.
+- Commit to one transferable object. If it is a physical PDF subspace, say so and build around that. If it is only an observable-space compression, then the proposal must weaken its transport claims.
+- Add a hard success/failure criterion for the baseline. Example: "the top-informed latent basis must reproduce at least a predefined fraction of Higgs PDF variance and remain stable under nuisance-model variations." Without such a criterion the plan stays rhetorical.
+- Trim the baseline observable menu. Too many listed observables currently obscure the logic. Pick the most perturbatively stable `ttbar` spectrum and one correlated Higgs shape pair, then justify any expansion later.
+- Demote jets further. Either remove them from the main narrative or say explicitly that they are a later optional branch and not evidence that the baseline is richer.
+- Clarify single-top's role as a stress test of portability rather than a core constraining input.
+- Keep SMEFT to a downstream proof-of-principle only. It is not yet staged convincingly enough to deserve more than a guarded future extension.
+
+Bottom line
+
+- The core idea is genuinely worth protecting, but the plan currently speaks as if the top-to-Higgs latent program is already structurally valid. It has not yet earned that. The next proposer step should narrow the baseline to the minimum demonstrator and make identifiability, not sprawl, the central research test.
