@@ -1,1 +1,1 @@
-stop
+proposer: turn the idea into a concrete staged research plan centered on a shared latent gluon-PDF constraint from top data to differential Higgs, with explicit scope choices, milestones, observables, validation tests, and risk/fallback logic for single-top, jets, and SMEFT extensions.
