@@ -1,321 +1,213 @@
 1. Core thesis
 
-- Main claim: build a CMS analysis and interpretation program in which top-quark data act as an in-situ control system for the gluon PDF, represented through a shared latent constraint, and propagate that constraint directly into differential Higgs measurements.
-- Scientific point: the novelty is not "better top" or "better Higgs" separately, but a common proton-structure layer inferred from one sector and consumed by another.
-- Concrete scope choice: the baseline program focuses on gluon-sensitive observables in top-pair production and gluon-fusion Higgs production. Single-top, inclusive jets, and SMEFT are staged extensions, not baseline requirements.
-- Deliverable: a validated workflow that takes measured top observables, infers a low-dimensional latent description of the gluon-PDF uncertainty relevant to CMS kinematics, and uses it to sharpen Higgs differential predictions and uncertainty decomposition.
+- Minimal publishable baseline: recast the program as an identifiability test, not a broad analysis platform.
+- Main question: can one carefully chosen `ttbar` observable family identify a low-dimensional, physically transferable gluon-PDF subspace that explains a measurable fraction of PDF-induced variance in one or two `ggF` Higgs observables?
+- Scientific claim to test: some Higgs PDF uncertainty is not generic "theory noise" but lives in a common proton-structure subspace that can be constrained in situ by top data.
+- Scope discipline:
+- One `ttbar` observable family only: baseline choice `m_tt` differential spectrum, optionally with a central/forward split through `|y_tt|`.
+- One or two `ggF` Higgs observables only: baseline choice `pT(H)` and, if needed for a second projection, `|y_H|`.
+- One transferable PDF subspace only: a rank-1 baseline, with rank-2 allowed only if rank-1 demonstrably fails but the second mode is interpretable.
+- No single-top, inclusive jets, or SMEFT in the baseline paper. They remain future branches motivated only after the identifiability test is answered.
 
-2. Scope and architectural choices
+2. Why this narrow core belongs together
 
-- Baseline physics scope
-- Use top-pair production as the primary constraint channel because it is directly gluon-dominated at the LHC and already has rich differential information.
-- Use differential Higgs observables in ggF as the primary target because they inherit gluon-PDF sensitivity in a way that is scientifically clean and immediately useful.
-- Restrict the first proposal stage to Standard Model QCD+EW theory systematics and PDF structure. Do not mix SMEFT into the baseline inference.
+- `ttbar` and `ggF` Higgs are both dominantly gluon initiated at the LHC, but probe different hard scales and final states. That is exactly why transfer is nontrivial and publishable.
+- `m_tt` is the cleanest single `ttbar` family for a first test because it has direct sensitivity to gluon luminosity across a controlled `x` range and a clear interpretation in terms of partonic kinematics.
+- `pT(H)` is the best primary Higgs target because it is experimentally relevant, theory-sensitive, and exposes whether the learned PDF direction transfers beyond inclusive rate information.
+- `|y_H|` is the natural optional second Higgs observable because it is more directly tied to parton-luminosity structure and can separate "transfer in normalization-like directions" from "transfer in radiation-sensitive shapes".
 
-- Why this scope belongs together
-- Top-pair and ggF Higgs probe overlapping x and Q2 regions but in different final states and scales; the shared latent layer is exactly the object that turns this overlap into a research program.
-- The program is differentiated from standard PDF profiling because it is detector-facing, analysis-integrated, and explicitly cross-channel rather than a generic global-fit exercise.
+3. Precise baseline hypothesis
 
-- What is deliberately out of baseline scope
-- Single-top enters only after the baseline latent-constraint machinery is stable.
-- Inclusive jets enter only as an optional high-leach, high-risk auxiliary channel.
-- SMEFT enters only after Standard Model closure tests show that the latent PDF layer is not absorbing obvious missing-physics effects.
+- Hypothesis H1: the PDF covariance of the chosen Higgs observable set contains a dominant component aligned with a transferable gluon-PDF subspace inferred from `ttbar`.
+- Null hypothesis H0: after realistic nuisance treatment, `ttbar` does not identify any subspace that robustly predicts Higgs PDF variation beyond weak or accidental correlations.
+- Publishable output either way:
+- Positive result: a concrete demonstration that CMS top data can constrain a physically meaningful part of Higgs PDF uncertainty.
+- Negative result: a sharp boundary on how much Higgs PDF variance is actually transferable from top once nuisance degeneracies are included.
 
-3. Central research questions
+4. Baseline observable design
 
-- RQ1: Can CMS top differential data be compressed into a low-dimensional latent constraint that captures the part of the gluon-PDF uncertainty relevant for Higgs observables?
-- RQ2: Does this shared latent constraint improve differential Higgs precision in a way that is robust across theory choices, unfolding choices, and observable bases?
-- RQ3: Which top observables carry the most transferable information to Higgs, and where does transfer fail because of phase-space or modeling mismatch?
-- RQ4: When do additional channels such as single-top and jets add genuine orthogonal information, and when do they mainly import modeling risk?
-- RQ5: Can the framework be extended to SMEFT without conflating proton-structure uncertainty with BSM shape effects?
+- `ttbar` control family
+- Primary observable: normalized and absolute `m_tt` spectrum.
+- Minimal variant set: inclusive `m_tt`; optional split into central and forward `|y_tt|` regions if needed to improve `x` localization without broadening the scope too much.
+- Reason for this choice: it isolates one coherent physics family instead of mixing many top observables with overlapping nuisance structure.
 
-4. Core thesis A: shared latent gluon-PDF constraint from top to Higgs
+- `ggF` Higgs target family
+- Primary target: differential `pT(H)`.
+- Secondary target only if justified: `|y_H|`.
+- Reason for this pairing:
+- `pT(H)` tests whether transfer survives in a practically important differential observable.
+- `|y_H|` tests a more luminosity-driven structure and helps diagnose whether failure in `pT(H)` comes from QCD-radiation modeling rather than absence of a shared PDF direction.
 
-- A1. Construct the latent representation
-- Define a low-dimensional latent basis for the gluon PDF uncertainty relevant to CMS kinematics. Practical options:
-- principal components of Hessian/replica PDF variations restricted to the x-Q2 region populated by top and Higgs observables,
-- an analysis-level nuisance basis obtained by response-matrix compression of PDF variations into observable space,
-- or a hybrid basis chosen to maximize transferability from top to Higgs.
-- Requirement: the latent basis must be interpretable enough to validate and small enough to profile in realistic fits.
+- Observable-count discipline
+- The baseline should remain publishable with `m_tt -> pT(H)` alone.
+- `|y_H|` enters only if it materially sharpens the identifiability argument.
 
-- A2. Learn the constraint from top data
-- Fit the latent parameters using top-pair observables measured by CMS.
-- Compare binned profiling and simulation-assisted unbinned likelihood/compression only if it clearly improves sensitivity; baseline deliverable should remain possible with standard binned measurements.
-- Separate statistical, detector, scale, and PDF-induced effects so the latent layer is not just soaking up generic mismodeling.
+5. Physical transferable PDF subspace
 
-- A3. Propagate to differential Higgs
-- Push the posterior or profiled latent parameters into Higgs differential predictions.
-- Quantify reduction in theory uncertainty, shifts in central values, and changes in correlation patterns across Higgs bins.
-- Measure the scientific payoff not only by smaller error bars, but by cleaner uncertainty attribution and stronger cross-channel consistency tests.
+- Parameterize the transferable uncertainty as a low-rank subspace in PDF-variation space projected onto the chosen observables.
+- Baseline construction:
+- Start from PDF replicas or Hessian eigenvector responses for `m_tt`, `pT(H)`, and optionally `|y_H|`.
+- Extract the leading common mode between `ttbar` and Higgs observable responses by SVD / canonical-correlation-style compression in observable space.
+- Require the mode to be physically interpretable as a gluon-luminosity direction over a defined `x-Q^2` support, not merely a numerical fit artifact.
 
-- A4. Establish closure and transportability
-- Verify that a latent basis fit on top observables reproduces independent gluon-sensitive theory variations in Higgs predictions.
-- Test whether transport works only for integrated rates or also for shape information at high pT and large invariant mass.
+- Rank choice
+- Rank-1 is the default and preferred publishable baseline.
+- Escalate to rank-2 only if:
+- rank-1 misses a large fraction of Higgs PDF variance,
+- and the second mode is stable across theory settings and not dominated by nuisance contamination.
 
-5. Subtasks for core thesis A
+- Why this is the right abstraction
+- It is smaller and more testable than a generic latent-space program.
+- It matches the professor's requirement to specify one physical transferable PDF subspace.
 
-- Theory and simulation layer
-- Produce top and Higgs predictions with consistent PDF sets, perturbative settings, and scale-variation bookkeeping.
-- Map each observable bin to effective x-Q2 support to justify why transfer is expected.
-- Build fast interpolation or reweighting infrastructure so latent-parameter scans are computationally feasible.
+6. Identifiability test
 
-- Observable design layer
-- Top baseline observables:
-- ttbar: m_tt, pT(t), y_tt, pT(tt), HT, and optionally double-differential bins such as m_tt vs y_tt or pT(t) vs y(t).
-- Prioritize observables with strong gluon leverage and manageable modeling systematics.
-- Higgs target observables:
-- pT(H), N_jets in ggF categories, y_H, pT(H)+jets, and high-pT tails where gluon-PDF uncertainty and top-induced transfer may matter most.
-- Keep the first target set small enough that covariance propagation is interpretable.
+- Core identifiability question:
+- Is the transferable PDF mode learnable from `ttbar` well enough that its posterior uncertainty materially contracts the same mode in Higgs predictions?
 
-- Statistical layer
-- Implement a joint likelihood or sequential profiling workflow with latent nuisance parameters shared across channels.
-- Compare two strategies:
-- sequential: constrain latent parameters with top, then propagate to Higgs;
-- simultaneous: build a combined likelihood with shared latent nuisances.
-- Baseline milestone should deliver the sequential version first because it is easier to validate and publish.
+- Operational test
+- Step A: build the candidate common mode from theory responses alone.
+- Step B: fit or profile that mode using `ttbar` pseudo-data and realistic nuisance parameters.
+- Step C: propagate the posterior on that mode into Higgs predictions.
+- Step D: measure how much Higgs PDF variance along the pre-identified common mode is captured and how robust that result is to nuisance freedom.
 
-- Validation layer
-- Closure on pseudo-data generated from held-out PDF replicas/eigenvectors.
-- Stress tests under scale variations, top-mass variations, shower/hadronization changes, and alternative unfolding choices.
-- Null tests with observables expected to have weak gluon sensitivity.
+- Identifiability criteria
+- Criterion 1: mode stability.
+- The extracted common mode should be stable under reasonable changes in perturbative settings, binning choices, and PDF set representation.
+- Criterion 2: `ttbar` learnability.
+- The posterior uncertainty of the mode from `ttbar` should shrink relative to the prior by a clearly nontrivial amount.
+- Criterion 3: Higgs relevance.
+- The mode should account for a significant fraction of the prior PDF variance in `pT(H)` and optionally `|y_H|`.
+- Criterion 4: nuisance robustness.
+- The apparent Higgs gain should survive profiling of main experimental/theory nuisance directions rather than disappearing once nuisance freedom is restored.
 
-6. Other core thesis B: identify the best top observables for transferable gluon information
+7. Explicit success and failure criteria
 
-- Purpose: avoid a diffuse "use all top data" program and instead produce a ranked, physics-driven basis of control observables.
-- B1. Sensitivity audit
-- For each candidate top observable, estimate sensitivity to latent gluon modes and nuisance degeneracies.
-- Rank observables by transfer value to Higgs, not just by standalone top precision.
-- B2. Redundancy audit
-- Quantify which observables are nearly redundant after accounting for covariance and acceptance effects.
-- Use this to define a compact top control set for the baseline proposal.
-- B3. Phase-space matching study
-- Identify where the top-constrained x-Q2 region overlaps Higgs and where extrapolation begins.
-- This gives a principled statement of where the method is solid and where it becomes exploratory.
+- Success criterion S1: captured Higgs variance.
+- Rank-1 mode captures at least `30-50%` of the prior PDF variance in at least one Higgs observable family over a defined bin range.
+- More ambitious success: rank-1 captures `>50%` for `|y_H|` and a nontrivial `>25-30%` for `pT(H)`.
+- If the exact percentage depends strongly on the chosen bins, the proposal should predefine a fiducial range and report integrated and bin-wise fractions.
 
-- Relation to thesis A
-- Thesis B makes thesis A operational: without observable ranking and phase-space matching, the shared latent idea stays too vague for a proposal.
+- Success criterion S2: posterior impact from `ttbar`.
+- `ttbar` constraint reduces the uncertainty of the transferable mode by enough to yield a visible Higgs uncertainty reduction, e.g. `>=10-20%` in the affected Higgs variance component or a statistically clear contraction in posterior predictive bands.
 
-7. Other core thesis C: channel extensions with explicit staging
+- Success criterion S3: nuisance robustness.
+- The transferred gain should remain after profiling major nuisance classes:
+- scale variations,
+- parton shower / hadronization model differences,
+- top-mass dependence if relevant,
+- detector/unfolding nuisance model for the `ttbar` input.
+- A practical threshold: at least half of the nominal Higgs-variance gain seen in the PDF-only closure test survives in the full nuisance model.
 
-- C1. Single-top extension
-- Motivation: single-top adds sensitivity to quark-gluon initial states and offers a handle on whether the latent gluon basis remains meaningful outside ttbar-dominated kinematics.
-- Proposed observables:
-- t-channel top pT and y, reconstructed m_tj or forward-jet observables, and inclusive/differential ST cross sections in phase space with controlled acceptance.
-- Scientific role:
-- not primarily to tighten the baseline gluon constraint,
-- but to test robustness of the latent transport picture and expose quark-gluon contamination or electroweak-modeling dependencies.
-- Entry condition:
-- only pursue after baseline top-to-Higgs closure is established.
+- Failure criterion F1: low Higgs alignment.
+- The leading common mode inferred from `ttbar` explains less than about `20%` of Higgs PDF variance across all reasonable observable choices.
+- Interpretation: the shared subspace is too weak for a useful baseline transfer claim.
 
-- C2. Inclusive jets extension
-- Motivation: jets can provide strong gluon leverage at overlapping and higher x, potentially strengthening the latent basis.
-- Proposed observables:
-- inclusive jet pT and rapidity spectra; optional dijet mass/chi distributions if theory/systematics are manageable.
-- Scope choice:
-- start with binned inclusive jets only; do not commit to unbinned jets in the proposal baseline.
-- Scientific role:
-- high-payoff auxiliary constraint channel if its theory covariance can be kept under control.
-- Entry condition:
-- require a demonstration that jet-scale and nonperturbative systematics do not dominate the latent fit.
+- Failure criterion F2: nuisance fragility.
+- The apparent common mode is present in PDF-only studies but collapses once theory/experimental nuisances are profiled.
+- Interpretation: the transfer is not identifiable in a realistic analysis environment.
 
-- C3. SMEFT extension
-- Motivation: once the Standard Model latent-PDF layer is established, ask whether one can disentangle proton-structure uncertainty from EFT-induced shape distortions in a joint interpretation.
-- Minimal extension:
-- introduce a small benchmark set of Wilson coefficients that affect top and Higgs differential spectra in correlated ways.
-- Keep the first SMEFT study to a proof-of-principle with pseudo-data or simplified likelihoods.
-- Scientific role:
-- makes the program more original and future-facing, but must remain visibly downstream of the Standard Model validation.
+- Failure criterion F3: unstable mode definition.
+- The rank-1 mode changes qualitatively with minor theory/basis choices.
+- Interpretation: the proposal has not isolated a physical transferable direction.
 
-8. Concrete synergy items
+- Why failure is still informative
+- It would set a concrete limit on cross-process PDF transferability and show that broader "top constrains Higgs PDFs" claims need stronger channels or better theory control.
 
-- Shared nuisance geometry
-- build one latent nuisance basis used in both top and Higgs fits.
-- Outcome: direct propagation of constrained uncertainty rather than ad hoc post-processing.
+8. Staged execution plan
 
-- Common observable map
-- produce an x-Q2 overlap atlas showing which top bins constrain which Higgs bins.
-- Outcome: a concrete visual and quantitative justification of the program.
+- Stage 0: scope freeze and kinematic justification
+- Fix the baseline to `m_tt -> pT(H)` with optional `|y_H|`.
+- Produce an `x-Q^2` overlap map for the chosen bins.
+- Decide whether a central/forward `|y_tt|` split is necessary.
+- Deliverable: a one-page baseline definition with observables, bin ranges, perturbative settings, and PDF inputs.
+- Main risk: the chosen `m_tt` bins overlap poorly with the Higgs target region.
+- Why acceptable: this is quick to test and may itself motivate the rapidity split.
+- Fallback: keep the same `ttbar` family but add the minimal `|y_tt|` split rather than adding new observables.
 
-- Channel-ranking logic
-- decide whether single-top and jets are worth inclusion based on incremental information gain per added modeling risk.
-- Outcome: a proposal that looks disciplined rather than additive.
+- Stage 1: construct the transferable PDF mode
+- Compute response vectors of the selected observables to PDF variations.
+- Extract the leading common mode and quantify how much Higgs variance it spans before any fit.
+- Deliverable: one explicit candidate transferable mode with a variance-capture table.
+- Main risk: the common structure is spread over many weak directions.
+- Why acceptable: it directly tests whether the latent-space idea is overclaimed.
+- Fallback: allow rank-2, but only if both modes remain interpretable and the analysis still reads as a minimal identifiability test.
 
-- Combined publication path
-- one methodological paper on latent PDF transfer,
-- one CMS-facing analysis note or public-analysis style demonstration,
-- optional third interpretation paper on SMEFT disentangling once baseline closure is proven.
+- Stage 2: `ttbar`-only inference
+- Build a likelihood for the `m_tt` family with the transferable mode and a controlled nuisance model.
+- Perform closure tests on pseudo-data generated from held-out PDF members / replicas.
+- Deliverable: posterior on the transferable mode and a learnability metric.
+- Main risk: `m_tt` sensitivity is swamped by scale or shower nuisance directions.
+- Why acceptable: that is exactly the identifiability barrier the paper should measure.
+- Fallback: restrict to the most stable `m_tt` bins and report the result as a phase-space-limited identifiability study.
 
-9. Staged execution plan and milestones
+- Stage 3: propagate to Higgs and evaluate captured variance
+- Propagate the fitted mode posterior into `pT(H)` and optionally `|y_H|`.
+- Quantify:
+- fraction of Higgs PDF variance aligned with the transferable mode,
+- posterior reduction of that aligned variance,
+- total Higgs uncertainty reduction if reported.
+- Deliverable: the central identifiability result with explicit success/failure verdict.
+- Main risk: the mode is real but too weak to produce visible Higgs improvement.
+- Why acceptable: the paper still establishes a measurable upper bound on transferable information.
+- Fallback: emphasize mode-alignment and posterior-predictive consistency rather than raw uncertainty reduction.
 
-- Stage 0: problem definition and scope freeze
-- Deliverables:
-- final baseline channels: ttbar -> differential Higgs(ggF),
-- candidate extension channels: single-top, inclusive jets,
-- baseline observable shortlist and theory setup.
-- Validation:
-- confirm overlapping x-Q2 coverage exists and is nontrivial.
-- Risk:
-- overlap may be weaker than expected for chosen observables.
-- Why acceptable:
-- even a limited overlap would clarify where transfer can and cannot work.
-- Fallback:
-- shift target Higgs observable set toward bins with stronger overlap, especially moderate pT(H) rather than only extreme tails.
+- Stage 4: robustness audit
+- Repeat the propagation with expanded nuisance treatments and minor theory variations.
+- Deliverable: a nuisance-robustness table stating what fraction of the nominal gain survives.
+- Main risk: robustness checks erase the effect.
+- Why acceptable: that would be the scientifically honest endpoint of the baseline study.
+- Fallback: publish as a "limits of transferability" result with recommendations for what extra theory control or observables would be required.
 
-- Stage 1: latent basis construction
-- Deliverables:
-- explicit latent parametrization,
-- dimensionality choice,
-- mapping from PDF variations to latent modes and to observable shifts.
-- Validation:
-- reconstruction test: a small number of latent modes must reproduce full PDF variation envelopes for the target observables within a predefined tolerance.
-- Risk:
-- the PDF dependence may not compress well into a low-dimensional basis.
-- Why acceptable:
-- this would itself be a useful negative result about the complexity of cross-channel transfer.
-- Fallback:
-- use a slightly larger but still structured nuisance basis, or split the basis by kinematic region.
+9. Validation logic
 
-- Stage 2: top-only constraint study
-- Deliverables:
-- top likelihood/profiling framework,
-- ranking of top observables,
-- posterior on latent modes from pseudo-data and, if feasible, real measurement inputs.
-- Validation:
-- closure on pseudo-data from held-out replicas,
-- nuisance pull studies,
-- sensitivity-to-binning tests.
-- Risk:
-- top observables may be more sensitive to scales/shower modeling than to the latent gluon modes.
-- Why acceptable:
-- it exposes where theory improvement is required before transfer claims are credible.
-- Fallback:
-- restrict to the most perturbatively stable observables or profile additional theory nuisances explicitly.
+- PDF-only closure
+- Generate pseudo-data from held-out PDF members.
+- Check whether the transferable mode recovered from `ttbar` predicts the held-out Higgs shift.
 
-- Stage 3: propagation to Higgs
-- Deliverables:
-- propagated covariance/posterior for differential Higgs observables,
-- uncertainty-reduction and correlation-change metrics,
-- comparison of sequential versus simultaneous fit strategies.
-- Validation:
-- verify that posterior predictive intervals on Higgs close on pseudo-data generated from unseen PDF members.
-- Risk:
-- top constraints may not materially improve Higgs once realistic systematics are included.
-- Why acceptable:
-- the program still yields a sharp statement about transfer limits and where future data/theory effort should go.
-- Fallback:
-- redefine success to include improved uncertainty decomposition, cross-channel consistency diagnostics, or targeted gains in specific Higgs bins.
+- Nuisance-augmented closure
+- Inject simultaneous PDF and nuisance shifts.
+- Check whether the fitted transferable mode remains unbiased and whether the Higgs posterior remains calibrated.
 
-- Stage 4: robustness extensions
-- Deliverables:
-- controlled tests adding single-top and then inclusive jets,
-- incremental information-gain analysis,
-- recommendation on whether either channel belongs in the mature program.
-- Validation:
-- compare latent posterior shifts and predictive gains against added nuisance complexity.
-- Risk:
-- extra channels add more modeling noise than information.
-- Why acceptable:
-- this is exactly the decision the staged design is meant to expose.
-- Fallback:
-- keep them as robustness-only side studies rather than core ingredients.
+- Basis stability checks
+- Compare rank-1 mode extraction across:
+- Hessian vs replica representation if available,
+- modest theory-scale choices,
+- binning coarseness variations.
+- The mode need not be numerically identical, but its Higgs variance-capture and physical interpretation should remain stable.
 
-- Stage 5: SMEFT proof-of-principle
-- Deliverables:
-- benchmark joint PDF+SMEFT inference study,
-- diagnosis of degeneracies between latent proton-structure modes and EFT coefficients.
-- Validation:
-- injected-signal tests with pseudo-data,
-- bias tests on Wilson-coefficient recovery with and without shared latent PDF control.
-- Risk:
-- EFT effects may be too degenerate with PDF/missing-higher-order effects for a clean first result.
-- Why acceptable:
-- identifying those degeneracies is itself scientifically useful and directly motivates future measurements.
-- Fallback:
-- narrow to one or two benchmark operators and one observable family, or publish as a methodological cautionary study.
+- Null checks
+- Test an intentionally weakly aligned observable or bin subset.
+- Confirm that the method does not claim spurious transfer where none should exist.
 
-10. Key observables and milestone-level metrics
+10. Key dependencies
 
-- Top observables for baseline milestone
-- m_tt differential spectrum
-- pT(top) differential spectrum
-- y_tt or y(top) to separate central from forward x-coverage
-- optional double-differential m_tt vs y_tt if covariance and theory are under control
+- Theory predictions for `ttbar` and `ggF` Higgs with consistent PDF variations and nuisance bookkeeping.
+- A fast response infrastructure for projecting PDF variations into observable space.
+- Access to realistic covariance / nuisance models for the chosen `ttbar` measurement family and Higgs prediction setup.
+- A disciplined definition of the fiducial Higgs bin range; otherwise variance-capture claims will be too easy to game.
 
-- Higgs observables for baseline milestone
-- pT(H) in ggF-enhanced categories
-- y_H differential spectrum
-- N_jets and pT(H)+1j only if needed to expose transfer in radiation-sensitive regions
+11. Risk assessment and fallback summary
 
-- Single-top extension observables
-- t-channel top pT/y
-- forward light-jet rapidity
-- ST differential bins with strong acceptance control
+- Risk: no dominant transferable subspace exists.
+- Why acceptable: disproving the existence of a simple shared mode is already a publishable clarification.
+- Fallback: report a quantitative upper bound on low-rank transferability and motivate why broader channels would be needed.
 
-- Jet extension observables
-- inclusive jet pT in rapidity bins
-- optional dijet mass only if the theory covariance model is already credible
+- Risk: one common mode exists in theory but is not identifiable after nuisances.
+- Why acceptable: this distinguishes correlation from useful constraint, which is a strong scientific message.
+- Fallback: narrow the claim to PDF-only geometry plus an explicit statement that realistic nuisance control is the bottleneck.
 
-- SMEFT benchmark observables
-- high-pT Higgs tail
-- high-m_tt or boosted-top tails
-- one correlated top-Higgs shape pair for demonstrator fits
+- Risk: `pT(H)` is too contaminated by radiation-model dependence to serve as the cleanest first target.
+- Why acceptable: this is why `|y_H|` is retained as the only optional second Higgs observable.
+- Fallback: keep `m_tt -> |y_H|` as the strictest first publishable baseline, and frame `pT(H)` as the harder follow-up.
 
-- Metrics for success
-- compression fidelity of the latent basis
-- posterior reduction in Higgs PDF uncertainty
-- stability of gains under alternative theory nuisance models
-- coverage/closure on held-out pseudo-data
-- information gain from each extension channel relative to added nuisance dimension
+- Risk: the proposal quietly expands again.
+- Why acceptable: not acceptable for this run.
+- Mitigation: the written baseline forbids adding single-top, jets, or SMEFT until the identifiability test has a clear answer.
 
-11. Validation tests
+12. Follow-up directions only if baseline succeeds
 
-- Pseudo-data closure
-- generate pseudo-data from PDF replicas/eigenvectors not used to define the latent basis and verify unbiased recovery.
-
-- Alternative generator/theory closure
-- repeat core tests with alternative perturbative orders, scale choices, shower models, and heavy-quark settings where feasible.
-
-- Observable-basis stability
-- confirm that the inferred Higgs gain is not an artifact of one special top binning or one compressed variable set.
-
-- Leave-one-observable-out tests
-- remove one major top observable family at a time to identify whether the result is robust or driven by one fragile handle.
-
-- Null transfer tests
-- apply the learned latent constraint to observables with weak expected sensitivity to ensure the machinery is not manufacturing false precision.
-
-- SMEFT bias tests
-- inject EFT distortions and test whether the Standard Model latent fit misattributes them to proton structure; use this as the gatekeeper for any EFT claim.
-
-12. Risk assessment and fallback logic
-
-- Risk: latent basis is elegant but not sufficiently physical or portable
-- Acceptable because the project would still produce a rigorous comparison between low-rank and full-nuisance treatments.
-- Fallback: move to a semi-physical basis split by x/Q2 region or observable family.
-
-- Risk: ttbar theory systematics dominate and wash out gluon information
-- Acceptable because it pinpoints exactly what theory improvements or observable redesign are needed.
-- Fallback: focus on perturbatively stable top observables and/or use normalized shapes where appropriate.
-
-- Risk: Higgs gain is small once all uncertainties are included
-- Acceptable because the cross-channel consistency map remains publishable and useful for future HL-LHC strategy.
-- Fallback: sell the framework as uncertainty reallocation/consistency control rather than only precision gain.
-
-- Risk: single-top adds electroweak and flavor-structure complications with limited gluon payoff
-- Acceptable because it is explicitly a stage-4 extension, not a baseline dependency.
-- Fallback: keep single-top as a stress test of transportability rather than a constraining input.
-
-- Risk: inclusive jets offer strong nominal information but are hard to control theoretically and experimentally
-- Acceptable because jets are the clearest high-risk, high-reward branch.
-- Fallback: use jets only in restricted kinematic regions or omit them from the final combined constraint.
-
-- Risk: SMEFT degeneracy makes the interpretation ambiguous
-- Acceptable because exposing ambiguity is valuable and avoids overclaiming.
-- Fallback: limit SMEFT to benchmark operators and pseudo-data studies until Standard Model control is demonstrably solid.
-
-13. What makes the plan sparkling rather than generic
-
-- It proposes a shared latent object, not just two neighboring measurements.
-- It is staged so that ambitious branches are earned through validation rather than assumed.
-- It is honest about where transfer should work, where extrapolation begins, and how failure would still teach something publishable.
-- It creates a direct bridge from a top control program to a Higgs payoff, with visible decision points for single-top, jets, and SMEFT rather than bolting them on.
+- Add a second `ttbar` family only if it increases captured Higgs variance in a demonstrably orthogonal way.
+- Test whether a rank-2 subspace is physically meaningful rather than merely numerically better.
+- Only then consider single-top or inclusive jets as stress tests of transferability, not as default ingredients.
+- SMEFT belongs strictly after Standard Model identifiability is established; otherwise the program will conflate proton-structure and BSM effects too early.
