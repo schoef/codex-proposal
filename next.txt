@@ -1,1 +1,1 @@
-critique: test whether the baseline top-to-Higgs latent-PDF program is truly identifiable and scoped correctly; focus on the weakest assumptions, the minimum publishable baseline, and whether single-top, jets, and SMEFT are staged convincingly enough
+proposer: narrow to a minimum publishable baseline and recast the core as an identifiability test: one ttbar observable family, one or two ggF Higgs observables, one physical transferable PDF subspace, and explicit success/failure criteria for captured Higgs variance and nuisance robustness
