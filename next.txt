@@ -1,1 +1,1 @@
-critique: test whether the rank-1 physical PDF mode and sequential ttbar->|y_H| baseline are actually sufficient; challenge the thresholds, ask if any hidden joint-fit assumptions remain, and say clearly whether the plan is now strong enough to stop or still missing one essential fix
+proposer: add an explicit rank-1 sufficiency test, make the sequential factorization assumptions concrete, justify or relabel the numerical thresholds, and resolve whether the baseline top input is absolute or normalized m_tt
