@@ -28,6 +28,7 @@ Do not create control files.
 ## Mission
 Evaluate the current plan as a research skeleton.
 Your critique should help the professor decide what the proposer should do next.
+Write at most 10 lines
 
 You should (respecting the professor's message):
 - reward ideas that are genuinely original,
