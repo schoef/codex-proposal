@@ -3,7 +3,6 @@ from __future__ import annotations
 
 import argparse
 import hashlib
-import os
 import subprocess
 import sys
 from pathlib import Path
@@ -28,21 +27,26 @@ class AirError(RuntimeError):
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Adversarial Idea Roll-out (AIR): professor-controlled proposer/critique loop."
+        description=(
+            "AIR: professor-controlled proposer/critique loop. "
+            "The professor session is resumed on every professor turn; if your Codex CLI "
+            "supports named session creation through 'resume', the first professor turn "
+            "will create it automatically."
+        )
     )
     parser.add_argument(
         "professor_session",
-        help="Session name or ID for the persistent professor Codex run.",
+        help="Professor session name/ID to use with 'codex exec ... resume <session>'.",
     )
     parser.add_argument(
         "--workdir",
         default=".",
-        help="Repository / working directory containing idea.txt and the AIR prompt files.",
+        help="Working directory containing idea.txt, the role .md files, and the AIR outputs.",
     )
     parser.add_argument(
         "--initial",
         default="",
-        help="Optional operator note appended only to the first professor call.",
+        help="Optional operator note appended only to the first professor turn.",
     )
     parser.add_argument(
         "--max-rounds",
@@ -55,16 +59,20 @@ def parse_args() -> argparse.Namespace:
         default="codex",
         help="Codex executable to use. Default: codex.",
     )
-    parser.add_argument(
-        "--git-snapshots",
-        action="store_true",
-        help="After each proposer/critique turn, create a git snapshot commit if possible.",
-    )
     return parser.parse_args()
+
+
+def log(message: str) -> None:
+    print(f"[AIR] {message}", flush=True)
 
 
 def read_text(path: Path) -> str:
     return path.read_text(encoding="utf-8")
+
+
+def require_file(path: Path, description: str) -> None:
+    if not path.exists():
+        raise AirError(f"Missing required {description}: {path}")
 
 
 def sha256_of_file(path: Path) -> Optional[str]:
@@ -73,8 +81,13 @@ def sha256_of_file(path: Path) -> Optional[str]:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def log(message: str) -> None:
-    print(f"[AIR] {message}", flush=True)
+def shlex_quote(text: str) -> str:
+    if text == "":
+        return "''"
+    safe = set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._/=:")
+    if all(ch in safe for ch in text):
+        return text
+    return "'" + text.replace("'", "'\\''") + "'"
 
 
 def build_role_prompt(role_file: Path, run_message: Optional[str] = None) -> str:
@@ -82,9 +95,9 @@ def build_role_prompt(role_file: Path, run_message: Optional[str] = None) -> str
     if run_message:
         return (
             f"{base}\n\n"
-            f"## Run-specific message\n"
+            "## Run-specific message\n"
             f"{run_message.strip()}\n\n"
-            f"Act now inside the current repository and then stop."
+            "Act now inside the current repository and then stop."
         )
     return base
 
@@ -103,20 +116,6 @@ def run_codex(
     result = subprocess.run(cmd, cwd=str(workdir))
     if result.returncode != 0:
         raise AirError(f"Codex exited with code {result.returncode}.")
-
-
-def shlex_quote(text: str) -> str:
-    if text == "":
-        return "''"
-    safe = set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._/=:")
-    if all(ch in safe for ch in text):
-        return text
-    return "'" + text.replace("'", "'\\''") + "'"
-
-
-def require_file(path: Path, description: str) -> None:
-    if not path.exists():
-        raise AirError(f"Missing required {description}: {path}")
 
 
 def parse_next(next_path: Path) -> Tuple[str, str]:
@@ -146,46 +145,44 @@ def parse_next(next_path: Path) -> Tuple[str, str]:
     )
 
 
-def maybe_git_snapshot(workdir: Path, turn_idx: int, role: str) -> None:
-    def git_ok(*args: str) -> bool:
-        result = subprocess.run(
-            ["git", *args],
-            cwd=str(workdir),
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL,
-        )
-        return result.returncode == 0
+def ensure_git_repo(workdir: Path) -> None:
+    result = subprocess.run(
+        ["git", "rev-parse", "--is-inside-work-tree"],
+        cwd=str(workdir),
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+    )
+    if result.returncode != 0 or result.stdout.strip() != "true":
+        raise AirError(f"AIR requires a git repository in workdir: {workdir}")
 
-    if not git_ok("rev-parse", "--is-inside-work-tree"):
-        log("git snapshot skipped: not inside a git repository.")
-        return
 
+def git_commit_and_push(workdir: Path, *, step_label: str) -> None:
     tracked_paths = [
-        name for name in ("idea.txt", "plan.txt", "critique.txt") if (workdir / name).exists()
+        name
+        for name in ("idea.txt", "plan.txt", "critique.txt", "next.txt")
+        if (workdir / name).exists()
     ]
-    if not tracked_paths:
-        log("git snapshot skipped: no AIR files available to snapshot.")
-        return
 
-    subprocess.run(["git", "add", "--", *tracked_paths], cwd=str(workdir), check=False)
+    if tracked_paths:
+        add_result = subprocess.run(["git", "add", "--", *tracked_paths], cwd=str(workdir))
+        if add_result.returncode != 0:
+            raise AirError(f"git add failed during {step_label}.")
 
-    diff_index = subprocess.run(
-        ["git", "diff", "--cached", "--quiet"],
+    commit_message = f"AIR: {step_label}"
+    commit_result = subprocess.run(
+        ["git", "commit", "--allow-empty", "-m", commit_message],
         cwd=str(workdir),
     )
-    if diff_index.returncode == 0:
-        log("git snapshot skipped: no staged changes.")
-        return
-    if diff_index.returncode not in (0, 1):
-        log("git snapshot skipped: unable to inspect staged diff.")
-        return
+    if commit_result.returncode != 0:
+        raise AirError(f"git commit failed during {step_label}.")
+    log(f"git commit created: {commit_message}")
 
-    message = f"AIR turn {turn_idx:03d} {role}"
-    commit = subprocess.run(["git", "commit", "-m", message], cwd=str(workdir))
-    if commit.returncode != 0:
-        log("git snapshot failed; continuing without aborting.")
+    push_result = subprocess.run(["git", "push"], cwd=str(workdir))
+    if push_result.returncode != 0:
+        log("git push failed; ignoring and continuing.")
     else:
-        log(f"git snapshot created: {message}")
+        log("git push succeeded.")
 
 
 def main() -> int:
@@ -205,12 +202,14 @@ def main() -> int:
     require_file(proposer_md, "proposer.md")
     require_file(critique_md, "critique.md")
     require_file(professor_md, "professor.md")
+    ensure_git_repo(workdir)
 
-    turn_idx = 0
+    professor_turn_idx = 0
+    actor_turn_idx = 0
     first_professor_turn = True
 
     while True:
-        if turn_idx >= args.max_rounds:
+        if actor_turn_idx >= args.max_rounds:
             raise AirError(
                 f"Aborting after {args.max_rounds} proposer/critique turns without receiving stop."
             )
@@ -219,14 +218,15 @@ def main() -> int:
             next_path.unlink()
 
         professor_message = (
-            "Run AIR as the professor. Read idea.txt, plan.txt if present, and critique.txt if present. "
+            "Read idea.txt, plan.txt if present, and critique.txt if present. "
             "Then write next.txt in the strict required format."
         )
         if first_professor_turn and args.initial.strip():
             professor_message += f" Operator note for the first turn only: {args.initial.strip()}"
         first_professor_turn = False
 
-        log("professor turn")
+        professor_turn_idx += 1
+        log(f"professor turn {professor_turn_idx:03d} using session {args.professor_session}")
         run_codex(
             codex_bin=args.codex_bin,
             prompt=build_role_prompt(professor_md, professor_message),
@@ -234,18 +234,22 @@ def main() -> int:
             session=args.professor_session,
         )
 
+        if not next_path.exists():
+            raise AirError("Professor finished but did not create next.txt.")
+        git_commit_and_push(workdir, step_label=f"professor step {professor_turn_idx:03d}")
+
         actor, message = parse_next(next_path)
         if actor == "stop":
-            log("professor wrote stop. AIR completed.")
+            log("Professor wrote stop. AIR completed.")
             return 0
 
-        turn_idx += 1
+        actor_turn_idx += 1
         output_name = OUTPUT_FILES[actor]
         output_path = workdir / output_name
         before_hash = sha256_of_file(output_path)
 
         role_md = proposer_md if actor == "proposer" else critique_md
-        log(f"turn {turn_idx:03d}: {actor}")
+        log(f"{actor} turn {actor_turn_idx:03d}")
         run_codex(
             codex_bin=args.codex_bin,
             prompt=build_role_prompt(role_md, message),
@@ -260,8 +264,7 @@ def main() -> int:
             raise AirError(f"{actor} finished but did not materially change {output_name}.")
 
         log(f"{actor} updated {output_name}.")
-        if args.git_snapshots:
-            maybe_git_snapshot(workdir, turn_idx, actor)
+        git_commit_and_push(workdir, step_label=f"{actor} step {actor_turn_idx:03d}")
 
 
 if __name__ == "__main__":
