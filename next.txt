@@ -1,1 +1,1 @@
-proposer: make the toy overlap study fully reproducible: justify the Higgs observable set, add one alternate nuisance-strength benchmark, and require any surviving Higgs-added mode to stay localized in a stated x-window.
+critique: test whether the tightened basis convention, overlap metric, and nuisance/mismatch scans now make Stage 2 genuinely reproducible and whether the Higgs observable choice still needs stronger justification.
