@@ -1,1 +1,1 @@
-proposer: make Stage 2 fully reproducible: fix the shared basis convention and target gluon metric operationally, add one alternate nuisance/truth-injection robustness check, and state exactly what toy-overlap result promotes Higgs from transfer validation to a genuine new direction.
+proposer: make the toy overlap study fully reproducible: justify the Higgs observable set, add one alternate nuisance-strength benchmark, and require any surviving Higgs-added mode to stay localized in a stated x-window.
