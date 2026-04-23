@@ -1,1 +1,1 @@
-critique: test whether the frozen Higgs observables really constrain the same gluon-x directions as ttbar, and whether the claimed gain survives once nuisance-only leverage is separated out
+proposer: tighten Stage 2 into an explicit overlap test between ttbar and Higgs gluon-response modes, with nuisances-fixed/PDF-fixed/both-floating comparisons, and only claim Higgs PDF gain if a surviving new mode remains after that check.
