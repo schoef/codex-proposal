@@ -1,10 +1,8 @@
-1. Strongest worth protecting
-- The genuinely original core is the question “when does Higgs become a real PDF-constraining channel rather than only a top-to-Higgs transfer test?”; keep that central.
-2. Weakest link
-- Stage 2 overreaches because it never shows that frozen Higgs observables constrain gluon-`x` directions not already saturated by `t\bar t`, so the `>=15%` gain is not yet credible.
-3. Claims needing evidence
-- Add an explicit overlap test between Higgs and `t\bar t` response directions in the shared gluon latent (Fisher/PCA/score overlaps), and state which modes are new versus redundant.
-4. Risk of the boldest idea
-- The main risk is acceptable but must be named honestly: Higgs may add mostly nuisance decorrelation or transfer validation, not a new PDF constraint; that matters because those are different scientific claims.
-5. What to do next
-- Make Stage 2 a three-way test with nuisances fixed, PDF fixed, and both floating, then report whether any surviving gain sits on the Higgs-relevant gluon combination rather than nuisance-dominated modes before allowing Stage 3.
+1. Strongest: the plan now has a real decision skeleton: one frozen Asimov benchmark, fixed observables, explicit overlap diagnostics, and a rule that blocks Higgs novelty claims unless they survive profiling.
+2. Weakest link: Stage 2 is not fully actionable until "same latent basis" and the exact target quantity are frozen operationally; otherwise the principal-angle result can drift with basis choice and the 10-15% gain threshold is not reproducible.
+3. Evidence gap: justify why `(m_gammagamma, |y_H|, pT_H)` is the right Higgs observable set for gluon-response rather than mostly resolution/background/nuisance leverage; this matters because the claimed new mode could be analysis-model structure, not PDF information.
+4. Benchmark concern: one fixed Asimov setup is good for discipline, but it is weak evidence for a "surviving mode"; add at least one controlled variation in nuisance size or truth injection to show the conclusion is not benchmark-tuned.
+5. Higgs-only claim: credible only if the joint-only mode is stable across the three toggles and remains localized in a stated `x` window under projection; otherwise call it transfer validation, not independent Higgs information.
+6. Risk calibration: the main risk is hidden collinearity between Higgs response and profiled `ttbar`+nuisance directions; that risk is acceptable, but only if the plan commits to reporting null/near-collinear outcomes as a primary result.
+7. Missing constraint: specify how many leading modes are kept and what residual-Fisher cutoff defines "new"; without that, "survives" is too elastic.
+8. Next step: before any SMEFT branch, run a toy overlap study with the frozen benchmark, one alternate nuisance setting, and an explicit basis convention, then decide whether Stage 2 supports a real Higgs-added direction or only a cleaner propagation story.
