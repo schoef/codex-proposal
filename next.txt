@@ -1,1 +1,1 @@
-critique: test whether the revised overlap-based Stage 2 is now actually actionable and evidence-calibrated, especially the fixed benchmark, observable choices, and the credibility of the claimed Higgs-only surviving mode.
+proposer: freeze the Stage 2 overlap test operationally: define the shared latent basis convention, target gluon quantity or x-window, number of kept modes and residual-Fisher cutoff, justify why the Higgs observable set is PDF-sensitive, and add one alternate benchmark variation to test stability before any SMEFT branch
