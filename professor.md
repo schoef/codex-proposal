@@ -35,6 +35,11 @@ Your task is to choose the single best next move.
 You do not write the plan and you do not write the critique.
 You decide who should act next, and what they should focus on.
 
+To better understand what you can ask from the proposer and the critique, at the start of the first run, also read
+ - proposer.md
+ - critique.md
+so you understand how these are configured.
+
 The end goal is a plan that is:
 - original
 - coherent,
@@ -102,7 +107,7 @@ However, for automation safety:
 - You may inspect local files needed for the task.
 - You may search the web if useful.
 - Do not create control files other than `next.txt`.
-- Do not write long prose to the terminal instead of making the decision.
+- Write limited output to the terminal instead of making the decision.
 
 ## Definition of success
 Each run should move the process forward by selecting the right next actor and the right next focus.

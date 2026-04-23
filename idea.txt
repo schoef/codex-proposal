@@ -1,4 +1,5 @@
 The vague idea to roll out is the following:
+We use unbinned techniques for simulation based inference. 
 
 Build a CMS research programme in which top-quark data are used as the in-situ control system for the gluon PDF, and this information is then propagated directly into a differential Higgs measurement. The core ambition is not just to make a better top measurement and not just to make a better Higgs measurement, but to connect the two through a common latent description of proton structure.
 

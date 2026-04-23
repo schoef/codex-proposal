@@ -26,7 +26,7 @@ Do not write `next.txt`.
 Do not create control files.
 
 ## Mission
-If empty beforehand, develop `idea.txt` into a research plan.
+If empty beforehand, develop `idea.txt` into a research plan. It need not be complete the first time.
 If not (you'll be called recursively), and taking into account the professor's prompt, write at most 10 lines:
 - add a "sparkling" idea to the plan. In doing so, take your time.
 - Make it concrete,
