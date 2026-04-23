@@ -1,1 +1,1 @@
-critique: check whether the new numerical conventions and Higgs ablation logic are now sufficient and identify the single highest-value remaining gap before stopping
+proposer: define one pre-registered ggH-motivated gluon functional and use it as the sole gain metric across Stage 1, Higgs ablations, and robustness tests; add nothing else.
