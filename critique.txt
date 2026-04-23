@@ -1,8 +1,10 @@
-1. Strongest to protect: the scope is now disciplined; `|y_H|` as the default Higgs handle and SMEFT as conditional avoids decorative sprawl.
-2. Weakest link: the “information over binned baseline” claim is not yet genuinely actionable because the comparator is only sketched; you need a fixed event budget, bin edges, nuisance set, and a predeclared metric (expected posterior width or Asimov KL/Fisher), otherwise any gain can look engineered.
-3. Why this matters: without a frozen comparator protocol, Stage 2 can claim unbinned advantage simply by comparing to an artificially weak histogram baseline rather than testing whether detector-level learning preserves real information.
-4. Stage 2 realism is still under-specified: “detector realism and sideband-constrained backgrounds” must name the actual background model, control parameters, and whether closure is tested with mismodeling in resolution, acceptance, and continuum `gamma gamma` shape; otherwise Higgs-only increment tests are not credible.
-5. Main Stage-2 risk: Higgs information is swamped by background/modeling systematics; acceptable only if the plan says that a null result is publishable and limits the core claim to a calibrated non-gain.
-6. The Stage-3 promotion rule is directionally good but too soft; require both a quantitative gain threshold and robustness under detector/theory stress tests, or Higgs will be promoted on a fragile central-value improvement.
-7. Evidence needed: show that `|y_H|` and low-recoil `pT_H` map onto the same gluon-`x` directions constrained by `t tbar`, rather than adding mostly orthogonal theory nuisances.
-8. Better next move: define one frozen Asimov-style benchmark with explicit observables, binning, nuisances, and background parametrization, then state exactly what closure/stress-test failures block Stage 3.
+1. Strongest worth protecting
+- The genuinely original core is the question “when does Higgs become a real PDF-constraining channel rather than only a top-to-Higgs transfer test?”; keep that central.
+2. Weakest link
+- Stage 2 overreaches because it never shows that frozen Higgs observables constrain gluon-`x` directions not already saturated by `t\bar t`, so the `>=15%` gain is not yet credible.
+3. Claims needing evidence
+- Add an explicit overlap test between Higgs and `t\bar t` response directions in the shared gluon latent (Fisher/PCA/score overlaps), and state which modes are new versus redundant.
+4. Risk of the boldest idea
+- The main risk is acceptable but must be named honestly: Higgs may add mostly nuisance decorrelation or transfer validation, not a new PDF constraint; that matters because those are different scientific claims.
+5. What to do next
+- Make Stage 2 a three-way test with nuisances fixed, PDF fixed, and both floating, then report whether any surviving gain sits on the Higgs-relevant gluon combination rather than nuisance-dominated modes before allowing Stage 3.
