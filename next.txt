@@ -1,1 +1,1 @@
-critique: test whether the tightened basis convention, overlap metric, and nuisance/mismatch scans now make Stage 2 genuinely reproducible and whether the Higgs observable choice still needs stronger justification.
+proposer: add a Stage 2 numerical-conventions block and an explicit Higgs ablation (|y_H| only, then add pT_H) to show whether pT_H adds genuine gluon-overlap information under full profiling.
