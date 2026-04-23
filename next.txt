@@ -1,1 +1,1 @@
-proposer: narrow the plan to the minimal Higgs observable set that truly adds PDF information, define the explicit low-dimensional binned comparator, and make SMEFT conditional on a clear Stage-3 success decision rule.
+critique: test whether the tightened minimal Higgs program is now genuinely actionable, especially the information argument over the binned baseline and the detector/background realism needed for Stage 2 and the Stage-3 promotion rule
