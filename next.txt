@@ -1,1 +1,1 @@
-proposer: turn the idea into a concrete staged research plan centered on an in-situ top-plus-ggH fit, specifying which observables stay unbinned, what minimal process set to include, and explicit risk/fallback logic for each stage
+critique: test whether the minimal process set and unbinned observable choices are really justified, and whether the SMEFT branch is necessary now or should be deferred to keep the proposal sharp
