@@ -1,7 +1,12 @@
 The vague idea to roll out is the following:
-We use unbinned techniques for simulation based inference. 
+We use unbinned techniques for simulation based inference, described in the paper below (*) 
+I want a research strategy that revolves around an in-situ fit of top quark data and Higgs in gluon fusion. This is the main goal. 
+Follow-up questions:
+ - What should be unbinned and how should the fit be exercised in particuler for Higgs? Which observables?
+ - What are BSM effects that could be constrained this way?
+ - What about single-top and other processes - shall they be included? Inclusive jets? DY? Simple is better. Cool is even better. 
+ - What else can we gain by treating the PDF latent?
 
-Build a CMS research programme in which top-quark data are used as the in-situ control system for the gluon PDF, and this information is then propagated directly into a differential Higgs measurement. The core ambition is not just to make a better top measurement and not just to make a better Higgs measurement, but to connect the two through a common latent description of proton structure.
+(*) The paper’s main idea is to extract the gluon PDF directly from realistic, high-dimensional detector-level top-pair events, instead of from the usual low-dimensional unfolded histograms. It does this by building a compact, theory-constrained linear model for the gluon PDF, evolving it with DGLAP, and then learning how changes in the PDF coefficients modify the full reconstructed ttbar event distribution. Because the proton PDFs enter the two incoming legs of the hard scattering, the event rates depend at most quadratically on those coefficients, and the method exploits that structure to build efficient machine-learned surrogates for the likelihood. The actual inference is then performed with an extended unbinned detector-level likelihood that profiles both experimental and theoretical systematics. The point is that this keeps information that is normally lost in binning, and the paper argues that this leads to significantly better gluon constraints than a matched binned analysis in the x-region probed by top production.
 
-Add everything that's relevant! Single-top, inclusive jets (binned or bunbinned)?, SMEFT
-
+The Higgs angle is that gluon-fusion Higgs production depends on the same gluon PDF. The paper argues that inclusive gg to H is sensitive around x about 10^-2, near the lower edge of the ttbar coverage, while double-differential Higgs measurements in rapidity and transverse momentum extend into much of the same kinematic region constrained by the top data. So they take the gluon PDF inferred from ttbar alone and propagate it to Higgs predictions. Their conclusion is that the unbinned ttbar-based determination can give Higgs PDF uncertainties that are comparable to, and in some regions smaller than, a standard global-fit reference. The broader physics message is that top-pair data may be able to internally calibrate the part of proton structure that matters for gluon-fusion Higgs observables, reducing dependence on external global PDF inputs.
