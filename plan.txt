@@ -1,0 +1,28 @@
+1. Core thesis
+- Build an in-situ detector-level fit that constrains the gluon PDF and selected SMEFT deformations directly from a minimal joint dataset: semileptonic/dileptonic `t\bar t` and `ggH->gamma gamma` (optionally `ggH->ZZ*->4l` as a robustness channel), using simulation-based inference with an extended likelihood that keeps the highest-value Higgs and top observables unbinned.
+
+2. Minimal process set and why it belongs
+- Signal processes: `t\bar t` and `ggH`; they probe overlapping gluon-`x` ranges and make the proposal scientifically coherent around one latent object, the gluon PDF.
+- Nuisance/background processes kept explicit but minimal: dominant `W+jets`, single-top, and `t\bar t+V` in top regions; prompt diphoton, `gamma+jet`, and small VBF/VH/`t\bar tH` contamination in Higgs regions. Do not start with DY, inclusive jets, or broad electroweak samples; they dilute scope before the in-situ logic is proven.
+- Optional stage-3 extension: add single-top only if it materially improves flavor separation or SMEFT disentangling beyond `t\bar t+ggH`.
+
+3. What stays unbinned
+- `t\bar t`: keep the full detector-level event representation unbinned through a learned summary or conditional score, but require interpretability by anchoring it to reconstructed `m_tt`, `y_tt`, top/lep `pT`, jet multiplicity, `b`-tag multiplicity, `H_T`, and missing `pT`; the learned statistic is the unbinned object, these observables are the controlled basis for validation.
+- `ggH`: keep `m_gg` binned or parameterized analytically for signal extraction, but leave the production-sensitive observables unbinned: Higgs candidate `pT`, `|y_H|`, jet multiplicity, leading-jet `pT`, and optionally `Delta phi(j1,H)` in the 1-jet bin. This is the cleanest compromise between established mass fits and new PDF-sensitive information retention.
+- `ggH->4l` fallback/validation channel: unbinned `pT^H`, `|y_H|`, and jet count, with the narrow four-lepton mass handled conventionally; lower yield but very clean acceptance systematics.
+
+4. Staged execution plan
+- Stage 1, top-only feasibility: reproduce the unbinned `t\bar t` gluon-PDF inference with a compact latent PDF parameterization and profiled detector/theory nuisances. Risk: surrogate misspecification or weak calibration. Acceptable because it isolates the core machinery. Fallback: reduce latent dimension, restrict to semileptonic `t\bar t`, and benchmark against a matched binned likelihood in `m_tt x y_tt`.
+- Stage 2, Higgs-only production model: build a conventional mass-based `ggH->gamma gamma` signal extraction with unbinned production observables entering only after sideband-validated background control. Risk: background modeling may dominate any PDF gain. Acceptable because this identifies exactly which Higgs observables survive detector realism. Fallback: freeze background shape from standard analyses and test only signal-shape reweighting in `pT^H, |y_H|, N_jets`.
+- Stage 3, joint in-situ `t\bar t + ggH` fit: share one gluon-PDF latent across both processes and test whether Higgs reduces extrapolation uncertainty relative to top-only propagation. Risk: the Higgs sample may add little information beyond a consistency check. Acceptable because a null result still quantifies when top-only calibration is sufficient. Fallback: recast Stage 3 as a transfer-validation study rather than a simultaneous fit.
+- Stage 4, BSM branch inside the same fit: add the smallest useful SMEFT set affecting both sectors, e.g. `O_tG`, modified top Yukawa, and an effective `H G_mu nu G^mu nu` contact; study whether unbinned kinematics separate PDF shifts from BSM distortions. Risk: severe degeneracy with gluon PDF. Acceptable because the whole point is to map and, if possible, break this degeneracy. Fallback: impose PDF-informed priors from Stage 3 and report projected decorrelation power rather than full simultaneous sensitivity.
+- Stage 5, optional single-top augmentation: include `tW` or `t`-channel single-top only if Stage 4 shows unresolved top-Yukawa/chromomagnetic degeneracies. Risk: analysis complexity rises faster than information gain. Fallback: stop at `t\bar t + ggH` and document why the simpler system is the right proposal core.
+
+5. Validation and decision points
+- Closure tests: inject known PDF/SMEFT shifts into full simulation and require unbiased recovery for both top-only and joint fits.
+- Information audit: compare unbinned SBI against a carefully optimized binned baseline; success requires a measurable gain in latent-PDF precision or PDF-vs-BSM separation, not just methodological novelty.
+- Robustness tests: vary shower/hadronization, detector response, and scale choices; require the learned likelihood ratio or score to remain calibrated under nuisance profiling.
+
+6. Scientific payoff, risks, and fallback logic
+- Main payoff: a genuinely in-situ determination of the gluon structure relevant for Higgs production, reducing dependence on external global PDFs in the exact phase space used by LHC precision measurements.
+- Main global risk: the combined fit may be statistically or systematically dominated by standard nuisances rather than PDF information. This is acceptable because the staged plan reveals where the information is lost. Fallback: deliver a sharp negative result identifying the minimal observable set and luminosity/systematic regime where an in-situ top-plus-ggH fit becomes worthwhile.
