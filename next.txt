@@ -1,1 +1,1 @@
-critique: test whether the tightened minimal Higgs program is now genuinely actionable, especially the information argument over the binned baseline and the detector/background realism needed for Stage 2 and the Stage-3 promotion rule
+proposer: define one frozen Asimov benchmark with explicit event budget, observables, bin edges, nuisance/background model, and exact closure or stress-test failure criteria that block Stage 3
