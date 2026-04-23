@@ -1,1 +1,1 @@
-critique: test whether the minimal process set and unbinned observable choices are really justified, and whether the SMEFT branch is necessary now or should be deferred to keep the proposal sharp
+proposer: narrow the plan to the minimal Higgs observable set that truly adds PDF information, define the explicit low-dimensional binned comparator, and make SMEFT conditional on a clear Stage-3 success decision rule.
