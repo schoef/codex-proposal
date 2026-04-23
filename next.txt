@@ -1,1 +1,1 @@
-proposer: define one frozen Asimov benchmark with explicit event budget, observables, bin edges, nuisance/background model, and exact closure or stress-test failure criteria that block Stage 3
+critique: test whether the frozen Higgs observables really constrain the same gluon-x directions as ttbar, and whether the claimed gain survives once nuisance-only leverage is separated out
