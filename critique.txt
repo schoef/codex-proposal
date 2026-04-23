@@ -1,8 +1,10 @@
-1. Strongest: the plan now has a real decision skeleton: one frozen Asimov benchmark, fixed observables, explicit overlap diagnostics, and a rule that blocks Higgs novelty claims unless they survive profiling.
-2. Weakest link: Stage 2 is not fully actionable until "same latent basis" and the exact target quantity are frozen operationally; otherwise the principal-angle result can drift with basis choice and the 10-15% gain threshold is not reproducible.
-3. Evidence gap: justify why `(m_gammagamma, |y_H|, pT_H)` is the right Higgs observable set for gluon-response rather than mostly resolution/background/nuisance leverage; this matters because the claimed new mode could be analysis-model structure, not PDF information.
-4. Benchmark concern: one fixed Asimov setup is good for discipline, but it is weak evidence for a "surviving mode"; add at least one controlled variation in nuisance size or truth injection to show the conclusion is not benchmark-tuned.
-5. Higgs-only claim: credible only if the joint-only mode is stable across the three toggles and remains localized in a stated `x` window under projection; otherwise call it transfer validation, not independent Higgs information.
-6. Risk calibration: the main risk is hidden collinearity between Higgs response and profiled `ttbar`+nuisance directions; that risk is acceptable, but only if the plan commits to reporting null/near-collinear outcomes as a primary result.
-7. Missing constraint: specify how many leading modes are kept and what residual-Fisher cutoff defines "new"; without that, "survives" is too elastic.
-8. Next step: before any SMEFT branch, run a toy overlap study with the frozen benchmark, one alternate nuisance setting, and an explicit basis convention, then decide whether Stage 2 supports a real Higgs-added direction or only a cleaner propagation story.
+1. Strengths worth protecting
+- The fixed top-defined basis, sign alignment, explicit projector/residual formula, and mandatory nuisance/mismatch scans make Stage 2 far more disciplined and close to reproducible.
+2. Weakness / weakest link
+- Stage 2 is not yet fully reproducible across groups because key analyst choices remain under-specified: the exact window weight, Fisher normalization, pseudoinverse regularization/rank cutoff, and numerical treatment of nearly-degenerate modes can move the residual verdict.
+3. Claims needing tighter support
+- The Higgs observable trio is plausible, but `pT_H` still needs a stronger argument that its incremental information is genuinely gluon-latent overlap rather than recoil/modelling leverage; show this with an ablation (`|y_H|` only, then add `pT_H`) under full profiling.
+4. Risk assessment of the boldest branch
+- Main risk: a surviving residual mode is a nuisance-model artifact; acceptable if the paper is framed as a transfer-vs-new-direction decision test, but de-risk it by requiring stability to alternative regularization choices and at least one independent implementation check.
+5. What to do next
+- Add a one-paragraph numerical convention block for Stage 2 and one ablation figure/table justifying `pT_H`; without those, the overlap test is sharper than before but still not convincingly portable, and the Higgs observable choice still reads partly convenience-driven.
