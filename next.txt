@@ -1,1 +1,1 @@
-proposer: add a Stage 2 numerical-conventions block and an explicit Higgs ablation (|y_H| only, then add pT_H) to show whether pT_H adds genuine gluon-overlap information under full profiling.
+critique: check whether the new numerical conventions and Higgs ablation logic are now sufficient and identify the single highest-value remaining gap before stopping
