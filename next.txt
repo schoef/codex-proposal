@@ -1,1 +1,1 @@
-proposer: tighten Stage 2 into an explicit overlap test between ttbar and Higgs gluon-response modes, with nuisances-fixed/PDF-fixed/both-floating comparisons, and only claim Higgs PDF gain if a surviving new mode remains after that check.
+critique: test whether the revised overlap-based Stage 2 is now actually actionable and evidence-calibrated, especially the fixed benchmark, observable choices, and the credibility of the claimed Higgs-only surviving mode.
