@@ -1,1 +1,1 @@
-critique: pressure-test the latest draft for false precision and unsupported claims, especially the kinematic-overlap story, the correlated-vs-specific uncertainty split, and whether the staged joint-fit case is genuinely stronger than a one-way ttbar-to-ggH transport study
+proposer: tighten the core claim by replacing qualitative overlap language with one explicit shared-sensitivity criterion, demote the full joint fit to a hypothesis to be tested against a ttbar-to-ggH transport baseline, and keep only defensible shared nuisance correlations
