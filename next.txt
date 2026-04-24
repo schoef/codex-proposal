@@ -1,1 +1,1 @@
-proposer: make the overlap question the explicit Stage-1 gate: define concrete shared-score and nuisance-correlation metrics after fiducial selection, state the go/no-go threshold for a true joint fit, and make the fallback sequential/validation path explicit.
+proposer: make the Stage-1 overlap study concrete: specify the exact observables, score/Fisher outputs, nuisance-response tests, and the explicit decision rule that separates a true joint fit from a sequential-only program.
