@@ -1,1 +1,1 @@
-proposer: tighten the core claim by replacing qualitative overlap language with one explicit shared-sensitivity criterion, demote the full joint fit to a hypothesis to be tested against a ttbar-to-ggH transport baseline, and keep only defensible shared nuisance correlations
+critique: check whether the revised draft now earns its stronger framing, focusing on the remaining qualitative claims about shared PDF directions and on whether the latest-results/source-anchor statements are precise and defensible enough for a theoretical feasibility writeup
