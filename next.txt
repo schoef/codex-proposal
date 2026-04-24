@@ -1,1 +1,1 @@
-critique: check whether the revised draft now earns its stronger framing, focusing on the remaining qualitative claims about shared PDF directions and on whether the latest-results/source-anchor statements are precise and defensible enough for a theoretical feasibility writeup
+proposer: make one final calibration pass by adding a compact claim-risk-evidence table, softening any still-asserted overlap-region language into candidate shared region wording, and time-stamping or tightening the source-anchor statements so they are defensible as of 24 April 2026
