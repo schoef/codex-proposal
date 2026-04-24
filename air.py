@@ -15,7 +15,7 @@ ROLE_FILES = {
 }
 
 OUTPUT_FILES = {
-    "proposer": "plan.txt",
+    "proposer": "writeup.txt",
     "critique": "critique.txt",
     "professor": "next.txt",
 }
@@ -160,7 +160,7 @@ def ensure_git_repo(workdir: Path) -> None:
 def git_commit_and_push(workdir: Path, *, step_label: str) -> None:
     tracked_paths = [
         name
-        for name in ("idea.txt", "plan.txt", "critique.txt", "next.txt")
+        for name in ("idea.txt", "writeup.txt", "critique.txt", "next.txt")
         if (workdir / name).exists()
     ]
 
@@ -218,7 +218,7 @@ def main() -> int:
             next_path.unlink()
 
         professor_message = (
-            "Read idea.txt, plan.txt if present, and critique.txt if present. "
+            "Read idea.txt, writeup.txt if present, and critique.txt if present. "
             "Then write next.txt in the strict required format."
         )
         if first_professor_turn and args.initial.strip():
