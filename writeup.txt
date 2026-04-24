@@ -1,0 +1,82 @@
+Joint unbinned ttbar + ggH(H->gammagamma) fit: theoretical situation and feasibility
+
+1. Core thesis
+- A joint unbinned fit is theoretically sensible if the shared latent object is kept narrow: primarily the gluon PDF shape (and, optionally, alpha_s and a small set of common theory nuisances), while most detector and process-modelling nuisances remain channel-specific.
+- The scientific payoff is not "combine two arbitrary datasets", but "anchor the same gluon luminosity with two complementary maps of phase space": ttbar provides high-rate, broad reach in x and high scales; ggH->gammagamma provides a clean mass-peak channel with direct sensitivity near x ~ 10^-2 and with rapidity/pT structure that overlaps the low-to-mid-x edge of ttbar.
+
+2. Kinematic overlap: where the two channels really talk to each other
+- At leading kinematic level, both channels probe incoming momentum fractions x1,2 ~ (M_T/sqrt(s)) exp(+/- y), with M_T = sqrt(M^2 + pT^2) for the color-singlet or heavy system.
+- For ggH at 13-13.6 TeV: x1,2 ~ (mT,H/sqrt(s)) exp(+/- y_H). At pT,H ~ 0 and y_H = 0 this is x ~ 0.009-0.010; for |y_H| ~ 2 it becomes asymmetric, roughly one leg in the few 10^-3 range and the other in the few 10^-2 to 10^-1 range. Moderate Higgs recoil raises the central-x anchor into ~0.01-0.03.
+- For ttbar: x1,2 ~ (m_ttbar/sqrt(s)) exp(+/- y_ttbar). Near threshold and central rapidity this starts at x ~ 0.026 at 13 TeV; for m_ttbar ~ 0.5-1 TeV the central-x anchor moves through ~0.04-0.08, and rapidity again generates asymmetric legs extending one side down and the other side up.
+- Therefore the clean shared region is not the full ttbar phase space; it is the band x ~ 0.01-0.08 with hard scales Q ~ 125 GeV to O(500 GeV), populated by central/moderate-pT ggH and threshold-to-intermediate-mass ttbar.
+- The channels are complementary inside that band: ggH pins the lower-x shoulder and rapidity dependence around the Higgs mass scale; ttbar constrains the same gluon field after DGLAP evolution at larger scales and into somewhat larger x. This is the real consistency test.
+- Outside that band the fit is still useful, but no longer "shared-constraint dominated": boosted ttbar mostly extends the gluon reach upward in x and Q; extreme Higgs recoil stresses high-pT resummation / finite-top-mass modelling more than shared PDF information.
+
+3. Theoretical account of the joint model
+- Minimal shared latent layer: coefficients c_a of a linearized gluon-PDF model at input scale Q0, evolved with DGLAP. This is the cleanest common parameterization because both channels depend on the same incoming gluons but with different kernels and scales.
+- Optional shared parameters: alpha_s(mZ), heavy-flavor matching choices, and a small number of correlated missing-higher-order nuisance directions if they can be defined in a process-agnostic way. These should be introduced only after the PDF-only fit works.
+- Channel likelihood structure:
+- ttbar block: extended unbinned detector-level likelihood over reconstructed event features z_t, using the SBI/surrogate setup of the motivating paper, with dependence on c_a and ttbar-specific nuisances.
+- ggH->gammagamma block: extended unbinned likelihood in at least (m_gammagamma, k_H), where k_H is a compact set of Higgs kinematics such as y_gammagamma, pT_gammagamma, N_jets or a low-dimensional learned summary. Signal depends on c_a; continuum diphoton background is modelled separately and should not be forced into the same latent theory model.
+- Joint likelihood: L = L_ttbar(c, theta_shared, theta_t) x L_ggH(c, theta_shared, theta_H, beta_bkg). The key is that c is global, while theta_t, theta_H, beta_bkg are mostly not.
+
+4. Shared versus process-specific uncertainties
+- Shared theoretical uncertainties that plausibly belong in one correlated block:
+- gluon PDF parameterization and evolution uncertainty; this is the main target and must be shared by construction.
+- alpha_s dependence, if floated consistently in PDF evolution and hard cross sections.
+- Common external inputs such as beam energy and, for same-experiment same-period fits, integrated luminosity as a normalization nuisance.
+- Possibly a restricted set of perturbative-shape nuisance directions tied to initial-state QCD, but only if a common basis can be defined without pretending ttbar and ggH have the same K-factor anatomy.
+- Process-specific theoretical uncertainties that should remain separate:
+- ttbar: top-mass dependence; decay modelling; ISR/FSR in colored final states; parton shower/hadronization; color reconnection; b-fragmentation; Wt/single-top interference; semileptonic reconstruction effects.
+- ggH->gammagamma: heavy-top EFT truncation and finite-mt corrections at high pT,H; Higgs pT resummation / matching; diphoton signal-shape modelling; continuum gamma-gamma and gamma-jet background parameterization; production-mode admixture and STXS migration.
+- Shared experimental/systematic block only in limited cases:
+- luminosity, pileup calibration, and some object calibrations may be correlated if the same experiment/run period is used.
+- In practice the dominant object systematics differ: ttbar is driven by jets, b-tagging, leptons, MET and combinatorics; H->gammagamma is driven by photon energy scale/resolution, photon ID/isolation, category migrations and background-shape control. So large cancellation should not be assumed.
+- Bottom line: the robust shared gain is mostly from common gluon-PDF information, not from broad experimental cancellation.
+
+5. Feasibility case for a joint unbinned fit
+- Feasible version:
+- Treat the PDF coefficients as the only mandatory shared latent variables.
+- Keep ggH background modelling separate and low-dimensional.
+- Use a compact Higgs summary representation first, not the full event record.
+- Profile channel-specific nuisances independently except for luminosity and any explicitly validated common calibrations.
+- Over-ambitious version to avoid at first pass:
+- fully shared theory-nuisance basis across both processes;
+- high-dimensional generative modelling of diphoton backgrounds;
+- aggressive claims of detector-systematic cancellation across top and Higgs channels.
+
+6. Staged program with explicit risks and fallback paths
+- Stage 0: kinematic audit.
+- Deliverable: a response map from both channels in (x1, x2, Q) or in compressed coordinates such as x_geom = sqrt(x1 x2), y_boost, Q. Quantify overlap weight, not just geometric overlap.
+- Risk: apparent overlap in y or mT may correspond to weak statistical leverage after cuts and acceptance.
+- Fallback: restrict the joint story to the subset of ggH bins/categories whose response overlaps materially with threshold/intermediate ttbar.
+- Stage 1: theory-only Asimov fit.
+- Deliverable: parton- or particle-level joint likelihood with shared PDF coefficients and separate nuisance blocks; test whether ggH actually sharpens the same eigen-directions that ttbar leaves weak.
+- Risk: the two channels may constrain nearly orthogonal PDF directions once realistic scales and rapidities are included.
+- Fallback: recast the project as a consistency/transport test, where ttbar-inferred PDFs are propagated to ggH and only a low-rank residual correction is jointly fitted.
+- Stage 2: detector-level single-channel surrogates.
+- Deliverable: one validated ttbar SBI surrogate and one validated ggH signal-plus-background unbinned model.
+- Risk: the Higgs channel may be limited by low event counts and background-modelling errors, making a high-dimensional unbinned model fragile.
+- Fallback: keep ggH unbinned only in m_gammagamma and 1-2 kinematic summaries, or use a hybrid unbinned-in-mass / binned-in-kinematics likelihood.
+- Stage 3: first joint detector-level fit with PDF-only sharing.
+- Deliverable: profile-likelihood or posterior study showing whether the joint fit improves gluon constraints in the shared x region and whether nuisance pulls remain well-behaved.
+- Risk: improvement may be negligible relative to complexity because ttbar statistically dominates.
+- Fallback: position ggH as a validation/calibration channel that tests transportability of the ttbar-derived gluon model rather than as a major precision contributor.
+- Stage 4: controlled enlargement of the shared nuisance set.
+- Deliverable: add luminosity, alpha_s, and at most a few validated correlated theory-shape modes; test fit stability and interpretability.
+- Risk: nuisance degeneracies can destroy identifiability and make the attractive "joint fit" language scientifically empty.
+- Fallback: freeze back to the minimal shared set and report that only PDF sharing is presently defendable.
+
+7. Why this belongs together scientifically
+- ttbar and ggH->gammagamma are linked by the same initial-state gluon field but interrogate it through different hard scales, color structures, and detector systems. That is exactly why the combination is interesting: agreement is nontrivial.
+- The strongest version of the project is therefore not "everything cancels", but "a single latent gluon description survives two very different likelihoods". Even a failure is informative, because it localizes whether the problem is PDF flexibility, perturbative modelling, or channel-specific detector/background treatment.
+
+8. Practical decision rule
+- Green light if Stage 0 shows sizable overlap weight in x ~ 0.01-0.05 and Stage 1 shows at least one important gluon-PDF direction jointly constrained rather than merely cross-checked.
+- Yellow light if the benefit is mostly one-way transport (ttbar -> ggH); then the project is still publishable as a detector-level consistency test with limited joint profiling.
+- Red light if the shared information is swamped by process-specific nuisances or if the ggH unbinned model is not robust against continuum-background misspecification.
+
+9. Current source anchors to keep honest
+- CMS HIG-23-014, "Measurements of inclusive and differential Higgs boson production cross sections at 13.6 TeV in the H->gammagamma decay channel" (CMS briefing dated 18 July 2024).
+- CMS top briefing "First measurement of the top quark pair production cross section in proton-proton collisions at 13.6 TeV" (CMS public note summarized 2022/2023); inference: as of 24 April 2026, the freshest differential ttbar ingredients are still predominantly 13 TeV Run-2 style measurements, while early Run-3 top results are more limited.
+- ATLAS/CMS 2025-2026 public result summaries confirm continuing Run-3 Higgs differential measurements and top differential activity, but not yet a mature off-the-shelf joint likelihood framework.
