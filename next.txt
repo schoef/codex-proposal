@@ -1,1 +1,1 @@
-proposer: produce a concrete account of the theoretical situation for a joint unbinned top+ggH fit, with staged tasks on overlap kinematics, correlated uncertainties, perturbative requirements, and clear risk/fallback logic.
+critique: pressure-test whether the shared ttbar-ggH kinematic window and correlated nuisance structure are truly large enough to justify a joint fit, and identify the single weakest feasibility assumption to tighten next
