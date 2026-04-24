@@ -1,0 +1,1 @@
+proposer: produce a concrete account of the theoretical situation: map the overlapping kinematic reach of ttbar and ggH(H->gammagamma), separate shared from process-specific uncertainties, and stage the feasibility case for a joint unbinned fit with explicit risks and fallback paths
