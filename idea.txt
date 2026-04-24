@@ -1,11 +1,11 @@
 The vague idea to roll out is the following:
 We use unbinned techniques for simulation based inference, described in the paper below (*) 
-I want a research strategy that revolves around an in-situ fit of top quark data and Higgs in gluon fusion. This is the main goal. 
-Follow-up questions:
- - What should be unbinned and how should the fit be exercised in particuler for Higgs? Which observables?
- - What are BSM effects that could be constrained this way?
- - What about single-top and other processes - shall they be included? Inclusive jets? DY? Simple is better. Cool is even better. 
- - What else can we gain by treating the PDF latent?
+I want to understand the *thoretical* feasibility of a joint unbinned fit of LHC top quark data and gluon-fusion Higgs production in H->gammagamma
+ - The y/mT ranges will overlap
+ - Are the theory and experimental uncertainties (search for the latest results) such that a joint fit is sensible?
+ - What's the benefit of treating the PDFs as latent quantities, i.e., with the same linear PDF model as described in the paper?
+ - What are important theoretical uncertainties and are they correlated between Top and Higgs sectors so that they cancel?
+ - What about the required perturbative calculations in top, higgs, and PDF side? 
 
 (*) The paper’s main idea is to extract the gluon PDF directly from realistic, high-dimensional detector-level top-pair events, instead of from the usual low-dimensional unfolded histograms. It does this by building a compact, theory-constrained linear model for the gluon PDF, evolving it with DGLAP, and then learning how changes in the PDF coefficients modify the full reconstructed ttbar event distribution. Because the proton PDFs enter the two incoming legs of the hard scattering, the event rates depend at most quadratically on those coefficients, and the method exploits that structure to build efficient machine-learned surrogates for the likelihood. The actual inference is then performed with an extended unbinned detector-level likelihood that profiles both experimental and theoretical systematics. The point is that this keeps information that is normally lost in binning, and the paper argues that this leads to significantly better gluon constraints than a matched binned analysis in the x-region probed by top production.
 

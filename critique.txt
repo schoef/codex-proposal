@@ -1,8 +1,0 @@
-1. Strongest: the new numerical conventions are now mostly sufficient; the sign, normalization, projector, localization, and profiling-order choices remove the earlier ambiguity and make ablations comparable.
-2. Strongest: the Higgs logic is also much improved because ablations A/B, harsh-prior tests, and mismatch tests now define a real demotion path for `pT_H` instead of assuming novelty.
-3. Weakest link: the plan still lacks one explicitly fixed target functional for the "gain" criteria; "target gluon moment" is invoked repeatedly, but not defined once in a way that all thresholds anchor to.
-4. Why it matters: without that single functional, the `>=10%` and `>=15%` improvement rules can be tuned after the fact, which weakens the stop/go logic and makes "new Higgs information" look partly rhetorical.
-5. Evidence needed: specify one pre-registered gluon quantity, motivated by `ggH` phenomenology, and use it consistently in Stage 1, ablations A/B, and robustness tests.
-6. Risk: this is an acceptable risk, not a fatal flaw; the structure is already publishable if the chosen functional shows null residual gain, because that still supports the transfer-validation story.
-7. Better move: add one sentence defining that functional and why it is the decision variable, rather than introducing any further process branch or extra observable.
-8. Next: stop expanding scope and lock the metric; once the target functional is fixed, the current plan is sufficiently coherent to execute and to falsify the Higgs-added-information claim cleanly.
