@@ -8,7 +8,7 @@ Joint unbinned ttbar + ggH(H->gammagamma) fit: theoretical situation and feasibi
 - At leading kinematic level, both channels probe incoming momentum fractions x1,2 ~ (M_T/sqrt(s)) exp(+/- y), with M_T = sqrt(M^2 + pT^2) for the color-singlet or heavy system.
 - For ggH at 13-13.6 TeV: x1,2 ~ (mT,H/sqrt(s)) exp(+/- y_H). At pT,H ~ 0 and y_H = 0 this is x ~ 0.009-0.010; for |y_H| ~ 2 it becomes asymmetric, roughly one leg in the few 10^-3 range and the other in the few 10^-2 to 10^-1 range. Moderate Higgs recoil raises the central-x anchor into ~0.01-0.03.
 - For ttbar: x1,2 ~ (m_ttbar/sqrt(s)) exp(+/- y_ttbar). Near threshold and central rapidity this starts at x ~ 0.026 at 13 TeV; for m_ttbar ~ 0.5-1 TeV the central-x anchor moves through ~0.04-0.08, and rapidity again generates asymmetric legs extending one side down and the other side up.
-- Therefore the clean shared region is not the full ttbar phase space; it is the band where the response-weighted PDF sensitivities overlap, expected roughly around x ~ 0.01-0.08 and Q ~ 125 GeV to O(500 GeV), populated by central/moderate-pT ggH and threshold-to-intermediate-mass ttbar.
+- Therefore the candidate shared region is not the full ttbar phase space; it is the band where the response-weighted PDF sensitivities overlap, expected roughly around x ~ 0.01-0.08 and Q ~ 125 GeV to O(500 GeV), populated by central/moderate-pT ggH and threshold-to-intermediate-mass ttbar.
 - The channels are complementary inside that band: ggH pins the lower-x shoulder and rapidity dependence around the Higgs mass scale; ttbar constrains the same gluon field after DGLAP evolution at larger scales and into somewhat larger x. This is the real consistency test.
 - Outside that band the fit is still useful, but no longer "shared-constraint dominated": boosted ttbar mostly extends the gluon reach upward in x and Q; extreme Higgs recoil stresses high-pT resummation / finite-top-mass modelling more than shared PDF information.
 
@@ -58,7 +58,7 @@ Joint unbinned ttbar + ggH(H->gammagamma) fit: theoretical situation and feasibi
 - Risk: the Higgs channel may be limited by low event counts and background-modelling errors, making a high-dimensional unbinned model fragile.
 - Fallback: keep ggH unbinned only in m_gammagamma and 1-2 kinematic summaries, or use a hybrid unbinned-in-mass / binned-in-kinematics likelihood.
 - Stage 3: compare the ttbar -> ggH transport baseline to a first detector-level joint fit with PDF-only sharing.
-- Deliverable: profile-likelihood or posterior study showing whether the joint fit improves gluon constraints in the shared x region and whether nuisance pulls remain well-behaved.
+- Deliverable: profile-likelihood or posterior study showing whether the joint fit improves gluon constraints in the candidate shared x region and whether nuisance pulls remain well-behaved.
 - Risk: improvement may be negligible relative to complexity because ttbar statistically dominates.
 - Fallback: position ggH as a validation/calibration channel that tests transportability of the ttbar-derived gluon model rather than as a major precision contributor.
 - Stage 4: controlled enlargement of the shared nuisance set.
@@ -75,7 +75,14 @@ Joint unbinned ttbar + ggH(H->gammagamma) fit: theoretical situation and feasibi
 - Yellow light if the benefit is mostly one-way transport (ttbar -> ggH); then the project is still publishable as a detector-level consistency test with limited joint profiling.
 - Red light if the shared information is swamped by process-specific nuisances or if the ggH unbinned model is not robust against continuum-background misspecification.
 
-9. Current source anchors to keep honest
-- CMS HIG-23-014, "Measurements of inclusive and differential Higgs boson production cross sections at 13.6 TeV in the H->gammagamma decay channel" (CMS briefing dated 18 July 2024).
-- CMS top briefing "First measurement of the top quark pair production cross section in proton-proton collisions at 13.6 TeV" (CMS public note summarized 2022/2023); inference: as of 24 April 2026, the freshest differential ttbar ingredients are still predominantly 13 TeV Run-2 style measurements, while early Run-3 top results are more limited.
-- ATLAS/CMS 2025-2026 public result summaries confirm continuing Run-3 Higgs differential measurements and top differential activity, but not yet a mature off-the-shelf joint likelihood framework.
+9. Source anchors to keep honest as of 24 April 2026
+- CMS HIG-23-014 matured from the 19 July 2024 preliminary result into JHEP 09 (2025) 070 on 24 April 2025, with 2022 13.6 TeV data (34.7 fb^-1) and differential H->gammagamma measurements in pT_H, y_H, N_jets, and leading-jet pT.
+- CMS TOP-22-012 established the first 13.6 TeV inclusive ttbar cross section measurement (JHEP 08 (2023) 204), while late-2025 CMS public top differentials still appear dominated by 13 TeV Run-2 analyses; this supports saying Run-3 ttbar differential inputs are emerging rather than mature.
+- ATLAS public Run-3 Higgs anchors include ATLAS-CONF-2023-032 for early 13.6 TeV H->gammagamma/H->ZZ* rates and ATLAS-CONF-2025-002 for 13.6 TeV H->ZZ* differential and production-mode measurements; this supports the statement that Run-3 Higgs differential information is advancing faster than a matched public joint ttbar+ggH likelihood program.
+- No official ATLAS/CMS public result, as visible from experiment result portals through 24 April 2026, advertises an off-the-shelf detector-level joint likelihood combining ttbar and ggH(H->gammagamma); treat any such framework claim as a proposal, not an available input.
+
+10. Compact claim-risk-evidence table
+- Claim: a joint fit is worthwhile only in a candidate shared response region | Risk: y/mT overlap overstates common PDF leverage | Evidence anchor: both channels map to x1,2 ~ (M_T/sqrt(s)) exp(+/- y), but the fit target is overlap in d sigma / d c_a, not geometry alone.
+- Claim: the most defensible shared latent layer is the gluon-PDF coefficient set c_a | Risk: oversharing theory nuisances creates fake coherence | Evidence anchor: both processes are gg-initiated, while dominant non-PDF modelling uncertainties remain strongly channel-specific.
+- Claim: near-term public-data realism favors ttbar -> ggH transport plus a low-rank joint update, not a maximal fully shared fit | Risk: the Higgs side adds little beyond validation | Evidence anchor: CMS HIG-23-014 provides explicit 13.6 TeV differential H->gammagamma information, whereas public Run-3 ttbar differential ingredients are still comparatively sparse as of 24 April 2026.
+- Claim: failure is still informative if nuisance pulls or residuals localize the mismatch | Risk: null improvement gets misread as negative physics | Evidence anchor: two channels probe the same candidate gluon field at different scales and color environments, so disagreement diagnoses model insufficiency rather than just low statistics.
