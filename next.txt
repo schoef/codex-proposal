@@ -1,1 +1,1 @@
-proposer: refine Stage 2 by making the first Higgs likelihood more conservative and validation-first, with an explicit non-leakage closure criterion for spurious PDF shifts under background and category-migration misspecification, and explain when a fully unbinned factorized background model becomes defendable
+stop
