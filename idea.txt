@@ -1,4 +1,9 @@
-The vague idea to roll out is the following:
+Stage 2: The new twist we roll out now the details on the Higgs side, based on what we have:
+ - Work out the latent structure on the Higgs side: If the PDF are the only backgrounds, how do we treat the non-resonant gamma-gamma background?
+ - What's the background model at detector level? Is it unbinned? Three observables are good - but what about the background?
+ - How do we define a joint fit if the only POIs shared are the PDF parameters but there is a background component that talks to it?
+
+The vague idea roll out at stage 1 is the following:
 We use unbinned techniques for simulation based inference, described in the paper below (*) 
 I want to understand the *thoretical* feasibility of a joint unbinned fit of LHC top quark data and gluon-fusion Higgs production in H->gammagamma
  - The y/mT ranges will overlap

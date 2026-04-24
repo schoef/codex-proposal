@@ -1,1 +1,1 @@
-stop
+proposer: expand Stage 2 with an implementation-level Higgs background model, explaining how the nonresonant diphoton background is represented in an unbinned detector-level likelihood, which observables belong to signal versus background, and how background parameters coexist with globally shared PDF parameters without creating fake coupling
