@@ -1,10 +1,8 @@
-1. Strongest and worth protecting
-- The stronger framing is mostly earned: the draft now defines the project as a test of whether ttbar and ggH share a nontrivial gluon-PDF response direction, which is a real idea rather than generic "joint fit" inflation.
-2. Weak / overreaching
-- "Shared PDF directions" is still qualitative; main risk: after acceptance cuts and nuisance profiling the channels may constrain different linear combinations; acceptable only as a hypothesis; de-risk with explicit Fisher/response-overlap plots in (x1,x2,Q).
-3. Claims needing evidence or tighter wording
-- The overlap band (`x ~ 0.01-0.08`, `Q ~ 125 GeV to O(500 GeV)`) reads plausible but asserted; either derive it from the actual kernels/Asimov study or soften the wording to "candidate shared region."
-- The "latest results/source anchors" section is not yet precise enough for a theoretical feasibility writeup: cite exact papers/notes, dates, and datasets, and avoid "latest" unless you say "as of 24 April 2026" what is latest.
-- In particular, the claim that mature differential ttbar ingredients remain mostly Run-2/13 TeV while Run-3 top is still limited is time-sensitive and needs either a hard source or more cautious phrasing.
-4. What the proposer should do next
-- Add one compact table listing each branch/claim, its main risk, whether that risk is acceptable, and the concrete evidence or redesign that would de-risk it; if only one shared eigen-direction survives, that is still a valid feasibility result.
+1. Strongest: The writeup’s best move is narrowing the shared layer to PDF coefficients and stating explicitly that overlap must be in response-weighted PDF sensitivity, not in naive kinematic ranges; that is real structure, not rhetoric.
+2. Main risk: Stage 2 is not yet clearly identifiable, because once events are modeled as a signal-background mixture in `(m_gg,k)`, any background misspecification in `f_b(k)` or category migration can imitate signal-shape changes and push on the shared PDF coefficients through the mixture weights.
+3. Why it matters: “PDFs only enter the signal block” is not sufficient protection; if the classifier/summary variables or categories are themselves sculpted by photon resolution, jet activity, or migration effects, sideband-constrained background can still leak into the inferred signal PDF dependence unless those distortions are separately parameterized and tested.
+4. Weakest link: the proposed factorization `f_b(m_gg,k)=f_b^m(m_gg|k)f_b^k(k)` / conditional low-dimensional flow is plausible as an engineering starting point, but not yet realistic enough to defend as a physics assumption for unbinned inference without an explicit closure program.
+5. Risk calibration: acceptable only if Stage 2 is reframed as a validation problem first; otherwise the fit can look elegant while learning residual background/category systematics rather than gluon-PDF information.
+6. Evidence needed: show on Asimov and stress-test toys that sideband-fitted background families with induced `m_gg-k` correlations, category migration nuisances, and signal contamination do not generate fake pulls on the shared PDF directions when the truth has no Higgs-PDF shift.
+7. Better move: make the first Higgs likelihood deliberately more conservative, e.g. unbinned in `m_gg` but binned or templated in a very small set of `k` observables/categories, with nuisance modes for migration and background-shape transfer from sidebands into signal region.
+8. What to do next: define a concrete non-leakage criterion for Stage 2 (maximum spurious shift on each shared PDF eigen-direction under background/migration misspecification), and do not claim the fully unbinned factorization is defendable until that closure threshold is passed.
