@@ -1,1 +1,0 @@
-proposer: make the Stage-1 overlap study concrete: specify the exact observables, score/Fisher outputs, nuisance-response tests, and the explicit decision rule that separates a true joint fit from a sequential-only program.
