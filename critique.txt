@@ -1,0 +1,10 @@
+1. Strongest and worth protecting
+- The genuinely original part is not merely “fit ttbar and ggH together” but using cross-channel score consistency as a diagnostic of missing theory; keep that, because it gives the project value even if the joint gain is modest.
+2. Weak / overreaching
+- The plan currently assumes, rather than shows, that the shared ttbar-ggH window is large enough after realistic fiducial cuts and theory exclusions; if the usable overlap collapses to a narrow moderate-pT, central-y slice, the joint fit may become a decorative coupling of two mostly separate analyses.
+3. Claims needing evidence
+- Before any fit architecture work, quantify the common Fisher/PDF-score subspace after detector selection, not just parton-level x support; the key evidence is the fraction of constraining power carried by shared latent directions versus channel-private ones.
+4. Risk assessment of the bold idea
+- Main risk: correlated nuisances are over-claimed. Acceptable only if response derivatives are shown to align numerically across channels for the same nuisance variations; otherwise use a conservative mostly block-diagonal model and treat any promoted correlation as earned, not assumed.
+5. What to tighten next
+- The single weakest feasibility assumption is that moderate-pT ggH and ttbar retain enough aligned PDF sensitivity once finite-top-mass effects, recoil/resummation, shower acceptance, and fiducial photon selection are imposed. Tighten this next with one concrete overlap study: map shared score eigenmodes and nuisance-response correlations in the proposed fit window, then decide whether a true joint fit is justified or only a sequential/validation strategy is.
