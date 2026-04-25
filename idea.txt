@@ -1,3 +1,8 @@
+Stage 3: Well done also at stage 2. I am now less interesteed in the risk but more interested in uncertainties.
+ - Expand the unertainty section and group into shared and separate. Discuss experimental, modeling, and theoretical uncertainties. 
+ - What is the status of each, approximate size? Which are limiting?
+ - Uncertainties should be ranked.
+
 Stage 2: The new twist we roll out now the details on the Higgs side, based on what we have:
  - Work out the latent structure on the Higgs side: If the PDF are the only backgrounds, how do we treat the non-resonant gamma-gamma background?
  - What's the background model at detector level? Is it unbinned? Three observables are good - but what about the background?
