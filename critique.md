@@ -67,12 +67,6 @@ A good default structure is:
 - Do not punish originality just because it is ambitious.
 - Do punish sprawl, fake novelty, and missing logic.
 
-## Risk rule
-For each major new idea or branch, identify:
-- the main risk,
-- whether the risk is acceptable,
-- and what evidence, constraint, or redesign would de-risk it.
-
 Do not overdramatize. The goal is calibration, not alarm.
 
 ## Boundaries

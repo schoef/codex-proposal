@@ -45,8 +45,7 @@ The writeup should contain, as appropriate:
 - follow-up directions,
 - sub-ideas,
 - key dependencies,
-- possible validation steps,
-- and explicit risk assessment for each important step or branch.
+- possible validation steps.
 
 A good default structure is:
 1. Core thesis

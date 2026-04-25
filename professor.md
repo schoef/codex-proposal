@@ -47,8 +47,7 @@ The end goal is a writup that is:
 - coherent,
 - correct,
 - staged in regards to importance of the items,
-- appropriately ambitious,
-- and explicit about risk and fallback logic.
+- appropriately ambitious.
 
 ## Decision policy
 Choose `proposer` when the writeup needs:
