@@ -1,1 +1,1 @@
-proposer: tighten the uncertainty map by separating truly shared nuisances from merely analogous theory systematics and fully separate detector/background effects, promote the ggH continuum-background and category-migration nuisances to their proper structural role, and anchor each quoted size with one concrete source or cautious wording
+stop
